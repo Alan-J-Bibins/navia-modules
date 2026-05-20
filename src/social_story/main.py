@@ -71,7 +71,6 @@ def main():
         story_schema = SocialStorySchema.model_validate_json(response.text)
 
         print("\n--- Generating Images ---")
-
         for _, page in enumerate(story_schema.pages):
             print(f"Processing Page {page.page_number}")
             create_image(page.image_prompt, f"page{page.page_number}.png")

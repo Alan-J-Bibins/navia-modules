@@ -1,8 +1,11 @@
+import sys
 import os
 import torch
 from diffusers import StableDiffusionXLPipeline, UNet2DConditionModel, AutoencoderKL, EulerDiscreteScheduler
 
-MODEL_FILE_PATH = os.path.abspath("./realvisxlV50_v50LightningBakedvae.safetensors")
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_FILE_PATH = os.path.join(CURRENT_DIR, "realvisxlV50_v50LightningBakedvae.safetensors")
+
 SAMPLE_PROMPT = "children book illustration style, a happy friendly cat sitting on a desk waving hello, vector art, bright colors"
 
 def generate_lightning_image(baked_checkpoint_path: str, prompt: str, output_path: str = "output.png"):
@@ -71,4 +74,10 @@ def create_image(prompt:str = "", output_name="output.png"):
     generate_lightning_image(MODEL_FILE_PATH, image_prompt, output_name)
 
 if __name__ == "__main__":
-    generate_lightning_image(MODEL_FILE_PATH, SAMPLE_PROMPT, "story_cat_hello.png")
+    prompt = sys.argv[1]
+    output = sys.argv[2]
+    if(prompt == ""):
+        prompt = SAMPLE_PROMPT
+    if(output == ""):
+        output = "output.png"
+    generate_lightning_image(MODEL_FILE_PATH, prompt, output)
