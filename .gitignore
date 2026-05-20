@@ -11,3 +11,4 @@ wheels/
 **.safetensors
 **.png
 /.env
+**.html
