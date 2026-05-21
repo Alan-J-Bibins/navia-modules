@@ -1,32 +1,7 @@
 import sys
-import os
-from typing import Literal
-from pydantic import BaseModel, Field
-from google import genai
-from google.genai import types
-from social_story.config import settings
 from image_gen.main import create_image
-
-
-class SentenceItem(BaseModel):
-    text: str = Field(description="Exactly one sentence of prose for the social story.")
-    type: Literal["Descriptive", "Perspective", "Affirming", "Coaching"] = Field(
-        description="The clinical classification of the sentence according to Carol Gray's framework."
-    )
-
-
-class StoryPage(BaseModel):
-    page_number: int
-    sentences: list[SentenceItem]
-    image_prompt: str = Field(
-        description="The prompt to generate an image for this page of the social story, the artstyle should be cute and engaging. Provide names for each character so as to keep consecutive image prompts consistent, along with names provide accurate detailed descriptions for each character. The environment should be accurate described with emphasis on time of day, lighting, mood, material of objects, etc"
-    )
-
-
-class SocialStorySchema(BaseModel):
-    title: str
-    pages: list[StoryPage]
-
+from social_story.llm import call_llm
+from social_story.model import SocialStorySchema
 
 def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
     """Generates a clean, accessible HTML layout combining imagery and prose blocks."""
@@ -176,47 +151,52 @@ def main():
     print(f"-> Reading Level: {reading_level}")
 
     prompt = f"""
-    You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, 
-    strictly adhering to Carol Gray's 10.4 criteria. 
-
+    You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
     Your goal is to share accurate, meaningful social information rather than demanding or forcing behavioral compliance.
-
     Write a Social Story based on the following input:
     - Situation: {situation}
     - Core Anxiety/Trigger: {trigger}
     - Target Reading Level: {reading_level}
-
-    CRITICAL CLINICAL CRITERIA:
-    1. PERSPECTIVE: Write entirely in the first-person ("I") or third-person plural ("We"/"They"). Never use directing or commanding language targeted at the reader (DO NOT use "You must", "You should", or "Always remember to").
-    2. TONE: Maintain a patient, reassuring, factual, and completely literal tone. Avoid idioms, metaphors, or vague emotional descriptions.
-    3. SENTENCE RATIO (Carol Gray's Criterion 8): For every 1 "Coaching" sentence (which suggests a calm coping strategy), you MUST provide at least 2 to 5 "Descriptive", "Perspective", or "Affirming" sentences across the story.
-
-    IMAGE PROMPT RULES:
-    1. Distinct and detailed character descriptions
-    2. Image prompts must be within 500 characters
-    3. Environments should be accurately described
-    4. Try to use the same characters consistently
-    5. Describe the scene first, then elaborate the characters.
+    SENTENCE TYPE DEFINITIONS (Carol Gray's framework):
+    - "Descriptive": States objective facts about the situation, setting, people, or steps. Answers who, what, where, when, why. Example: "A restaurant has tables and chairs."
+    - "Perspective": Describes the internal states, thoughts, feelings, or sensory experiences of self or others. Example: "Sometimes the restaurant feels noisy to me." or "Waiters work hard to bring food quickly."
+    - "Affirming": Reinforces a shared value, strength, or reassuring truth. Example: "Grown-ups help me when I feel unsure."
+    - "Coaching": Suggests a gentle, optional strategy the reader CAN try (never MUST). Example: "When it feels too loud, I can put on my headphones."
+    STORY STRUCTURE:
+    - Produce exactly 8-12 pages.
+    - Page 1: Introduction (sets the scene, states the situation factually).
+    - Pages 2 to N-1: Body (walks through the sequence of events step by step, in chronological order).
+    - Last page: Conclusion (affirms the experience, reinforces calm closure, no new information).
+    - Each page MUST have 1-3 sentences. Never more than 3 sentences per page.
+    - Sentences on a page must form a coherent, logically connected set.
+    PERSPECTIVE AND TONE:
+    - WRITE ENTIRELY IN FIRST-PERSON ("I", "me", "my"). This is the child's own story told from their voice.
+    - NEVER use "you", "you must", "you should", "you will", "always", or "never".
+    - NEVER use "I will try to" — this implies anticipated failure. Use "I can" or "I will".
+    - Use simple, concrete, completely literal language. Avoid ALL idioms, metaphors, sarcasm, and figures of speech.
+    - Use short sentences (max ~15 words each).
+    SENTENCE RATIO (MANDATORY):
+    - Every Coaching sentence on a page MUST be preceded by at least 1-2 Descriptive, Perspective, or Affirming sentences on the SAME page.
+    - No page may consist only of Coaching sentences.
+    - Aim for approximately: 50% Descriptive, 20% Perspective, 20% Affirming, 10% Coaching across the entire story.
+    WHAT TO AVOID:
+    - DO NOT write "You will have fun" or "You will enjoy it" — this is predictive and invalidating.
+    - DO NOT use the word "try" to soften commands (e.g., "I will try to be quiet").
+    - DO NOT list rules or demands disguised as sentences (e.g., "I must not scream").
+    - DO NOT frame the child's natural reactions as problems to fix.
+    - DO NOT reference autism, diagnoses, or any clinical labels in the story text.
+    IMAGE PROMPT RULES (each prompt max 500 characters):
+    - FIRST sentence: describe a specific protagonist (age, gender, hair color, clothing) that will appear consistently. Use the EXACT same character description in every image prompt. Example: "A 7-year-old boy with short brown hair, wearing a blue striped t-shirt and jeans."
+    - THEN describe the setting and action matching this particular page.
+    - Specify: "well-lit, calm, uncluttered environment. No crowds, no harsh shadows."
+    - Artstyle: "photorealistic, warm natural lighting, depth of field on character, no text or lettering visible."
+    - NEVER depict the child in distress, crying, or fearful.
+    - Avoid abstract or surreal elements. Scenes must be literal and grounded in reality.
     """
 
-    client = genai.Client(api_key=settings.google_gemini_api_key)
+    story_schema = call_llm(prompt=prompt, model="gemini")
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=SocialStorySchema,
-            temperature=0.2,
-        ),
-    )
-
-    print("\n--- Raw JSON Response from Gemini ---")
-    print(response.text)
-
-    if response.text:
-        story_schema = SocialStorySchema.model_validate_json(response.text)
-
+    if story_schema:
         print("\n--- Generating Images ---")
         outputs = []
         for i, page in enumerate(story_schema.pages):
@@ -234,7 +214,6 @@ def main():
             
         print("All images printed successfully")
         
-        # --- NEW STEP: Generate HTML Presentation ---
         generate_html_view(story_schema, "story.html")
 
 
