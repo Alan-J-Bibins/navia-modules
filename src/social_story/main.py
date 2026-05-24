@@ -1,12 +1,14 @@
 import sys
 from image_gen.sdxl import sdxl_create_image
+from social_story.test import test_social_story
 from text_gen.llm import call_llm
 from social_story.model import SocialStorySchema
+
 
 def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
     """Generates a clean, accessible HTML layout combining imagery and prose blocks."""
     print(f"📄 Compiling clinical social narrative into {output_filename}...")
-    
+
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +105,7 @@ def generate_html_view(story: SocialStorySchema, output_filename: str = "story.h
             </div>
             <div class="prose-content">
         """
-        
+
         for sentence in page.sentences:
             badge_class = f"badge-{sentence.type.lower()}"
             html_content += f"""
@@ -112,7 +114,7 @@ def generate_html_view(story: SocialStorySchema, output_filename: str = "story.h
                     <span class="badge {badge_class}">{sentence.type}</span>
                 </span>
             """
-            
+
         html_content += """
             </div>
         </div>
@@ -209,10 +211,17 @@ def main():
             But if you do the work then the teacher will give special math problems just for you to figure out. It is fun to figure out new math problems. First you finish the math work and then the teacher gives you special things to do! That sounds like lots of FUN!!!!!!
     """
 
-    story_schema = call_llm(prompt=prompt, model="gemini", response_schema=SocialStorySchema)
+    story_schema = call_llm(
+        prompt=prompt, model="gemini", response_schema=SocialStorySchema
+    )
 
     if story_schema:
-        print("\n--- Generating Images ---")
+
+        print("Commencing test with deepseek judge")
+        if isinstance(story_schema, SocialStorySchema):
+            test_social_story(story_schema)
+
+        # print("\n--- Generating Images ---")
         # outputs = []
         # for i, page in enumerate(story_schema.pages):
         #     output_name = f"page{page.page_number}.png"
