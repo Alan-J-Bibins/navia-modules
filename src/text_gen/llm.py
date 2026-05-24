@@ -1,53 +1,99 @@
 import json
-from typing import Literal
+from openai import OpenAI
+from typing import Literal, TypeVar
 from google import genai
-from social_story.config import settings
+from pydantic import BaseModel
+from config import settings
 from google.genai import types
 from ollama import chat, ChatResponse
 
-from social_story.model import SocialStorySchema
+T = TypeVar("T", bound=BaseModel)
 
 
 def call_llm(
-    prompt: str, model: Literal["gemma", "gemini"]
-) -> SocialStorySchema | None:
+    prompt: str,
+    model: Literal["gemma", "gemini", "deepseek"],
+    response_schema: type[T] | None = None,
+) -> T | str | None:
     match model:
         case "gemini":
-            return call_gemini(prompt)
+            return call_gemini(prompt, response_schema)
         case "gemma":
-            return call_gemma(prompt)
+            return call_gemma(prompt, response_schema)
+        case "deepseek":
+            return call_deepseek(prompt, response_schema)
 
 
-def call_gemini(prompt: str) -> SocialStorySchema | None:
+def call_gemini(prompt: str, response_schema: type[T] | None = None) -> T | str | None:
     client = genai.Client(api_key=settings.google_gemini_api_key)
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
-            response_schema=SocialStorySchema,
+            response_schema=response_schema,
             temperature=0.2,
         ),
     )
-    if response.text:
-        print("Raw Response - Gemini")
-        print(response.text)
-        story_schema = SocialStorySchema.model_validate_json(response.text)
-        return story_schema
+
+    if not response.text:
+        return None
+
+    print("Raw Response - Gemini")
+    print(response.text)
+
+    if response_schema:
+        return response_schema.model_validate_json(response.text)
+    return response.text
 
 
-def call_gemma(prompt: str) -> SocialStorySchema | None:
+def call_gemma(prompt: str, response_schema: type[T] | None = None) -> T | str | None:
 
-    json_schema = json.dumps(SocialStorySchema.model_json_schema(), indent=2)
-    full_prompt = f"{prompt}\nRespond ONLY with valid JSON matching this exact schema:\n```json\n{json_schema}\n```"
+    if response_schema:
+        json_schema = json.dumps(response_schema.model_json_schema(), indent=2)
+        prompt = f"{prompt}\nRespond ONLY with valid JSON matching this exact schema:\n```json\n{json_schema}\n```"
 
     response: ChatResponse = chat(
         model="gemma4:e2b",
-        messages=[{"role": "user", "content": full_prompt}],
+        messages=[{"role": "user", "content": prompt}],
         format="json",
     )
-    if response.message.content:
-        print("Raw Response - Gemma")
-        print(response.message.content)
-        story_schema = SocialStorySchema.model_validate_json(response.message.content)
-        return story_schema
+    if not response.message.content:
+        return None
+
+    print("Raw Response - Gemma")
+    print(response.message.content)
+
+    if response_schema:
+        return response_schema.model_validate_json(response.message.content)
+    return response.message.content
+
+
+def call_deepseek(
+    prompt: str, response_schema: type[T] | None = None
+) -> T | str | None:
+
+    if response_schema:
+        json_schema = json.dumps(response_schema.model_json_schema(), indent=2)
+        prompt = f"{prompt}\nRespond ONLY with valid JSON matching this exact schema:\n```json\n{json_schema}\n```"
+
+    client = OpenAI(
+        api_key=settings.opencode_api_key, base_url="https://opencode.ai/zen/go/v1"
+    )
+
+    response = client.chat.completions.create(
+        model="deepseek-v4-flash",
+        messages=[{"role": "user", "content": prompt}],
+        response_format={"type": "json_object"},
+        temperature=0.2,
+    )
+    content = response.choices[0].message.content
+    if not content:
+        return None
+
+    print("Raw Response - DeepSeek V4 (OpenCode)")
+    print(content)
+
+    if response_schema:
+        return response_schema.model_validate_json(content)
+    return content

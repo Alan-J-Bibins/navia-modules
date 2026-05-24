@@ -192,29 +192,42 @@ def main():
     - Artstyle: "simple and clean flat vector illustration, cute and playful cartoon art style, soft pastel color palette, gentle diffused lighting, matte textures, low contrast, minimal shading, clean rounded outlines, comforting and friendly aesthetic, high readability, isolated on a solid light cream background."
     - NEVER depict the child in distress, crying, or fearful.
     - Avoid abstract or surreal elements. Scenes must be literal and grounded in reality.
+
+    Examples of social stories:
+        1. When I go to the movies:
+            When I go to the movies, I wait in line to get my ticket. Sometimes we buy snacks. Sometimes we buy drinks. It can be a good idea to use the bathroom before we sit down.
+            In the theater, we pick a seat and sit down. The theater might be dark. The theater might be loud. I can take breaks if I need to. I can ask to take a walk.
+            When I am in the theater, I am sitting in my seat with a quiet voice. Going to the movies is fun!
+        2. Using glue:
+            At school we do crafts and make things that use glue. I like to make things at school. I like to use glue.When we make things at school it is important to use the right amount of glue.
+            If I use too little glue things won’t stick. If I use too much glue everything gets covered in glue. It could make my paper too wet, it won’t be sticky and the glue will drip or it may rip the paper. 
+            It could even ruin my work.I will try to use just the right amount to make the glue stick and it will look great.
+        3. Math at school:
+            All kids learn math at school. Math is really fun. But, sometimes kids have to practice math problems they already know how to do. It may not be fun to have to do math problems and worksheets that you already know how to do.
+            The teachers have all the kids to do the math work. That is their job. They have to give all of the kids the math work even when they know that the kids know how to do the work. All teachers, everywhere have to do it.
+            It is the kids’ job to do the work the teachers give them. All kids everywhere have to do it. Sometimes you have to do things that are not so much fun to do. Sometimes you have to do math work that you already know how to do.
+            But if you do the work then the teacher will give special math problems just for you to figure out. It is fun to figure out new math problems. First you finish the math work and then the teacher gives you special things to do! That sounds like lots of FUN!!!!!!
     """
 
-    story_schema = call_llm(prompt=prompt, model="gemini")
+    story_schema = call_llm(prompt=prompt, model="gemini", response_schema=SocialStorySchema)
 
     if story_schema:
         print("\n--- Generating Images ---")
-        outputs = []
-        for i, page in enumerate(story_schema.pages):
-            output_name = f"page{page.page_number}.png"
-            print(f"Processing Page {page.page_number}")
-            
-            sdxl_create_image(
-                prompt=page.image_prompt,
-                output_name=output_name,
-                continuity=True,
-                ref_image_path=outputs[-1] if outputs else "",
-                initial_image=(i == 0),
-            )
-            outputs.append(output_name)
-            
-        print("All images printed successfully")
-        
-        generate_html_view(story_schema, "story.html")
+        # outputs = []
+        # for i, page in enumerate(story_schema.pages):
+        #     output_name = f"page{page.page_number}.png"
+        #     print(f"Processing Page {page.page_number}")
+        #
+        #     sdxl_create_image(
+        #         prompt=page.image_prompt,
+        #         output_name=output_name,
+        #         continuity=True,
+        #         ref_image_path=outputs[-1] if outputs else "",
+        #         initial_image=(i == 0),
+        #     )
+        #     outputs.append(output_name)
+        # print("All images printed successfully")
+        # generate_html_view(story_schema, "story.html")
 
 
 if __name__ == "__main__":
