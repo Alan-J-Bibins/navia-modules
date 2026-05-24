@@ -1,6 +1,6 @@
 import sys
-from image_gen.main import create_image
-from social_story.llm import call_llm
+from image_gen.sdxl import sdxl_create_image
+from text_gen.llm import call_llm
 from social_story.model import SocialStorySchema
 
 def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
@@ -189,7 +189,7 @@ def main():
     - FIRST sentence: describe a specific protagonist (age, gender, hair color, clothing) that will appear consistently. Use the EXACT same character description in every image prompt. Example: "A 7-year-old boy with short brown hair, wearing a blue striped t-shirt and jeans."
     - THEN describe the setting and action matching this particular page.
     - Specify: "well-lit, calm, uncluttered environment. No crowds, no harsh shadows."
-    - Artstyle: "photorealistic, warm natural lighting, depth of field on character, no text or lettering visible."
+    - Artstyle: "simple and clean flat vector illustration, cute and playful cartoon art style, soft pastel color palette, gentle diffused lighting, matte textures, low contrast, minimal shading, clean rounded outlines, comforting and friendly aesthetic, high readability, isolated on a solid light cream background."
     - NEVER depict the child in distress, crying, or fearful.
     - Avoid abstract or surreal elements. Scenes must be literal and grounded in reality.
     """
@@ -203,7 +203,7 @@ def main():
             output_name = f"page{page.page_number}.png"
             print(f"Processing Page {page.page_number}")
             
-            create_image(
+            sdxl_create_image(
                 prompt=page.image_prompt,
                 output_name=output_name,
                 continuity=True,
