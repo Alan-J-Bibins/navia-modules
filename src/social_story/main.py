@@ -2,7 +2,7 @@ import sys
 from image_gen.sdxl import sdxl_create_image
 from social_story.test import test_social_story
 from text_gen.llm import call_llm
-from social_story.model import SocialStorySchema
+from social_story.model import SocialStorySchema, SocialStoryScoreResponse
 
 
 def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
@@ -131,26 +131,14 @@ def generate_html_view(story: SocialStorySchema, output_filename: str = "story.h
     print(f"✨ Successfully exported local web view asset to {output_filename}")
 
 
-def main():
+def create_social_story(
+    situation: str, trigger: str, reading_level: str, target_age: int
+) -> tuple[SocialStorySchema, SocialStoryScoreResponse] | None:
     print("Running social story generation")
-
-    situation = (
-        sys.argv[1] if len(sys.argv) > 1 else "Going to the dentist for a cleaning"
-    )
-    trigger = (
-        sys.argv[2]
-        if len(sys.argv) > 2
-        else "The loud buzzing noise of the cleaning tool"
-    )
-    reading_level = (
-        sys.argv[3]
-        if len(sys.argv) > 3
-        else "Early elementary, highly literal, 2-3 sentences per page"
-    )
-
     print(f"-> Situation: {situation}")
     print(f"-> Trigger: {trigger}")
     print(f"-> Reading Level: {reading_level}")
+    print(f"-> Target age: {target_age}")
 
     prompt = f"""
     You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
@@ -159,6 +147,7 @@ def main():
     - Situation: {situation}
     - Core Anxiety/Trigger: {trigger}
     - Target Reading Level: {reading_level}
+    - Child's age: {target_age}
     SENTENCE TYPE DEFINITIONS (Carol Gray's framework):
     - "Descriptive": States objective facts about the situation, setting, people, or steps. Answers who, what, where, when, why. Example: "A restaurant has tables and chairs."
     - "Perspective": Describes the internal states, thoughts, feelings, or sensory experiences of self or others. Example: "Sometimes the restaurant feels noisy to me." or "Waiters work hard to bring food quickly."
@@ -215,11 +204,25 @@ def main():
         prompt=prompt, model="gemini", response_schema=SocialStorySchema
     )
 
-    if story_schema:
+    if not isinstance(story_schema, SocialStorySchema):
+        print("Failed to generate a valid story schema.")
+        return None
+    print("Commencing test with deepseek judge")
+    score_response = test_social_story(story_schema)
+    if not isinstance(score_response, SocialStoryScoreResponse):
+        print("Failed to get a valid score response.")
+        return None
+    return story_schema, score_response
 
-        print("Commencing test with deepseek judge")
-        if isinstance(story_schema, SocialStorySchema):
-            test_social_story(story_schema)
+    # if story_schema:
+    #
+    #     print("Commencing test with deepseek judge")
+    #     if isinstance(story_schema, SocialStorySchema):
+    #         social_story_score_response = test_social_story(story_schema)
+    #
+    #         if isinstance(social_story_score_response, SocialStoryScoreResponse):
+    #             return (story_schema,social_story_score_response)
+    #
 
         # print("\n--- Generating Images ---")
         # outputs = []
@@ -240,4 +243,23 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    situation = (
+        sys.argv[1] if len(sys.argv) > 1 else "Going to the dentist for a cleaning"
+    )
+    trigger = (
+        sys.argv[2]
+        if len(sys.argv) > 2
+        else "The loud buzzing noise of the cleaning tool"
+    )
+    reading_level = (
+        sys.argv[3]
+        if len(sys.argv) > 3
+        else "Early elementary, highly literal, 2-3 sentences per page"
+    )
+    age = int(sys.argv[4]) if len(sys.argv) > 4 else 6
+    create_social_story(
+        situation=situation,
+        trigger=trigger,
+        reading_level=reading_level,
+        target_age=age,
+    )

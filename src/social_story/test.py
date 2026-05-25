@@ -1,22 +1,9 @@
-from pydantic import BaseModel, Field
-from social_story.model import SocialStorySchema
+from social_story.model import SocialStorySchema, SocialStoryScoreResponse
 from text_gen.llm import call_llm
+from social_story.utils import story_text
 
-class SocialStoryScoreResponse(BaseModel):
-    score:int = Field(description="The score given to the social story out of 10")
-    remarks:list[str] = Field(description="List individual, specific reasons why points were deducted, citing sentence examples and the exact criterion number violated. If no points were lost, provide a positive summary of framework compliance here. Begin each point with 'POSITIVE' or 'NEGATIVE' depending on the type of remark.")
-
-def _story_text(story: SocialStorySchema) -> str:
-    lines = [f"Title: {story.title}", ""]
-    for page in story.pages:
-        lines.append(f"Page {page.page_number}:")
-        for item in page.sentences:
-            lines.append(f"  - {item.text}")
-        lines.append("")
-    return "\n".join(lines)
-
-def test_social_story(story_schema: SocialStorySchema) -> int | None:
-    print("Story passed to test module: ", _story_text(story_schema))
+def test_social_story(story_schema: SocialStorySchema) -> SocialStoryScoreResponse | None:
+    print("Story passed to test module: ", story_text(story_schema))
     prompt = f"""
         You are an expert Board Certified Behavior Analyst (BCBA) and an authority on Carol Gray's 10.4 Framework (the 2023 version) for writing Social Stories. Your job is to strictly audit and score the provided social story. 
 
@@ -50,19 +37,27 @@ def test_social_story(story_schema: SocialStorySchema) -> int | None:
 
         ---
 
+        ADDITIONAL CRITERIA:
+        1. The target age for this story is {story_schema.target_age}, check whether the vocabulary and grammar used in the social story match that which a child of this age can comprehend and understand. Deduct one point if it doesn not. This is not part of Carol Grey's criteria but it is part of the scoring criteria. If violated deduct one point and mention in remarks.
+
         ### SCORING INSTRUCTIONS
-        - Start with a base score of 10. 
+        - Start with a base score of 11. 
         - Deduct 1 full point for each criterion violated. 
         - **Automatic Score Cap:** If the story uses the word "you/your" (Criterion 5) or fails the 10.4 Formula Ratio (Criterion 8), its maximum possible total score cannot exceed 5/10, regardless of how well written the rest of the story is.
-        - AVOID processing any image prompts, they are not relevant.
+        - After scoring, convert this into a percentage.
 
         ### INPUT DATA TO EVALUATE:
-        {_story_text(story_schema)}
+        {story_text(story_schema)}
 
     """
 
-    response = call_llm(prompt=prompt, model="deepseek", response_schema=SocialStoryScoreResponse)
+    response = call_llm(
+        prompt=prompt, model="deepseek", response_schema=SocialStoryScoreResponse
+    )
 
     if isinstance(response, SocialStoryScoreResponse):
-        return response.score
-    return 0
+        print(f"Story attained {response.score}\n Remarks:")
+        for remark in response.remarks:
+            print(f"- {remark}");
+        return response
+    return None
