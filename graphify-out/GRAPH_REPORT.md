@@ -1,4 +1,4 @@
-# Graph Report - navia-modules  (2026-05-27)
+# Graph Report - navia-modules  (2026-05-31)
 
 ## Corpus Check
 - 28 files · ~7,740 words
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5b1e47de`
+- Built from commit: `a2b3711f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -49,6 +49,9 @@
 - `test_social_story()` --calls--> `story_text()`  [INFERRED]
   src/social_story/test.py → src/social_story/utils.py
 
+## Import Cycles
+- None detected.
+
 ## Communities (27 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
@@ -85,11 +88,11 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Why does `test_social_story()` connect `Community 0` to `Community 1`, `Community 3`?**
   _High betweenness centrality (0.049) - this node is a cross-community bridge._
-- **Are the 9 inferred relationships involving `SocialStorySchema` (e.g. with `SocialStorySchema` and `str`) actually correct?**
+- **Are the 9 inferred relationships involving `SocialStorySchema` (e.g. with `int` and `SocialStorySchema`) actually correct?**
   _`SocialStorySchema` has 9 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 9 inferred relationships involving `SocialStoryScoreResponse` (e.g. with `SocialStorySchema` and `str`) actually correct?**
+- **Are the 9 inferred relationships involving `SocialStoryScoreResponse` (e.g. with `int` and `SocialStorySchema`) actually correct?**
   _`SocialStoryScoreResponse` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `call_llm()` (e.g. with `create_social_story()` and `test_social_story()`) actually correct?**
   _`call_llm()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 2 inferred relationships involving `create_social_story()` (e.g. with `call_llm()` and `test_social_story()`) actually correct?**
+- **Are the 2 inferred relationships involving `create_social_story()` (e.g. with `test_social_story()` and `call_llm()`) actually correct?**
   _`create_social_story()` has 2 INFERRED edges - model-reasoned connections that need verification._

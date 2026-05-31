@@ -4,7 +4,6 @@ from social_story.test import test_social_story
 from text_gen.llm import call_llm
 from social_story.model import SocialStorySchema, SocialStoryScoreResponse
 
-
 def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
     """Generates a clean, accessible HTML layout combining imagery and prose blocks."""
     print(f"📄 Compiling clinical social narrative into {output_filename}...")
