@@ -1,3 +1,4 @@
+import time
 import json
 from openai import OpenAI
 from typing import Literal, TypeVar
@@ -26,25 +27,47 @@ def call_llm(
 
 def call_gemini(prompt: str, response_schema: type[T] | None = None) -> T | str | None:
     client = genai.Client(api_key=settings.google_gemini_api_key)
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=response_schema,
-            temperature=0.2,
-        ),
-    )
+    base_delay = 5
+    attempts = 5
+    for attempt in range(attempts):
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    response_schema=response_schema,
+                    temperature=0.2,
+                ),
+            )
 
-    if not response.text:
-        return None
+            if not response.text:
+                return None
 
-    print("Raw Response - Gemini")
-    print(response.text)
+            print("Raw Response - Gemini")
+            print(response.text)
 
-    if response_schema:
-        return response_schema.model_validate_json(response.text)
-    return response.text
+            if response_schema:
+                return response_schema.model_validate_json(response.text)
+            return response.text
+        except Exception as e:
+            err_msg = str(e).lower()
+            is_rate_limit = (
+                "429" in err_msg
+                or "503" in err_msg
+                or "resource exhausted" in err_msg
+                or "rate limit" in err_msg
+                or "unavailable" in err_msg
+            )
+            if not is_rate_limit or attempt == attempts - 1:
+                raise
+            wait = base_delay * (2 * attempt)
+            print(
+                f"Rate limit hit, retrying in {wait}s (attempt {attempt + 1}/{attempts})..."
+            )
+            time.sleep(wait)
+
+    return None
 
 
 def call_gemma(prompt: str, response_schema: type[T] | None = None) -> T | str | None:

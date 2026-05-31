@@ -1,5 +1,5 @@
 import sys
-from image_gen.sdxl import sdxl_create_image
+# from image_gen.sdxl import sdxl_create_image
 from social_story.test import test_social_story
 from text_gen.llm import call_llm
 from social_story.model import SocialStorySchema, SocialStoryScoreResponse
