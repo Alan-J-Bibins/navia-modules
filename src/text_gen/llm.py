@@ -44,8 +44,8 @@ def call_gemini(prompt: str, response_schema: type[T] | None = None) -> T | str 
             if not response.text:
                 return None
 
-            print("Raw Response - Gemini")
-            print(response.text)
+            # print("Raw Response - Gemini")
+            # print(response.text)
 
             if response_schema:
                 return response_schema.model_validate_json(response.text)
@@ -84,8 +84,8 @@ def call_gemma(prompt: str, response_schema: type[T] | None = None) -> T | str |
     if not response.message.content:
         return None
 
-    print("Raw Response - Gemma")
-    print(response.message.content)
+    # print("Raw Response - Gemma")
+    # print(response.message.content)
 
     if response_schema:
         return response_schema.model_validate_json(response.message.content)
@@ -114,8 +114,8 @@ def call_deepseek(
     if not content:
         return None
 
-    print("Raw Response - DeepSeek V4 (OpenCode)")
-    print(content)
+    # print("Raw Response - DeepSeek V4 (OpenCode)")
+    # print(content)
 
     if response_schema:
         return response_schema.model_validate_json(content)

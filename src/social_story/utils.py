@@ -4,7 +4,7 @@ from social_story.model import SocialStorySchema, SocialStoryScoreResponse
 def story_text(story: SocialStorySchema) -> str:
     lines = [f"Title: {story.title}", ""]
     for page in story.pages:
-        lines.append(f"Page {page.page_number}:")
+        lines.append(f"\n")
         for item in page.sentences:
             lines.append(f"  - {item.text}")
         lines.append("")

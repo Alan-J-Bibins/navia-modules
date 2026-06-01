@@ -2,8 +2,11 @@ from social_story.model import SocialStorySchema, SocialStoryScoreResponse
 from text_gen.llm import call_llm
 from social_story.utils import story_text
 
-def test_social_story(story_schema: SocialStorySchema) -> SocialStoryScoreResponse | None:
-    print("Story passed to test module: ", story_text(story_schema))
+def test_social_story(
+    story_schema: SocialStorySchema, judge: int = 0
+) -> SocialStoryScoreResponse | None:
+    story = story_text(story_schema)
+    print("Story passed to test module: ", story)
     prompt = f"""
         You are an expert Board Certified Behavior Analyst (BCBA) and an authority on Carol Gray's 10.4 Framework (the 2023 version) for writing Social Stories. Your job is to strictly audit and score the provided social story. 
 
@@ -47,17 +50,34 @@ def test_social_story(story_schema: SocialStorySchema) -> SocialStoryScoreRespon
         - After scoring, convert this into a percentage.
 
         ### INPUT DATA TO EVALUATE:
-        {story_text(story_schema)}
+        {story}
 
     """
 
-    response = call_llm(
-        prompt=prompt, model="deepseek", response_schema=SocialStoryScoreResponse
-    )
+    match judge:
+        case 0:
+            response = call_llm(
+                prompt=prompt,
+                model="deepseek",
+                response_schema=SocialStoryScoreResponse,
+            )
 
-    if isinstance(response, SocialStoryScoreResponse):
-        print(f"Story attained {response.score}\n Remarks:")
-        for remark in response.remarks:
-            print(f"- {remark}");
-        return response
+            if isinstance(response, SocialStoryScoreResponse):
+                print(f"Deepseek Judge: Story attained {response.score}\n Remarks:")
+                for remark in response.remarks:
+                    print(f"- {remark}")
+                return response
+        case 1:
+            response = call_llm(
+                prompt=prompt,
+                model="gemini",
+                response_schema=SocialStoryScoreResponse,
+            )
+
+            if isinstance(response, SocialStoryScoreResponse):
+                print(f"Gemini Judge: Story attained {response.score}\n Remarks:")
+                for remark in response.remarks:
+                    print(f"- {remark}")
+                return response
+
     return None

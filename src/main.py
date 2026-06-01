@@ -1,6 +1,11 @@
-def main():
-    print("Hello from navia-modules!")
+from fastapi import FastAPI
 
+app = FastAPI()
 
-if __name__ == "__main__":
-    main()
+@app.get("/")
+def read_root():
+    return {"HOla": "NAVIA"}
+
+@app.get("/health")
+def checkhealth():
+    return {"msg": "Server is running"}
