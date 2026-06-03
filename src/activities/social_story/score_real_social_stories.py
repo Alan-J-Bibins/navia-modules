@@ -1,9 +1,8 @@
 import pandas as pd
 import json
-import time
 from pathlib import Path
-from social_story.model import SocialStoryScoreResponse
-from social_story.test import test_social_story
+from activities.social_story.model import SocialStoryScoreResponse
+from activities.social_story.judge import judge_social_story
 
 CSV_PATH = Path(__file__).parent / "social_story_dataset.csv"
 CHECKPOINT_PATH = Path(__file__).parent / "scoring_checkpoint.json"
@@ -29,10 +28,10 @@ for idx, row in df.iloc[start_idx:].iterrows():
     title = row["title"]
     content = row["content"]
     min_age = int(row["min_age"])
-    result0 = test_social_story(
+    result0 = judge_social_story(
         story_schema=f"{title}\n{content}", age=min_age, judge=0
     )
-    result1 = test_social_story(
+    result1 = judge_social_story(
         story_schema=f"{title}\n{content}", age=min_age, judge=2
     )
     scores_0.append(

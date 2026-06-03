@@ -1,22 +1,23 @@
-from social_story.model import SocialStorySchema, SocialStoryScoreResponse
-from text_gen.llm import call_llm
-from social_story.utils import story_text
+from activities.social_story.model import SocialStorySchema, SocialStoryScoreResponse
+from wrappers.text_gen.llm import call_llm
+from activities.social_story.utils import story_text
 
-def test_social_story(
-        story_schema: SocialStorySchema | str, age: int | None = None, judge: int = 0
+
+def judge_social_story(
+    story_schema: SocialStorySchema | str, age: int | None = None, judge: int = 0
 ) -> SocialStoryScoreResponse | None:
 
     story = ""
     target_age = None
-    if (isinstance(story_schema, SocialStorySchema)):
+    if isinstance(story_schema, SocialStorySchema):
         story = story_text(story_schema)
         target_age = story_schema.target_age
 
-    if (isinstance(story_schema, str)):
+    if isinstance(story_schema, str):
         story = story_schema
         target_age = age
 
-    if (story == "" or not isinstance(target_age, int)):
+    if story == "" or not isinstance(target_age, int):
         return
 
     print("Story passed to test module: ", story)

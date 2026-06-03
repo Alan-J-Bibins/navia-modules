@@ -1,4 +1,4 @@
-from social_story.model import SocialStorySchema, SocialStoryScoreResponse
+from activities.social_story.model import SocialStorySchema, SocialStoryScoreResponse
 
 
 def story_text(story: SocialStorySchema) -> str:

@@ -1,6 +1,6 @@
 import sys
-from social_story.main import create_social_story_schema
-from social_story.utils import save_as_md
+from activities.social_story.main import create_social_story_schema
+from activities.social_story.utils import save_as_md
 
 if __name__ == "__main__":
     start = int(sys.argv[1]) if len(sys.argv) > 1 else 1;

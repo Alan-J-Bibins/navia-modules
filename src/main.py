@@ -3,13 +3,12 @@ import json
 import uuid
 
 from starlette.responses import StreamingResponse
-from image_gen.fanar import generate_fanar_image
-from social_story.main import (
-    create_social_story,
+from wrappers.image_gen.fanar import generate_fanar_image
+from activities.social_story.main import (
     create_social_story_schema,
     generate_story_visual_plan,
 )
-from models.learner import (
+from entities.learner import (
     LearnerProfile,
     FamilyMember,
     Caregiver,
@@ -17,8 +16,6 @@ from models.learner import (
     VerbalAbilityEnum,
     FunctionalWordRangeEnum,
 )
-from social_story.model import SocialStorySchema
-
 
 def _create_mock_profile() -> LearnerProfile:
     return LearnerProfile(

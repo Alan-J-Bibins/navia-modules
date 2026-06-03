@@ -1,8 +1,8 @@
 import sys
 
-from image_gen.fanar import generate_fanar_image
-from text_gen.llm import call_llm
-from social_story.model import (
+from wrappers.image_gen.fanar import generate_fanar_image
+from wrappers.text_gen.llm import call_llm
+from activities.social_story.model import (
     SocialStorySchema,
     StoryVisualSchema,
 )
