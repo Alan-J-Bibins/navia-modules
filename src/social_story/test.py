@@ -3,9 +3,22 @@ from text_gen.llm import call_llm
 from social_story.utils import story_text
 
 def test_social_story(
-    story_schema: SocialStorySchema, judge: int = 0
+        story_schema: SocialStorySchema | str, age: int | None = None, judge: int = 0
 ) -> SocialStoryScoreResponse | None:
-    story = story_text(story_schema)
+
+    story = ""
+    target_age = None
+    if (isinstance(story_schema, SocialStorySchema)):
+        story = story_text(story_schema)
+        target_age = story_schema.target_age
+
+    if (isinstance(story_schema, str)):
+        story = story_schema
+        target_age = age
+
+    if (story == "" or not isinstance(target_age, int)):
+        return
+
     print("Story passed to test module: ", story)
     prompt = f"""
         You are an expert Board Certified Behavior Analyst (BCBA) and an authority on Carol Gray's 10.4 Framework (the 2023 version) for writing Social Stories. Your job is to strictly audit and score the provided social story. 
@@ -41,13 +54,14 @@ def test_social_story(
         ---
 
         ADDITIONAL CRITERIA:
-        1. The target age for this story is {story_schema.target_age}, check whether the vocabulary and grammar used in the social story match that which a child of this age can comprehend and understand. Deduct one point if it doesn not. This is not part of Carol Grey's criteria but it is part of the scoring criteria. If violated deduct one point and mention in remarks.
+        1. The target age for this story is {target_age}, check whether the vocabulary and grammar used in the social story match that which a child of this age can comprehend and understand. Deduct one point if it doesn not. This is not part of Carol Grey's criteria but it is part of the scoring criteria. If violated deduct one point and mention in remarks.
 
         ### SCORING INSTRUCTIONS
         - Start with a base score of 11. 
         - Deduct 1 full point for each criterion violated. 
         - **Automatic Score Cap:** If the story uses the word "you/your" (Criterion 5) or fails the 10.4 Formula Ratio (Criterion 8), its maximum possible total score cannot exceed 5/10, regardless of how well written the rest of the story is.
-        - After scoring, convert this into a percentage.
+        - After scoring, convert this into a percentage value.
+        - CRITICAL: If a point was deducted, mention under remarks why that happened (Begin the remark with 'NEGATIVE')
 
         ### INPUT DATA TO EVALUATE:
         {story}
@@ -70,12 +84,24 @@ def test_social_story(
         case 1:
             response = call_llm(
                 prompt=prompt,
-                model="gemini",
+                model="fanar",
                 response_schema=SocialStoryScoreResponse,
             )
 
             if isinstance(response, SocialStoryScoreResponse):
-                print(f"Gemini Judge: Story attained {response.score}\n Remarks:")
+                print(f"Fanar Judge: Story attained {response.score}\n Remarks:")
+                for remark in response.remarks:
+                    print(f"- {remark}")
+                return response
+        case 2:
+            response = call_llm(
+                prompt=prompt,
+                model="qwen-3.6",
+                response_schema=SocialStoryScoreResponse,
+            )
+
+            if isinstance(response, SocialStoryScoreResponse):
+                print(f"Qwen Judge: Story attained {response.score}\n Remarks:")
                 for remark in response.remarks:
                     print(f"- {remark}")
                 return response

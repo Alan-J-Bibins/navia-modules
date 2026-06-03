@@ -5,5 +5,6 @@ class Settings(BaseSettings):
     hf_token:str = ""
     opencode_api_key:str = ""
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    fanar_api_key:str = ""
 
 settings = Settings()

@@ -24,7 +24,24 @@ class SocialStorySchema(BaseModel):
 
 
 class SocialStoryScoreResponse(BaseModel):
-    score: float = Field(description="The score given to the social story in percentage")
+    score: float = Field(
+        description="The score given to the social story in percentage"
+    )
     remarks: list[str] = Field(
         description="List individual, specific reasons why points were deducted, citing sentence examples and the exact criterion number violated. If no points were lost, provide a positive summary of framework compliance here. Begin each point with 'POSITIVE' or 'NEGATIVE' depending on the type of remark."
     )
+
+
+class PageVisualPrompt(BaseModel):
+    page_number: int
+    visual_description: str = Field(
+        description="A highly detailed, descriptive scene composition prompt for an image generator. Focus on subjects, actions, setting, and emotions. Avoid abstract metaphors."
+    )
+
+
+class StoryVisualSchema(BaseModel):
+    story_title: str
+    style_preset: str = Field(
+        description="A consistent artistic style descriptor to apply across all pages (e.g., 'Soft watercolor children's book illustration, clear outlines, bright and reassuring tones')."
+    )
+    pages: list[PageVisualPrompt]

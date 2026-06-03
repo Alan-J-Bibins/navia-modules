@@ -1,138 +1,16 @@
 import sys
-# from image_gen.sdxl import sdxl_create_image
-from social_story.test import test_social_story
+
+from image_gen.fanar import generate_fanar_image
 from text_gen.llm import call_llm
-from social_story.model import SocialStorySchema, SocialStoryScoreResponse
-
-def generate_html_view(story: SocialStorySchema, output_filename: str = "story.html"):
-    """Generates a clean, accessible HTML layout combining imagery and prose blocks."""
-    print(f"📄 Compiling clinical social narrative into {output_filename}...")
-
-    html_content = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{story.title}</title>
-    <style>
-        body {{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            margin: 0;
-            padding: 40px 20px;
-        }}
-        .container {{
-            max-width: 800px;
-            margin: 0 auto;
-        }}
-        h1 {{
-            text-align: center;
-            color: #0f172a;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #cbd5e1;
-            padding-bottom: 15px;
-        }}
-        .page-card {{
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }}
-        .page-header {{
-            background: #f1f5f9;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #475569;
-            border-bottom: 1px solid #e2e8f0;
-        }}
-        .image-container {{
-            text-align: center;
-            background: #fafafa;
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-        }}
-        .story-image {{
-            max-width: 100%;
-            height: auto;
-            max-height: 500px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }}
-        .prose-content {{
-            padding: 30px;
-        }}
-        .sentence-line {{
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-            display: block;
-        }}
-        .badge {{
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }}
-        .badge-descriptive {{ background-color: #e0f2fe; color: #0369a1; }}
-        .badge-perspective {{ background-color: #dcfce7; color: #15803d; }}
-        .badge-affirming {{ background-color: #fef9c3; color: #a16207; }}
-        .badge-coaching {{ background-color: #f3e8ff; color: #6b21a8; }}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>{story.title}</h1>
-    """
-
-    for page in story.pages:
-        image_file = f"page{page.page_number}.png"
-        html_content += f"""
-        <div class="page-card">
-            <div class="page-header">Page {page.page_number}</div>
-            <div class="image-container">
-                <img src="{image_file}" alt="Illustration for page {page.page_number}" class="story-image">
-            </div>
-            <div class="prose-content">
-        """
-
-        for sentence in page.sentences:
-            badge_class = f"badge-{sentence.type.lower()}"
-            html_content += f"""
-                <span class="sentence-line">
-                    {sentence.text}
-                    <span class="badge {badge_class}">{sentence.type}</span>
-                </span>
-            """
-
-        html_content += """
-            </div>
-        </div>
-        """
-
-    html_content += """
-    </div>
-</body>
-</html>
-    """
-
-    with open(output_filename, "w", encoding="utf-8") as f:
-        f.write(html_content)
-    print(f"✨ Successfully exported local web view asset to {output_filename}")
+from social_story.model import (
+    SocialStorySchema,
+    StoryVisualSchema,
+)
 
 
-def create_social_story(
+def create_social_story_schema(
     situation: str, trigger: str, reading_level: str, target_age: int
-) -> tuple[SocialStorySchema, SocialStoryScoreResponse] | None:
+) -> SocialStorySchema | None:
     print("Running social story generation")
     print(f"-> Situation: {situation}")
     print(f"-> Trigger: {trigger}")
@@ -206,12 +84,7 @@ def create_social_story(
     if not isinstance(story_schema, SocialStorySchema):
         print("Failed to generate a valid story schema.")
         return None
-    print("Commencing test with deepseek judge")
-    score_response = test_social_story(story_schema)
-    if not isinstance(score_response, SocialStoryScoreResponse):
-        print("Failed to get a valid score response.")
-        return None
-    return story_schema, score_response
+    return story_schema
 
     # if story_schema:
     #
@@ -223,22 +96,75 @@ def create_social_story(
     #             return (story_schema,social_story_score_response)
     #
 
-        # print("\n--- Generating Images ---")
-        # outputs = []
-        # for i, page in enumerate(story_schema.pages):
-        #     output_name = f"page{page.page_number}.png"
-        #     print(f"Processing Page {page.page_number}")
-        #
-        #     sdxl_create_image(
-        #         prompt=page.image_prompt,
-        #         output_name=output_name,
-        #         continuity=True,
-        #         ref_image_path=outputs[-1] if outputs else "",
-        #         initial_image=(i == 0),
-        #     )
-        #     outputs.append(output_name)
-        # print("All images printed successfully")
-        # generate_html_view(story_schema, "story.html")
+    # print("\n--- Generating Images ---")
+    # outputs = []
+    # for i, page in enumerate(story_schema.pages):
+    #     output_name = f"page{page.page_number}.png"
+    #     print(f"Processing Page {page.page_number}")
+    #
+    #     sdxl_create_image(
+    #         prompt=page.image_prompt,
+    #         output_name=output_name,
+    #         continuity=True,
+    #         ref_image_path=outputs[-1] if outputs else "",
+    #         initial_image=(i == 0),
+    #     )
+    #     outputs.append(output_name)
+    # print("All images printed successfully")
+    # generate_html_view(story_schema, "story.html")
+
+
+def generate_story_visual_plan(
+    story_schema: SocialStorySchema,
+) -> StoryVisualSchema | None:
+
+    prompt = (
+        f"You are an expert children's book illustrator and art director.\n"
+        f"Analyze the following social story titled '{story_schema.title}'. "
+        f"Break the story down page-by-page. For each page, design a concrete, visually rich scene "
+        f"description that an AI image generator can use to create an illustration.\n\n"
+        f"Guidelines for descriptions:\n"
+        f"- Be literal and explicit. Describe the character's actions, expressions, the setting, and key objects.\n"
+        f"- Maintain visual consistency: reference the same character traits throughout.\n"
+        f"- Keep the mood safe, reassuring, and positive.\n"
+        f"- Avoid using abstract text concepts (e.g., do not say 'the image represents love', instead say 'a mother hugging her child warmly in a sunlit living room').\n\n"
+        f"Full Story Data:\n{story_schema.model_dump_json()}"
+    )
+
+    result = call_llm(
+        prompt=prompt, model="deepseek", response_schema=StoryVisualSchema
+    )
+
+    if isinstance(result, StoryVisualSchema):
+        return result
+    return None
+
+
+def create_social_story(
+    situation: str, trigger: str, reading_level: str, target_age: int
+):
+    story_schema = create_social_story_schema(
+        situation=situation,
+        trigger=trigger,
+        reading_level=reading_level,
+        target_age=target_age,
+    )
+
+    if not isinstance(story_schema, SocialStorySchema):
+        return
+
+    visual_plan = generate_story_visual_plan(story_schema)
+
+    if not isinstance(visual_plan, StoryVisualSchema):
+        return
+
+    print(visual_plan.model_dump_json(indent=2))
+
+    for i, page in enumerate(visual_plan.pages):
+        generate_fanar_image(
+            prompt=f"{page.visual_description}\n\n{visual_plan.style_preset}",
+            output_path=f"generated_page{i}.png",
+        )
 
 
 if __name__ == "__main__":

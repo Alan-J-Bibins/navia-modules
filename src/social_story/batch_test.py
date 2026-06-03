@@ -1,5 +1,5 @@
 import sys
-from social_story.main import create_social_story
+from social_story.main import create_social_story_schema
 from social_story.utils import save_as_md
 
 if __name__ == "__main__":
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     ]
 
     for i, case in enumerate(test_cases[start - 1:], start=start):
-        result = create_social_story(
+        result = create_social_story_schema(
             situation=case["situation"],
             trigger=case["trigger"],
             reading_level=case["reading_level"],
