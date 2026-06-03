@@ -12,9 +12,6 @@ class SentenceItem(BaseModel):
 class StoryPage(BaseModel):
     page_number: int
     sentences: list[SentenceItem]
-    image_prompt: str = Field(
-        description="The prompt to generate an image for this page of the social story"
-    )
 
 
 class SocialStorySchema(BaseModel):

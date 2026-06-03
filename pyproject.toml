@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.scripts]
-social-story = "social_story.main:main"
+social-story = "activities.social_story.main:main"
 
 [tool.uv]
 package = true

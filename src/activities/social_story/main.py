@@ -53,13 +53,6 @@ def create_social_story_schema(
     - DO NOT list rules or demands disguised as sentences (e.g., "I must not scream").
     - DO NOT frame the child's natural reactions as problems to fix.
     - DO NOT reference autism, diagnoses, or any clinical labels in the story text.
-    IMAGE PROMPT RULES (each prompt max 500 characters):
-    - FIRST sentence: describe a specific protagonist (age, gender, hair color, clothing) that will appear consistently. Use the EXACT same character description in every image prompt. Example: "A 7-year-old boy with short brown hair, wearing a blue striped t-shirt and jeans."
-    - THEN describe the setting and action matching this particular page.
-    - Specify: "well-lit, calm, uncluttered environment. No crowds, no harsh shadows."
-    - Artstyle: "simple and clean flat vector illustration, cute and playful cartoon art style, soft pastel color palette, gentle diffused lighting, matte textures, low contrast, minimal shading, clean rounded outlines, comforting and friendly aesthetic, high readability, isolated on a solid light cream background."
-    - NEVER depict the child in distress, crying, or fearful.
-    - Avoid abstract or surreal elements. Scenes must be literal and grounded in reality.
 
     Examples of social stories:
         1. When I go to the movies:
@@ -85,33 +78,6 @@ def create_social_story_schema(
         print("Failed to generate a valid story schema.")
         return None
     return story_schema
-
-    # if story_schema:
-    #
-    #     print("Commencing test with deepseek judge")
-    #     if isinstance(story_schema, SocialStorySchema):
-    #         social_story_score_response = test_social_story(story_schema)
-    #
-    #         if isinstance(social_story_score_response, SocialStoryScoreResponse):
-    #             return (story_schema,social_story_score_response)
-    #
-
-    # print("\n--- Generating Images ---")
-    # outputs = []
-    # for i, page in enumerate(story_schema.pages):
-    #     output_name = f"page{page.page_number}.png"
-    #     print(f"Processing Page {page.page_number}")
-    #
-    #     sdxl_create_image(
-    #         prompt=page.image_prompt,
-    #         output_name=output_name,
-    #         continuity=True,
-    #         ref_image_path=outputs[-1] if outputs else "",
-    #         initial_image=(i == 0),
-    #     )
-    #     outputs.append(output_name)
-    # print("All images printed successfully")
-    # generate_html_view(story_schema, "story.html")
 
 
 def generate_story_visual_plan(
@@ -167,7 +133,7 @@ def create_social_story(
         )
 
 
-if __name__ == "__main__":
+def main():
     situation = (
         sys.argv[1] if len(sys.argv) > 1 else "Going to the dentist for a cleaning"
     )
@@ -188,3 +154,7 @@ if __name__ == "__main__":
         reading_level=reading_level,
         target_age=age,
     )
+
+
+if __name__ == "__main__":
+    main()

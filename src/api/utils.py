@@ -1,13 +1,3 @@
-from fastapi import Body, Depends, FastAPI, HTTPException
-import json
-import uuid
-
-from starlette.responses import StreamingResponse
-from wrappers.image_gen.fanar import generate_fanar_image
-from activities.social_story.main import (
-    create_social_story_schema,
-    generate_story_visual_plan,
-)
 from entities.learner import (
     LearnerProfile,
     FamilyMember,
@@ -17,7 +7,8 @@ from entities.learner import (
     FunctionalWordRangeEnum,
 )
 
-def _create_mock_profile() -> LearnerProfile:
+
+def create_mock_profile() -> LearnerProfile:
     return LearnerProfile(
         # Identity
         therapistId="clx8h1a2b0000xyzwvutsrqpo",
@@ -105,86 +96,3 @@ def _create_mock_profile() -> LearnerProfile:
         primaryEnvironment=["mainstream-school"],
         secondaryEnvironment=["clinic", "home"],
     )
-
-
-_mock_sessions: dict[str, LearnerProfile] = {}
-app = FastAPI()
-
-
-@app.post("/login")
-def mock_login():
-    """Create a mock session and return a session token."""
-    token = str(uuid.uuid4())
-    _mock_sessions[token] = _create_mock_profile()
-    return {
-        "session_token": token,
-        "message": "Use this token in X-Session-Token header",
-    }
-
-
-def get_learner_profile(x_session_token: str | None = None) -> LearnerProfile:
-    """Dependency to inject the mock profile into any route."""
-    if not x_session_token or x_session_token not in _mock_sessions:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid or missing session token. Call /login first.",
-        )
-    return _mock_sessions[x_session_token]
-
-
-@app.get("/")
-def read_root():
-    return {"HOla": "NAVIA"}
-
-
-@app.get("/health")
-def checkhealth():
-    return {"msg": "Server is running"}
-
-
-@app.post("/activity/social_story/stream")
-async def generate_social_story_stream(
-    profile: LearnerProfile = Depends(get_learner_profile),
-    situation: str = Body(..., embed=True),
-):
-    async def event_stream():
-        triggers = json.dumps(profile.sensoryTriggers)
-        reading_level = profile.verbalAbility
-
-        yield f"data: {json.dumps({'type': 'status', 'message': 'Generating story...'})}\n\n"
-
-        story_schema = create_social_story_schema(
-            situation=situation,
-            trigger=triggers,
-            target_age=profile.age,
-            reading_level=reading_level,
-        )
-
-        if story_schema is None:
-            yield f"data: {json.dumps({'type': 'error', 'message': 'Failed to generate story schema'})}\n\n"
-            return
-
-        yield f"data: {json.dumps({'type': 'story', 'data': story_schema.model_dump_json()})}\n\n"
-
-        yield f"data: {json.dumps({'type': 'status', 'message': 'Planning illustrations...'})}\n\n"
-
-        visual_plan = generate_story_visual_plan(story_schema)
-
-        if visual_plan is None:
-            yield f"data: {json.dumps({'type': 'error', 'message': 'Failed to generate visual plan for story'})}\n\n"
-            return
-
-        for i, page in enumerate(visual_plan.pages):
-            yield f"data: {json.dumps({'type': 'status', 'message': f'Generating image {i+1}/{len(visual_plan.pages)}...'})}\n\n"
-
-            image_path = f"generated_page{i}.png"
-            generate_fanar_image(
-                prompt=f"{page.visual_description}\n\n{visual_plan.style_preset}",
-                output_path=image_path,
-            )
-
-            yield f"data: {json.dumps({'type': 'image', 'page': i+1, 'path': image_path})}\n\n"
-
-        yield f"data: {json.dumps({'type': 'complete'})}\n\n"
-
-    return StreamingResponse(event_stream(), media_type="text/event-stream")
