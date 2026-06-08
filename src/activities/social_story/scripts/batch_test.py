@@ -1,9 +1,10 @@
 import sys
 from activities.social_story.main import create_social_story_schema
 from activities.social_story.utils import save_as_md
+from activities.social_story.judge import judge_social_story
 
 if __name__ == "__main__":
-    start = int(sys.argv[1]) if len(sys.argv) > 1 else 1;
+    start = int(sys.argv[1]) if len(sys.argv) > 1 else 1
     test_cases = [
         {
             "situation": "Brushing teeth before bed",
@@ -67,7 +68,7 @@ if __name__ == "__main__":
         },
     ]
 
-    for i, case in enumerate(test_cases[start - 1:], start=start):
+    for i, case in enumerate(test_cases[start - 1 :], start=start):
         result = create_social_story_schema(
             situation=case["situation"],
             trigger=case["trigger"],
@@ -77,7 +78,12 @@ if __name__ == "__main__":
         if result is None:
             print(f"Skipping story {i}: generation failed.")
             continue
-        story_schema, story_report = result
+        story_schema = result
+        result = judge_social_story(story_schema)
+        if result is None:
+            print(f"Skipping story {i}: judging failed.")
+            continue
+        story_report = result
 
         save_as_md(
             story_schema=story_schema,

@@ -1,7 +1,7 @@
 from activities.social_story.model import SocialStorySchema, SocialStoryScoreResponse
 
 
-def story_text(story: SocialStorySchema) -> str:
+def extract_story_text(story: SocialStorySchema) -> str:
     lines = [f"Title: {story.title}", ""]
     for page in story.pages:
         lines.append(f"\n")
@@ -17,7 +17,7 @@ def save_as_md(
     filename: str,
 ):
     md_lines = [
-        story_text(story_schema),
+        extract_story_text(story_schema),
         "\n---\n",
         f"**Score:** {story_report.score}/100\n",
         "**Remarks:**\n",

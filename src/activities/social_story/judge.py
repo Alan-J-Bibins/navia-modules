@@ -1,6 +1,6 @@
 from activities.social_story.model import SocialStorySchema, SocialStoryScoreResponse
 from wrappers.text_gen.llm import call_llm
-from activities.social_story.utils import story_text
+from activities.social_story.utils import extract_story_text
 
 
 def judge_social_story(
@@ -10,7 +10,7 @@ def judge_social_story(
     story = ""
     target_age = None
     if isinstance(story_schema, SocialStorySchema):
-        story = story_text(story_schema)
+        story = extract_story_text(story_schema)
         target_age = story_schema.target_age
 
     if isinstance(story_schema, str):

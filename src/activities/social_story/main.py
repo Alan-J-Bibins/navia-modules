@@ -94,12 +94,12 @@ def create_social_story_schema(
                 i. Sentences that describe or suggest responses for the child (e.g. ‘I will try to put my hand up when I want to speak to my teacher in class’)
                 ii. Sentences that suggest or describe responses for the caregiver (e.g. ‘Mrs XX can help me to use the soap when I am washing my hands’)
                 iii. Sentences that are developed by the child themselves (e.g. ‘I can draw in my special drawing book when I am feeling sad.’)
-           - *Affirmative Sentences:* These are positive phrases that enhance the meaning of another sentence or reinforce a key point.
+           - *Affirming Sentences:* These are positive phrases that enhance the meaning of another sentence or reinforce a key point.
            Examples include: ‘this is okay’; ‘this is very important’.
            - *Partial Sentences:* These are sentences with missing words included to help establish the child’s level of understanding.
         8. **The 10.4 Social Story Formula (Criterion 8):** This is a strict mathematical requirement. Calculate the number of descriptive/informative sentences versus coaching sentences.
-           - **Formula:** (Descriptive + Perspective + Affirmative) / Coaching >= 4
-           - There must be at least 4 sentences that describe (ie. Descriptive, Perspective or Affirmative) for every ONE Coaching sentence. If there are 0 Coaching sentences, that is acceptable and passes the formula automatically.
+           - **Formula:** (Descriptive + Perspective + Affirming) / Coaching >= 4
+           - There must be at least 4 sentences that describe (ie. Descriptive, Perspective or Affirming) for every ONE Coaching sentence. If there are 0 Coaching sentences, that is acceptable and passes the formula automatically.
            - **CRITICAL:** Only 1 coaching sentence is allowed in a social story.
            - **CRITICAL:** The title of the story is included in the count of Descriptive sentences.
         9. **Literal Accuracy (Criterion 9):** Words must mean exactly what they say. Absolutely no idioms, metaphors, figures of speech, or sarcasm (e.g., fail if you see "take a seat", "hold your horses", or "in a split second").
