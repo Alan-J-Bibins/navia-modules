@@ -3,9 +3,10 @@ from pydantic import BaseModel, Field
 
 
 class SentenceItem(BaseModel):
+    id: int = Field(description="1-Indexed id of the sentence. Do not start from 0")
     text: str = Field(description="Exactly one sentence of prose for the social story.")
-    type: Literal["Descriptive", "Perspective", "Affirming", "Coaching"] = Field(
-        description="The clinical classification of the sentence according to Carol Gray's framework."
+    type: Literal["Descriptive", "Perspective", "Affirming", "Coaching", "Modified By User"] = Field(
+        description="The clinical classification of the sentence according to Carol Gray's framework. Ignore 'Modified By User' that is not related to Carol Gray's framework and should not be used to classify the generated sentences."
     )
 
 

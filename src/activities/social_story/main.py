@@ -3,9 +3,50 @@ import sys
 from wrappers.image_gen.fanar import generate_fanar_image
 from wrappers.text_gen.llm import call_llm
 from activities.social_story.model import (
+    SentenceItem,
     SocialStorySchema,
     StoryVisualSchema,
 )
+
+
+def regenerate_sentence_item(
+    story_schema: SocialStorySchema, sentence_id: int, modification_prompt: str | None
+) -> SentenceItem | None:
+    # Locate the target sentence
+    target_sentence = None
+    for page in story_schema.pages:
+        for sentence in page.sentences:
+            if sentence.id == sentence_id:
+                target_sentence = sentence
+                break
+        if target_sentence:
+            break
+    if target_sentence is None:
+        print(f"Sentence ID {sentence_id} not found in story.")
+        return None
+    prompt = f"""
+You are an expert clinical psychologist specializing in Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
+Regenerate a specific sentence from the following social story.
+Original Story Title: {story_schema.title}
+Target Sentence ID: {sentence_id}
+Original Sentence Text: "{target_sentence.text}"
+Original Sentence Type: {target_sentence.type}
+Full Story Context:
+{story_schema.model_dump_json()}
+Your task is to regenerate ONLY the target sentence while maintaining:
+- The same sentence type ({target_sentence.type})
+- First-person perspective ("I", "me", "my")
+- Simple, concrete, literal language (no idioms, metaphors, or figures of speech)
+- Short sentence structure (max ~15 words)
+- Consistency with the rest of the story
+- Carol Gray's framework rules
+{f'Modification Request: {modification_prompt}' if modification_prompt else 'Keep the same meaning and intent, but rephrase it to be clearer and more effective.'}
+Return ONLY the regenerated SentenceItem with the same id ({sentence_id}).
+"""
+    result = call_llm(prompt=prompt, model="gemini", response_schema=SentenceItem)
+    if isinstance(result, SentenceItem):
+        return result
+    return None
 
 
 def create_social_story_schema(
@@ -25,13 +66,46 @@ def create_social_story_schema(
     - Core Anxiety/Trigger: {trigger}
     - Target Reading Level: {reading_level}
     - Child's age: {target_age}
-    SENTENCE TYPE DEFINITIONS (Carol Gray's framework):
-    - "Descriptive": States objective facts about the situation, setting, people, or steps. Answers who, what, where, when, why. Example: "A restaurant has tables and chairs."
-    - "Perspective": Describes the internal states, thoughts, feelings, or sensory experiences of self or others. Example: "Sometimes the restaurant feels noisy to me." or "Waiters work hard to bring food quickly."
-    - "Affirming": Reinforces a shared value, strength, or reassuring truth. Example: "Grown-ups help me when I feel unsure."
-    - "Coaching": Suggests a gentle, optional strategy the reader CAN try (never MUST). Example: "When it feels too loud, I can put on my headphones."
+    ### THE CAROL GRAY 10.4 FRAMEWORK CRITERIA
+        1. **The Social Story Goal (Criterion 1):** The primary objective must be to share accurate, meaningful information in a patient, respectful, and reassuring tone. It must NOT be written to demand, command, or force compliance or behavior change. It is about understanding, not compliance.
+        2. **Two-Part Discovery (Criterion 2):** The narrative must reflect a deep understanding of the child's perspective and the specific contextual challenges of the situation. 
+        3. **Three Parts (Criterion 3):** The story must have an absolute structural arc:
+           - A descriptive, positive, or neutral Title.
+           - An Introduction that introduces the topic and setting.
+           - A Body that provides details and adds context.
+           - A Conclusion that summarizes and provides safe reassurance.
+        4. **Tailored Formatting (Criterion 4):** The syntax, text length, and vocabulary density must be optimized for the developmental age and language level of an autistic child.
+        5. **The Social Story Chime / Voicing (Criterion 5):** 
+           - Must be written exclusively in the **First Person (I, we)** or **Third Person (he, she, they, the children)**.
+           - **CRITICAL FAIL TRIGGER:** Any use of the **Second Person (You, your)** is an automatic failure of this criterion. "You" feels accusatory and demanding to an autistic child.
+           - The tone must be entirely positive and matter-of-fact. Completely avoid authoritarian or absolute constraint words: "must", "should", "have to", "always", "never", "bad", or "naughty".
+        6. **Guided by 6 Questions (Criterion 6):** The narrative must clearly answer: Who, What, When, Where, Why, and How. The "Why" (the social rationale behind an expectation) is the most critical component.
+        7. **Sentence Types (Criterion 7):** The story should predominantly use:
+           - *Descriptive Sentences:* These sentences describe the facts relating to the situation in a clear and
+            objective way. They are free of opinions or assumptions and can share information that “everybody
+            knows” (but that may not be obvious to an autistic child). Examples include: ‘Adults and children
+            wash to keep clean and smell fresh’, or ‘Everyone needs to see a doctor from time to time’
+           - *Perspective Sentences:* These are sentences describe people’s thoughts, feelings or beliefs.
+            They can be particularly helpful for autistic children who can have difficulties understanding that
+            other people may not have the same thoughts and feelings as them. Examples of perspective
+            sentences include: ‘Many people enjoy going to the cinema’, or ‘When I try my best my mum feels
+            very proud of me’.
+           - *Coaching Sentences (3 types):*
+                i. Sentences that describe or suggest responses for the child (e.g. ‘I will try to put my hand up when I want to speak to my teacher in class’)
+                ii. Sentences that suggest or describe responses for the caregiver (e.g. ‘Mrs XX can help me to use the soap when I am washing my hands’)
+                iii. Sentences that are developed by the child themselves (e.g. ‘I can draw in my special drawing book when I am feeling sad.’)
+           - *Affirmative Sentences:* These are positive phrases that enhance the meaning of another sentence or reinforce a key point.
+           Examples include: ‘this is okay’; ‘this is very important’.
+           - *Partial Sentences:* These are sentences with missing words included to help establish the child’s level of understanding.
+        8. **The 10.4 Social Story Formula (Criterion 8):** This is a strict mathematical requirement. Calculate the number of descriptive/informative sentences versus coaching sentences.
+           - **Formula:** (Descriptive + Perspective + Affirmative) / Coaching >= 4
+           - There must be at least 4 sentences that describe (ie. Descriptive, Perspective or Affirmative) for every ONE Coaching sentence. If there are 0 Coaching sentences, that is acceptable and passes the formula automatically.
+           - **CRITICAL:** Only 1 coaching sentence is allowed in a social story.
+           - **CRITICAL:** The title of the story is included in the count of Descriptive sentences.
+        9. **Literal Accuracy (Criterion 9):** Words must mean exactly what they say. Absolutely no idioms, metaphors, figures of speech, or sarcasm (e.g., fail if you see "take a seat", "hold your horses", or "in a split second").
+        10. **Implementation Design (Criterion 10):** The text must be structured in a way that naturally allows a parent or educator to introduce, review, and patiently fade the story out over time.
     STORY STRUCTURE:
-    - Produce exactly 8-12 pages.
+    - Produce upto 12 pages.
     - Page 1: Introduction (sets the scene, states the situation factually).
     - Pages 2 to N-1: Body (walks through the sequence of events step by step, in chronological order).
     - Last page: Conclusion (affirms the experience, reinforces calm closure, no new information).
@@ -43,10 +117,6 @@ def create_social_story_schema(
     - NEVER use "I will try to" — this implies anticipated failure. Use "I can" or "I will".
     - Use simple, concrete, completely literal language. Avoid ALL idioms, metaphors, sarcasm, and figures of speech.
     - Use short sentences (max ~15 words each).
-    SENTENCE RATIO (MANDATORY):
-    - Every Coaching sentence on a page MUST be preceded by at least 1-2 Descriptive, Perspective, or Affirming sentences on the SAME page.
-    - No page may consist only of Coaching sentences.
-    - Aim for approximately: 50% Descriptive, 20% Perspective, 20% Affirming, 10% Coaching across the entire story.
     WHAT TO AVOID:
     - DO NOT write "You will have fun" or "You will enjoy it" — this is predictive and invalidating.
     - DO NOT use the word "try" to soften commands (e.g., "I will try to be quiet").

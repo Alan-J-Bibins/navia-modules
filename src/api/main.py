@@ -13,6 +13,7 @@ from wrappers.image_gen.fanar import generate_fanar_image
 from activities.social_story.main import (
     create_social_story_schema,
     generate_story_visual_plan,
+    regenerate_sentence_item,
 )
 
 app = FastAPI()
@@ -206,3 +207,52 @@ async def judge_social_story_handler(
         "score": result.score,
         "remarks": result.remarks,
     }
+
+
+@app.post("/activity/social_story/regenerate_sentence")
+async def regenerate_sentence_stream(
+    request: Request,
+    story: SocialStorySchema = Body(..., embed=True),
+    sentence_id: int = Body(..., embed=True),
+    modification_prompt: str | None = Body(default=None, embed=True),
+):
+    async def event_stream():
+        try:
+            yield sse_event({"type": "status", "message": "Regenerating sentence..."})
+            try:
+                result = await asyncio.to_thread(
+                    regenerate_sentence_item,
+                    story_schema=story,
+                    sentence_id=sentence_id,
+                    modification_prompt=modification_prompt,
+                )
+            except Exception as e:
+                yield sse_event(
+                    {
+                        "type": "error",
+                        "stage": "sentence_regeneration",
+                        "message": str(e),
+                    }
+                )
+                return
+            if result is None:
+                yield sse_event(
+                    {
+                        "type": "error",
+                        "stage": "sentence_regeneration",
+                        "message": "Regeneration function returned invalid result",
+                    }
+                )
+                return
+            yield sse_event({"type": "sentence", "data": result.model_dump_json()})
+            yield sse_event({"type": "complete"})
+        except Exception as e:
+            yield sse_event(
+                {
+                    "type": "error",
+                    "stage": "stream",
+                    "message": f"Unexpected stream failure: {str(e)}",
+                }
+            )
+
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
