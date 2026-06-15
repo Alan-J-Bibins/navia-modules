@@ -6,41 +6,50 @@ from activities.social_story.evaluation.main import evaluate_social_story
 
 
 story = """
+Title: Going to a Restaurant                                                                                                                                                 
+                                                                                                                                                                             
+  - I go to a restaurant.
+  - My family goes with me.
 
-Title: Brushing My Teeth Before Bed
+  - We ride in the car.
+  - The car stops.
+  - We get out.
 
-  - I get ready for bed at night.
-  - I go into the bathroom.
+  - We walk inside.
+  - Many people are there.
+  - People talk and eat.
 
-  - I brush my teeth before bed.
-  - This helps my teeth stay clean.
+  - We wait for a table.
+  - I stand with my family.
+  - This is okay.
 
-  - I use a toothbrush and toothpaste.
-  - My grown-up helps me.
+  - A person shows us a table.
+  - I sit in my chair.
+  - My family sits too.
 
-  - My grown-up puts a little toothpaste on my brush.
-  - A small amount is enough.
+  - I look at the menu.
+  - The menu has food pictures.
+  - I pick my food.
 
-  - Toothpaste can have a minty flavor.
-  - It can feel foamy in my mouth.
+  - We wait for our food.
+  - I can look around.
+  - Waiting is part of eating.
 
-  - The toothpaste makes bubbles.
-  - This helps clean my teeth.
+  - My food comes.
+  - I eat my food.
+  - Eating food is good.
 
-  - Sometimes the minty flavor feels strong.
-  - Sometimes the foam feels different.
+  - Many people are still here.
+  - People make sounds.
+  - This is normal.
 
-  - I can use a very small dot of toothpaste.
+  - I finish my food.
+  - We get ready to leave.
+  - We walk out.
 
-  - After brushing, I can spit out the toothpaste.
-  - I can rinse my mouth with water.
-
-  - My teeth feel clean and fresh.
-  - Clean teeth are healthy teeth.
-
-  - Brushing my teeth helps them stay strong.
-  - I am learning about brushing my teeth.
-
+  - Going to a restaurant is fun.
+  - I am safe with my family.
+  - I did a good job.
 """
 
 result = evaluate_social_story(story)

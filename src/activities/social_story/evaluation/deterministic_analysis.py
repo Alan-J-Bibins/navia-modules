@@ -16,6 +16,7 @@ class DeterministicAnalysisReport(BaseModel):
     second_person_pronouns: bool
     absolute_constraints: bool
     sentence_ratio_criteria: bool
+    story_rating: float
     tier1_passed: bool
 
 
@@ -70,7 +71,9 @@ def deterministic_analysis(
 
     obeys_sentence_ratio = False
     annotate_sentences_response = annotate_sentences(story)
+    print("annotated_sentences: ", annotate_sentences_response.sentences)
 
+    story_rating = -1
     if isinstance(annotate_sentences_response, SentenceListResponse):
         annotated_sentences = annotate_sentences_response.sentences
         descriptive_sentence_count = 0
@@ -92,17 +95,19 @@ def deterministic_analysis(
         # FIX 1 & 3: Handle 0 coaching sentences safely, and cap total coaching count at 1
         if coaching_sentence_count == 0:
             obeys_sentence_ratio = True
-        elif coaching_sentence_count == 1:
+            story_rating = float("inf")  # Mathematically infinite ratio
+        else:
+            # Calculate the actual ratio regardless of coaching count
             story_rating = (
                 descriptive_sentence_count
                 + affirming_sentence_count
                 + perspective_sentence_count
+            ) / coaching_sentence_count
+
+            # Passes ONLY if ratio >= 4 AND coaching count is exactly 1
+            obeys_sentence_ratio = (story_rating >= 4) and (
+                coaching_sentence_count == 1
             )
-            # FIX 2: Correct ratio evaluation to >= 4 according to Carol Gray specs
-            obeys_sentence_ratio = story_rating >= 4
-        else:
-            # Fails instantly if more than 1 coaching sentence is detected
-            obeys_sentence_ratio = False
 
     has_passed_tier1 = all(
         [not has_pronouns, not has_constraints, obeys_sentence_ratio]
@@ -112,5 +117,6 @@ def deterministic_analysis(
         second_person_pronouns=has_pronouns,
         absolute_constraints=has_constraints,
         sentence_ratio_criteria=obeys_sentence_ratio,
+        story_rating=story_rating,
         tier1_passed=has_passed_tier1,
     )

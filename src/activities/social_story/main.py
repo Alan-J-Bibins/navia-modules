@@ -1,6 +1,7 @@
 import sys
 
 from wrappers.image_gen.fanar import generate_fanar_image
+from activities.social_story.utils import extract_story_text
 from wrappers.text_gen.llm import call_llm
 from activities.social_story.model import (
     SentenceItem,
@@ -58,6 +59,18 @@ def create_social_story_schema(
     print(f"-> Reading Level: {reading_level}")
     print(f"-> Target age: {target_age}")
 
+    age = max(3, target_age)
+    scaling_age = min(18, age)
+    
+    if scaling_age <= 5:
+        max_len, max_passives, max_neg, pronoun_target = 6, "0 (Strict active voice only)", "1.0% (Max 1 negation)", "Exclusively use explicit names/nouns over pronouns"
+    elif scaling_age <= 9:
+        max_len, max_passives, max_neg, pronoun_target = 12, "0 (Strict active voice only)", "1.5%", "Keep pronouns low, lean heavily on concrete nouns"
+    elif scaling_age <= 14:
+        max_len, max_passives, max_neg, pronoun_target = 15, "Maximum 1 across the entire text", "2.0%", "Balanced, ensure clear anaphoric binding"
+    else:
+        max_len, max_passives, max_neg, pronoun_target = 18, "Maximum 2 across the entire text", "2.5%", "Standard clear prose"
+
     prompt = f"""
     You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
     Your goal is to share accurate, meaningful social information rather than demanding or forcing behavioral compliance.
@@ -104,40 +117,49 @@ def create_social_story_schema(
            - **CRITICAL:** The title of the story is included in the count of Descriptive sentences.
         9. **Literal Accuracy (Criterion 9):** Words must mean exactly what they say. Absolutely no idioms, metaphors, figures of speech, or sarcasm (e.g., fail if you see "take a seat", "hold your horses", or "in a split second").
         10. **Implementation Design (Criterion 10):** The text must be structured in a way that naturally allows a parent or educator to introduce, review, and patiently fade the story out over time.
-    STORY STRUCTURE:
+
+    ### STORY STRUCTURE:
     - Produce upto 12 pages.
     - Page 1: Introduction (sets the scene, states the situation factually).
     - Pages 2 to N-1: Body (walks through the sequence of events step by step, in chronological order).
     - Last page: Conclusion (affirms the experience, reinforces calm closure, no new information).
-    - Each page MUST have 1-3 sentences. Never more than 3 sentences per page.
-    - Sentences on a page must form a coherent, logically connected set.
-    PERSPECTIVE AND TONE:
-    - WRITE ENTIRELY IN FIRST-PERSON ("I", "me", "my"). This is the child's own story told from their voice.
-    - NEVER use "you", "you must", "you should", "you will", "always", or "never".
-    - NEVER use "I will try to" — this implies anticipated failure. Use "I can" or "I will".
-    - Use simple, concrete, completely literal language. Avoid ALL idioms, metaphors, sarcasm, and figures of speech.
-    - Use short sentences (max ~15 words each).
-    WHAT TO AVOID:
-    - DO NOT write "You will have fun" or "You will enjoy it" — this is predictive and invalidating.
-    - DO NOT use the word "try" to soften commands (e.g., "I will try to be quiet").
-    - DO NOT list rules or demands disguised as sentences (e.g., "I must not scream").
-    - DO NOT frame the child's natural reactions as problems to fix.
-    - DO NOT reference autism, diagnoses, or any clinical labels in the story text.
+
+    ### PERSPECTIVE AND TONE:
+    - WRITE ENTIRELY IN FIRST-PERSON ("I", "me", "my").
+    - NEVER use "you", "your", "must", "should", "always", or "never".
+    - NEVER use "I will try to" — use "I can" or "I will".
+
+    ### CRITICAL LINGUISTIC AND READABILITY TARGETS (CALIBRATED FOR AGE {target_age})
+    - **Max Sentence Length:** Under no circumstance should any sentence exceed {max_len} words.
+    - **Passive Voice Constraint:** Allowed passive voice structures = {max_passives}. Rephrase passives to active voice.
+    - **Negation Density:** Keep logical negations under {max_neg}. Frame instructions positively.
+    - **Referential Clarity & Pronoun Density:** {pronoun_target}. Prevent tracking ambiguity.
+
+    ### WHAT TO AVOID:
+    - DO NOT assume or dictate the child's internal emotional state (e.g., do not write "I will think this is fun").
+    - DO NOT use the word "try" to soften commands.
+    - DO NOT list rules or demands disguised as sentences.
+    - DO NOT reference autism, diagnoses, or clinical labels in the story text.
+    - DO NOT use more than 1 Coaching sentence in the story text.
 
     Examples of social stories:
         1. When I go to the movies:
-            When I go to the movies, I wait in line to get my ticket. Sometimes we buy snacks. Sometimes we buy drinks. It can be a good idea to use the bathroom before we sit down.
-            In the theater, we pick a seat and sit down. The theater might be dark. The theater might be loud. I can take breaks if I need to. I can ask to take a walk.
-            When I am in the theater, I am sitting in my seat with a quiet voice. Going to the movies is fun!
-        2. Using glue:
-            At school we do crafts and make things that use glue. I like to make things at school. I like to use glue.When we make things at school it is important to use the right amount of glue.
-            If I use too little glue things won’t stick. If I use too much glue everything gets covered in glue. It could make my paper too wet, it won’t be sticky and the glue will drip or it may rip the paper. 
-            It could even ruin my work.I will try to use just the right amount to make the glue stick and it will look great.
-        3. Math at school:
-            All kids learn math at school. Math is really fun. But, sometimes kids have to practice math problems they already know how to do. It may not be fun to have to do math problems and worksheets that you already know how to do.
-            The teachers have all the kids to do the math work. That is their job. They have to give all of the kids the math work even when they know that the kids know how to do the work. All teachers, everywhere have to do it.
-            It is the kids’ job to do the work the teachers give them. All kids everywhere have to do it. Sometimes you have to do things that are not so much fun to do. Sometimes you have to do math work that you already know how to do.
-            But if you do the work then the teacher will give special math problems just for you to figure out. It is fun to figure out new math problems. First you finish the math work and then the teacher gives you special things to do! That sounds like lots of FUN!!!!!!
+            When I go to the movies, I wait in line to get my ticket. Sometimes we buy snacks. Sometimes we buy drinks. 
+            It can be a good idea to use the bathroom before we sit down. In the theater, we pick a seat and sit down.
+            The theater might be dark. The theater might be loud. I can take breaks if I need to. I can ask to take a walk.
+            When I am in the theater, I look at the big screen. I keep my voice quiet. 
+            I am sitting safely with my family, and this is okay.
+        2. Using glue (Validated 1st Person):
+            At school, we make crafts. I use glue for my crafts. 
+            Using the right amount of glue keeps my project clean.
+            Too much glue makes the paper wet. Too little glue means the paper will not stick.
+            I can squeeze a small dot of glue onto my paper. My craft looks great when the glue dries.
+        3. Math at school (Validated 1st Person - Zero "You" triggers):
+            Children learn math at school. Sometimes math worksheets have problems I already know how to do. 
+            Reviewing old problems helps my brain stay strong. 
+            My teacher gives the same math work to everyone in the class. That is the teacher's job. 
+            My job is to finish my worksheet. When I complete my work, my teacher can give me new puzzles to figure out. 
+            Solving new math puzzles feels satisfying.
     """
 
     story_schema = call_llm(
@@ -217,13 +239,15 @@ def main():
         if len(sys.argv) > 3
         else "Early elementary, highly literal, 2-3 sentences per page"
     )
-    age = int(sys.argv[4]) if len(sys.argv) > 4 else 6
-    create_social_story(
+    age = int(sys.argv[4]) if len(sys.argv) > 4 else 7
+    result = create_social_story_schema(
         situation=situation,
         trigger=trigger,
         reading_level=reading_level,
         target_age=age,
     )
+    if isinstance(result, SocialStorySchema):
+        print(extract_story_text(result))
 
 
 if __name__ == "__main__":
