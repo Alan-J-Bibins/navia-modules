@@ -340,7 +340,7 @@
       "label": "get_learner_profile()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L29",
+      "source_location": "L30",
       "id": "api_main_get_learner_profile",
       "community": 0,
       "norm_label": "get_learner_profile()"
@@ -349,7 +349,7 @@
       "label": "sse_event()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "api_main_sse_event",
       "community": 0,
       "norm_label": "sse_event()"
@@ -358,7 +358,7 @@
       "label": "str",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "src_api_main_py_str",
       "community": 0,
       "norm_label": "str"
@@ -367,7 +367,7 @@
       "label": "generate_social_story_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "api_main_generate_social_story_stream",
       "community": 0,
       "norm_label": "generate_social_story_stream()"
@@ -376,7 +376,7 @@
       "label": "Request",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "request",
       "community": 0,
       "norm_label": "request"
@@ -385,7 +385,7 @@
       "label": "LearnerProfile",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "src_api_main_py_learnerprofile",
       "community": 0,
       "norm_label": "learnerprofile"
@@ -394,8 +394,8 @@
       "label": "bool",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
-      "id": "bool",
+      "source_location": "L40",
+      "id": "src_api_main_py_bool",
       "community": 0,
       "norm_label": "bool"
     },
@@ -403,7 +403,7 @@
       "label": "judge_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L199",
+      "source_location": "L200",
       "id": "api_main_judge_social_story_handler",
       "community": 0,
       "norm_label": "judge_social_story_handler()"
@@ -412,7 +412,7 @@
       "label": "SocialStorySchema",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L199",
+      "source_location": "L200",
       "id": "src_api_main_py_socialstoryschema",
       "community": 0,
       "norm_label": "socialstoryschema"
@@ -421,7 +421,7 @@
       "label": "regenerate_sentence_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L215",
+      "source_location": "L216",
       "id": "api_main_regenerate_sentence_stream",
       "community": 0,
       "norm_label": "regenerate_sentence_stream()"
@@ -430,17 +430,26 @@
       "label": "int",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L215",
+      "source_location": "L216",
       "id": "src_api_main_py_int",
       "community": 0,
       "norm_label": "int"
     },
     {
+      "label": "evaluate_social_story_handler()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L265",
+      "id": "api_main_evaluate_social_story_handler",
+      "community": 0,
+      "norm_label": "evaluate_social_story_handler()"
+    },
+    {
       "label": "Helper to format SSE events consistently.",
       "file_type": "rationale",
       "source_file": "src/api/main.py",
-      "source_location": "L34",
-      "id": "api_main_rationale_34",
+      "source_location": "L35",
+      "id": "api_main_rationale_35",
       "community": 0,
       "norm_label": "helper to format sse events consistently."
     },
@@ -585,7 +594,7 @@
       "source_file": "src/activities/social_story/model.py",
       "source_location": "L1",
       "id": "src_activities_social_story_model_py",
-      "community": 3,
+      "community": 30,
       "norm_label": "model.py"
     },
     {
@@ -594,7 +603,7 @@
       "source_file": "src/activities/social_story/model.py",
       "source_location": "L5",
       "id": "social_story_model_sentenceitem",
-      "community": 3,
+      "community": 30,
       "norm_label": "sentenceitem"
     },
     {
@@ -603,7 +612,7 @@
       "source_file": "src/activities/social_story/model.py",
       "source_location": "L13",
       "id": "social_story_model_storypage",
-      "community": 3,
+      "community": 30,
       "norm_label": "storypage"
     },
     {
@@ -630,7 +639,7 @@
       "source_file": "src/activities/social_story/model.py",
       "source_location": "L33",
       "id": "social_story_model_pagevisualprompt",
-      "community": 3,
+      "community": 30,
       "norm_label": "pagevisualprompt"
     },
     {
@@ -864,7 +873,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L1",
       "id": "src_activities_social_story_evaluation_deterministic_analysis_py",
-      "community": 3,
+      "community": 10,
       "norm_label": "deterministic_analysis.py"
     },
     {
@@ -873,7 +882,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L11",
       "id": "evaluation_deterministic_analysis_sentencelistresponse",
-      "community": 3,
+      "community": 10,
       "norm_label": "sentencelistresponse"
     },
     {
@@ -891,7 +900,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L23",
       "id": "evaluation_deterministic_analysis_annotate_sentences",
-      "community": 3,
+      "community": 10,
       "norm_label": "annotate_sentences()"
     },
     {
@@ -900,7 +909,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L23",
       "id": "src_activities_social_story_evaluation_deterministic_analysis_py_str",
-      "community": 3,
+      "community": 10,
       "norm_label": "str"
     },
     {
@@ -909,7 +918,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L23",
       "id": "src_activities_social_story_evaluation_deterministic_analysis_py_socialstoryschema",
-      "community": 3,
+      "community": 10,
       "norm_label": "socialstoryschema"
     },
     {
@@ -918,7 +927,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L54",
       "id": "evaluation_deterministic_analysis_deterministic_analysis",
-      "community": 3,
+      "community": 10,
       "norm_label": "deterministic_analysis()"
     },
     {
@@ -945,7 +954,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L28",
       "id": "evaluation_probabilistic_analysis_qualitativematrix_validate_scores",
-      "community": 3,
+      "community": 30,
       "norm_label": ".validate_scores()"
     },
     {
@@ -954,7 +963,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L28",
       "id": "src_activities_social_story_evaluation_probabilistic_analysis_py_int",
-      "community": 3,
+      "community": 30,
       "norm_label": "int"
     },
     {
@@ -972,7 +981,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L50",
       "id": "evaluation_probabilistic_analysis_probabilistic_analysis",
-      "community": 3,
+      "community": 22,
       "norm_label": "probabilistic_analysis()"
     },
     {
@@ -981,7 +990,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L50",
       "id": "src_activities_social_story_evaluation_probabilistic_analysis_py_str",
-      "community": 3,
+      "community": 22,
       "norm_label": "str"
     },
     {
@@ -990,7 +999,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L50",
       "id": "src_activities_social_story_evaluation_probabilistic_analysis_py_socialstoryschema",
-      "community": 3,
+      "community": 22,
       "norm_label": "socialstoryschema"
     },
     {
@@ -999,7 +1008,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L1",
       "id": "src_activities_social_story_evaluation_readability_analysis_py",
-      "community": 34,
+      "community": 3,
       "norm_label": "readability_analysis.py"
     },
     {
@@ -1008,7 +1017,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L9",
       "id": "evaluation_readability_analysis_readabilityanalysisreport",
-      "community": 34,
+      "community": 3,
       "norm_label": "readabilityanalysisreport"
     },
     {
@@ -1017,7 +1026,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L35",
       "id": "evaluation_readability_analysis_readability_analysis",
-      "community": 34,
+      "community": 3,
       "norm_label": "readability_analysis()"
     },
     {
@@ -1026,7 +1035,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L35",
       "id": "src_activities_social_story_evaluation_readability_analysis_py_str",
-      "community": 34,
+      "community": 3,
       "norm_label": "str"
     },
     {
@@ -1035,7 +1044,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L35",
       "id": "src_activities_social_story_evaluation_readability_analysis_py_int",
-      "community": 34,
+      "community": 3,
       "norm_label": "int"
     },
     {
@@ -1044,7 +1053,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L36",
       "id": "evaluation_readability_analysis_rationale_36",
-      "community": 34,
+      "community": 3,
       "norm_label": "runs a lean linguistic audit calibrated dynamically for neurodivergent      read"
     },
     {
@@ -1053,53 +1062,170 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L1",
       "id": "src_activities_social_story_evaluation_main_py",
-      "community": 22,
+      "community": 3,
       "norm_label": "main.py"
     },
     {
-      "label": "evaluate_social_story()",
+      "label": "Tier1Result",
       "file_type": "code",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L12",
-      "id": "evaluation_main_evaluate_social_story",
-      "community": 22,
-      "norm_label": "evaluate_social_story()"
+      "source_location": "L23",
+      "id": "evaluation_main_tier1result",
+      "community": 3,
+      "norm_label": "tier1result"
     },
     {
-      "label": "str",
+      "label": "Tier2Result",
       "file_type": "code",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L12",
-      "id": "src_activities_social_story_evaluation_main_py_str",
-      "community": 22,
-      "norm_label": "str"
+      "source_location": "L32",
+      "id": "evaluation_main_tier2result",
+      "community": 3,
+      "norm_label": "tier2result"
     },
     {
-      "label": "SocialStorySchema",
+      "label": "Tier3Result",
       "file_type": "code",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L12",
-      "id": "src_activities_social_story_evaluation_main_py_socialstoryschema",
-      "community": 22,
-      "norm_label": "socialstoryschema"
+      "source_location": "L43",
+      "id": "evaluation_main_tier3result",
+      "community": 3,
+      "norm_label": "tier3result"
+    },
+    {
+      "label": "EvaluationReportResponse",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L50",
+      "id": "evaluation_main_evaluationreportresponse",
+      "community": 3,
+      "norm_label": "evaluationreportresponse"
+    },
+    {
+      "label": "_get_age_thresholds()",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L62",
+      "id": "evaluation_main_get_age_thresholds",
+      "community": 3,
+      "norm_label": "_get_age_thresholds()"
     },
     {
       "label": "int",
       "file_type": "code",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L12",
+      "source_location": "L62",
       "id": "src_activities_social_story_evaluation_main_py_int",
-      "community": 22,
+      "community": 3,
       "norm_label": "int"
+    },
+    {
+      "label": "_compute_tier1_reasons()",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "id": "evaluation_main_compute_tier1_reasons",
+      "community": 3,
+      "norm_label": "_compute_tier1_reasons()"
+    },
+    {
+      "label": "DeterministicAnalysisReport",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "id": "deterministicanalysisreport",
+      "community": 3,
+      "norm_label": "deterministicanalysisreport"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "id": "src_activities_social_story_evaluation_main_py_str",
+      "community": 3,
+      "norm_label": "str"
+    },
+    {
+      "label": "_compute_tier2_reasons()",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L101",
+      "id": "evaluation_main_compute_tier2_reasons",
+      "community": 3,
+      "norm_label": "_compute_tier2_reasons()"
+    },
+    {
+      "label": "ReadabilityAnalysisReport",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L101",
+      "id": "readabilityanalysisreport",
+      "community": 3,
+      "norm_label": "readabilityanalysisreport"
+    },
+    {
+      "label": "evaluate_social_story()",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L135",
+      "id": "evaluation_main_evaluate_social_story",
+      "community": 3,
+      "norm_label": "evaluate_social_story()"
+    },
+    {
+      "label": "SocialStorySchema",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L135",
+      "id": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "community": 3,
+      "norm_label": "socialstoryschema"
+    },
+    {
+      "label": "evaluate_social_story_as_dict()",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "id": "evaluation_main_evaluate_social_story_as_dict",
+      "community": 3,
+      "norm_label": "evaluate_social_story_as_dict()"
+    },
+    {
+      "label": "bool",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "id": "src_activities_social_story_evaluation_main_py_bool",
+      "community": 3,
+      "norm_label": "bool"
+    },
+    {
+      "label": "Returns age-calibrated thresholds for Tier 2 readability guardrails.",
+      "file_type": "rationale",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L63",
+      "id": "evaluation_main_rationale_63",
+      "community": 3,
+      "norm_label": "returns age-calibrated thresholds for tier 2 readability guardrails."
     },
     {
       "label": "Aggregates Deterministic, Algorithmic (Readability), and Probabilistic analyses",
       "file_type": "rationale",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L13",
-      "id": "evaluation_main_rationale_13",
-      "community": 22,
+      "source_location": "L136",
+      "id": "evaluation_main_rationale_136",
+      "community": 3,
       "norm_label": "aggregates deterministic, algorithmic (readability), and probabilistic analyses"
+    },
+    {
+      "label": "Runs the evaluation tiers that are enabled and returns a JSON-serializable dict.",
+      "file_type": "rationale",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L239",
+      "id": "evaluation_main_rationale_239",
+      "community": 3,
+      "norm_label": "runs the evaluation tiers that are enabled and returns a json-serializable dict."
     },
     {
       "label": "evaluate_social_story.py",
@@ -1163,6 +1289,33 @@
       "id": "opencode_package_dependencies_opencode_ai_plugin",
       "community": 7,
       "norm_label": "@opencode-ai/plugin"
+    },
+    {
+      "label": "bool",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L39",
+      "community": 0,
+      "norm_label": "bool",
+      "id": "bool"
+    },
+    {
+      "label": "Helper to format SSE events consistently.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L34",
+      "community": 0,
+      "norm_label": "helper to format sse events consistently.",
+      "id": "api_main_rationale_34"
+    },
+    {
+      "label": "Aggregates Deterministic, Algorithmic (Readability), and Probabilistic analyses",
+      "file_type": "rationale",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "community": 3,
+      "norm_label": "aggregates deterministic, algorithmic (readability), and probabilistic analyses",
+      "id": "evaluation_main_rationale_13"
     },
     {
       "label": "test_story1.md",
@@ -1906,6 +2059,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_evaluate_social_story_handler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L146",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1972,6 +2135,16 @@
       "confidence_score": 1.0,
       "source": "api_main_rationale_34",
       "target": "api_main_sse_event"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "api_main_rationale_35",
+      "target": "api_main_sse_event",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2114,6 +2287,17 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "api_main_generate_social_story_stream",
+      "target": "src_api_main_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L39",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2156,6 +2340,17 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "api_main_evaluate_social_story_handler",
+      "target": "src_api_main_py_learnerprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L197",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2183,24 +2378,35 @@
       "target": "social_story_model_socialstoryschema"
     },
     {
-      "relation": "uses",
-      "confidence": "INFERRED",
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
-      "source_location": "L11",
-      "weight": 0.8,
-      "confidence_score": 0.5,
-      "source": "bool",
-      "target": "entities_learner_learnerprofile"
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "api_main_evaluate_social_story_handler",
+      "target": "src_api_main_py_bool",
+      "confidence_score": 1.0
     },
     {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "src/api/main.py",
-      "source_location": "L9",
+      "source_location": "L12",
       "weight": 0.8,
-      "confidence_score": 0.5,
-      "source": "bool",
-      "target": "social_story_model_socialstoryschema"
+      "source": "src_api_main_py_bool",
+      "target": "entities_learner_learnerprofile",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/api/main.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "source": "src_api_main_py_bool",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "references",
@@ -2234,6 +2440,17 @@
       "confidence_score": 1.0,
       "source": "api_main_judge_social_story_handler",
       "target": "src_api_main_py_socialstoryschema"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "api_main_evaluate_social_story_handler",
+      "target": "src_api_main_py_socialstoryschema",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2502,6 +2719,46 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "evaluation_main_tier1result",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "evaluation_main_tier2result",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "evaluation_main_tier3result",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L41",
       "weight": 1.0,
@@ -2588,6 +2845,16 @@
       "confidence_score": 1.0,
       "source": "social_story_model_storyvisualschema",
       "target": "basemodel"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/api/main.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "bool",
+      "target": "entities_learner_learnerprofile"
     },
     {
       "relation": "contains",
@@ -2802,6 +3069,26 @@
     {
       "relation": "uses",
       "confidence": "INFERRED",
+      "source_file": "src/api/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "bool",
+      "target": "social_story_model_socialstoryschema"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "deterministicanalysisreport",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L4",
       "weight": 0.8,
@@ -2818,6 +3105,46 @@
       "confidence_score": 0.5,
       "source": "evaluation_deterministic_analysis_sentencelistresponse",
       "target": "social_story_model_socialstoryschema"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "evaluation_main_tier1result",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "evaluation_main_tier2result",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "evaluation_main_tier3result",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -2852,6 +3179,16 @@
     {
       "relation": "uses",
       "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "readabilityanalysisreport",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L5",
       "weight": 0.8,
@@ -2878,6 +3215,16 @@
       "confidence_score": 0.5,
       "source": "src_activities_social_story_evaluation_deterministic_analysis_py_str",
       "target": "social_story_model_socialstoryschema"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_bool",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -3219,6 +3566,17 @@
       "source_location": "L22",
       "weight": 1.0,
       "source": "evaluation_main_evaluate_social_story",
+      "target": "social_story_utils_extract_story_text"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L255",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
       "target": "social_story_utils_extract_story_text"
     },
     {
@@ -3641,6 +3999,16 @@
       "target": "evaluation_deterministic_analysis_sentencelistresponse"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "deterministicanalysisreport",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -3650,6 +4018,96 @@
       "confidence_score": 1.0,
       "source": "evaluation_deterministic_analysis_deterministic_analysis",
       "target": "evaluation_deterministic_analysis_deterministicanalysisreport"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "evaluation_main_tier1result",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "evaluation_main_tier2result",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "evaluation_main_tier3result",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "readabilityanalysisreport",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_bool",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_int",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_str",
+      "target": "evaluation_deterministic_analysis_deterministicanalysisreport",
+      "confidence_score": 0.5
     },
     {
       "relation": "references",
@@ -3718,6 +4176,17 @@
       "target": "evaluation_deterministic_analysis_deterministic_analysis"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L262",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_deterministic_analysis_deterministic_analysis"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
@@ -3748,6 +4217,56 @@
       "target": "evaluation_probabilistic_analysis_qualitativematrix"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "deterministicanalysisreport",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier1result",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier2result",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier3result",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
@@ -3756,6 +4275,56 @@
       "confidence_score": 1.0,
       "source": "evaluation_probabilistic_analysis_qualitativematrix",
       "target": "evaluation_probabilistic_analysis_qualitativematrix_validate_scores"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "readabilityanalysisreport",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_bool",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_int",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_str",
+      "target": "evaluation_probabilistic_analysis_qualitativematrix",
+      "confidence_score": 0.5
     },
     {
       "relation": "references",
@@ -3769,6 +4338,56 @@
       "target": "src_activities_social_story_evaluation_probabilistic_analysis_py_int"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "deterministicanalysisreport",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier1result",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier2result",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "evaluation_main_tier3result",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -3780,6 +4399,56 @@
       "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "readabilityanalysisreport",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_bool",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_int",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_str",
+      "target": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -3788,6 +4457,17 @@
       "source_location": "L28",
       "weight": 1.0,
       "source": "evaluation_main_evaluate_social_story",
+      "target": "evaluation_probabilistic_analysis_probabilistic_analysis"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L264",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
       "target": "evaluation_probabilistic_analysis_probabilistic_analysis"
     },
     {
@@ -3833,6 +4513,56 @@
       "target": "evaluation_readability_analysis_readabilityanalysisreport"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "deterministicanalysisreport",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "evaluation_main_evaluationreportresponse",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "evaluation_main_tier1result",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "evaluation_main_tier2result",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "evaluation_main_tier3result",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -3844,6 +4574,56 @@
       "target": "evaluation_readability_analysis_readabilityanalysisreport"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "readabilityanalysisreport",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_bool",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_int",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "src_activities_social_story_evaluation_main_py_str",
+      "target": "evaluation_readability_analysis_readabilityanalysisreport",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -3852,6 +4632,17 @@
       "source_location": "L37",
       "weight": 1.0,
       "source": "evaluation_main_evaluate_social_story",
+      "target": "evaluation_readability_analysis_readability_analysis"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L263",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
       "target": "evaluation_readability_analysis_readability_analysis"
     },
     {
@@ -3890,11 +4681,178 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_compute_tier1_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_compute_tier2_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_activities_social_story_evaluation_main_py",
       "target": "evaluation_main_evaluate_social_story"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_evaluate_social_story_as_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_evaluationreportresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_get_age_thresholds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_tier1result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_tier2result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_activities_social_story_evaluation_main_py",
+      "target": "evaluation_main_tier3result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L274",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_tier1result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L288",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_tier2result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L303",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_tier3result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L326",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_evaluationreportresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story",
+      "target": "evaluation_main_get_age_thresholds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_get_age_thresholds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "evaluation_main_get_age_thresholds",
+      "target": "src_activities_social_story_evaluation_main_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "evaluation_main_rationale_63",
+      "target": "evaluation_main_get_age_thresholds",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -3912,11 +4870,66 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/main.py",
-      "source_location": "L12",
+      "source_location": "L232",
       "weight": 1.0,
-      "confidence_score": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "src_activities_social_story_evaluation_main_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "evaluation_main_compute_tier1_reasons",
+      "target": "deterministicanalysisreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "evaluation_main_compute_tier1_reasons",
+      "target": "src_activities_social_story_evaluation_main_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L162",
+      "weight": 1.0,
       "source": "evaluation_main_evaluate_social_story",
-      "target": "src_activities_social_story_evaluation_main_py_socialstoryschema"
+      "target": "evaluation_main_compute_tier1_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_compute_tier1_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "evaluation_main_compute_tier2_reasons",
+      "target": "src_activities_social_story_evaluation_main_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -3930,6 +4943,61 @@
       "target": "src_activities_social_story_evaluation_main_py_str"
     },
     {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "src_activities_social_story_evaluation_main_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "evaluation_main_compute_tier2_reasons",
+      "target": "readabilityanalysisreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story",
+      "target": "evaluation_main_compute_tier2_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L287",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "evaluation_main_compute_tier2_reasons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "evaluation_main_evaluate_social_story",
+      "target": "src_activities_social_story_evaluation_main_py_socialstoryschema"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/evaluation/main.py",
@@ -3938,6 +5006,48 @@
       "confidence_score": 1.0,
       "source": "evaluation_main_rationale_13",
       "target": "evaluation_main_evaluate_social_story"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "evaluation_main_rationale_136",
+      "target": "evaluation_main_evaluate_social_story",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "src_activities_social_story_evaluation_main_py_socialstoryschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "evaluation_main_evaluate_social_story_as_dict",
+      "target": "src_activities_social_story_evaluation_main_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/evaluation/main.py",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "evaluation_main_rationale_239",
+      "target": "evaluation_main_evaluate_social_story_as_dict",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3971,5 +5081,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a74d7a4bc14562c7a27e0f83f5e6b9b9638b7cfa"
+  "built_at_commit": "3f94bcbbc9effe79a23d2780c687b6d300174a66"
 }
