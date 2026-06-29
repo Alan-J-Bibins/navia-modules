@@ -2,9 +2,10 @@ import asyncio
 import base64
 import json
 import os
-from fastapi import Body, Depends, FastAPI, Request
+from fastapi import Body, Depends, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import StreamingResponse
+from activities.social_story.evaluation.main import evaluate_social_story_as_dict
 from activities.social_story.judge import judge_social_story
 from activities.social_story.model import SocialStorySchema
 from api.utils import create_mock_profile
@@ -38,7 +39,7 @@ def sse_event(data: dict) -> str:
 @app.post("/activity/social_story/")
 async def generate_social_story_stream(
     request: Request,
-    profile: LearnerProfile = Depends(get_learner_profile),
+    profile: LearnerProfile = Body(..., embed=True),
     situation: str = Body(..., embed=True),
     generate_images: bool = Body(..., embed=True),
 ):
@@ -46,6 +47,7 @@ async def generate_social_story_stream(
         try:
             triggers = json.dumps(profile.sensoryTriggers)
             reading_level = profile.verbalAbility
+            functional_word_range = str(profile.functionalWordRange)
             yield sse_event({"type": "status", "message": "Generating story..."})
             # 1. Story Generation
             try:
@@ -55,6 +57,7 @@ async def generate_social_story_stream(
                     trigger=triggers,
                     target_age=profile.age,
                     reading_level=reading_level,
+                    functional_word_range=functional_word_range,
                 )
             except Exception as e:
                 yield sse_event(
@@ -256,3 +259,22 @@ async def regenerate_sentence_stream(
             )
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
+
+
+@app.post("/activity/social_story/evaluate")
+async def evaluate_social_story_handler(
+    profile: LearnerProfile = Depends(get_learner_profile),
+    story: SocialStorySchema = Body(..., embed=True),
+    tier1_enabled: bool = Query(True, description="Run deterministic checks"),
+    tier2_enabled: bool = Query(True, description="Run readability analysis"),
+    tier3_enabled: bool = Query(True, description="Run qualitative review (LLM call)"),
+):
+    result = await asyncio.to_thread(
+        evaluate_social_story_as_dict,
+        story=story,
+        target_age=profile.age,
+        tier1_enabled=tier1_enabled,
+        tier2_enabled=tier2_enabled,
+        tier3_enabled=tier3_enabled,
+    )
+    return result

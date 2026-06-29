@@ -51,33 +51,59 @@ Return ONLY the regenerated SentenceItem with the same id ({sentence_id}).
 
 
 def create_social_story_schema(
-    situation: str, trigger: str, reading_level: str, target_age: int
+    situation: str,
+    trigger: str,
+    reading_level: str,
+    target_age: int,
+    functional_word_range: str,
 ) -> SocialStorySchema | None:
     print("Running social story generation")
     print(f"-> Situation: {situation}")
     print(f"-> Trigger: {trigger}")
     print(f"-> Reading Level: {reading_level}")
+    print(f"-> Functional Word Range: {functional_word_range}")
     print(f"-> Target age: {target_age}")
 
     age = max(3, target_age)
     scaling_age = min(18, age)
-    
+
     if scaling_age <= 5:
-        max_len, max_passives, max_neg, pronoun_target = 6, "0 (Strict active voice only)", "1.0% (Max 1 negation)", "Exclusively use explicit names/nouns over pronouns"
+        max_len, max_passives, max_neg, pronoun_target = (
+            6,
+            "0 (Strict active voice only)",
+            "1.0% (Max 1 negation)",
+            "Exclusively use explicit names/nouns over pronouns",
+        )
     elif scaling_age <= 9:
-        max_len, max_passives, max_neg, pronoun_target = 12, "0 (Strict active voice only)", "1.5%", "Keep pronouns low, lean heavily on concrete nouns"
+        max_len, max_passives, max_neg, pronoun_target = (
+            12,
+            "0 (Strict active voice only)",
+            "1.5%",
+            "Keep pronouns low, lean heavily on concrete nouns",
+        )
     elif scaling_age <= 14:
-        max_len, max_passives, max_neg, pronoun_target = 15, "Maximum 1 across the entire text", "2.0%", "Balanced, ensure clear anaphoric binding"
+        max_len, max_passives, max_neg, pronoun_target = (
+            15,
+            "Maximum 1 across the entire text",
+            "2.0%",
+            "Balanced, ensure clear anaphoric binding",
+        )
     else:
-        max_len, max_passives, max_neg, pronoun_target = 18, "Maximum 2 across the entire text", "2.5%", "Standard clear prose"
+        max_len, max_passives, max_neg, pronoun_target = (
+            18,
+            "Maximum 2 across the entire text",
+            "2.5%",
+            "Standard clear prose",
+        )
 
     prompt = f"""
     You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
     Your goal is to share accurate, meaningful social information rather than demanding or forcing behavioral compliance.
     Write a Social Story based on the following input:
     - Situation: {situation}
-    - Core Anxiety/Trigger: {trigger}
+    - Core Anxiety/Triggers: {trigger}
     - Target Reading Level: {reading_level}
+    - Functional Word Range of the child: {functional_word_range}
     - Child's age: {target_age}
     ### THE CAROL GRAY 10.4 FRAMEWORK CRITERIA
         1. **The Social Story Goal (Criterion 1):** The primary objective must be to share accurate, meaningful information in a patient, respectful, and reassuring tone. It must NOT be written to demand, command, or force compliance or behavior change. It is about understanding, not compliance.
@@ -199,13 +225,14 @@ def generate_story_visual_plan(
 
 
 def create_social_story(
-    situation: str, trigger: str, reading_level: str, target_age: int
+        situation: str, trigger: str, reading_level: str, target_age: int, functional_word_range: str
 ):
     story_schema = create_social_story_schema(
         situation=situation,
         trigger=trigger,
         reading_level=reading_level,
         target_age=target_age,
+        functional_word_range=functional_word_range
     )
 
     if not isinstance(story_schema, SocialStorySchema):
@@ -239,12 +266,18 @@ def main():
         if len(sys.argv) > 3
         else "Early elementary, highly literal, 2-3 sentences per page"
     )
+    functional_word_range = (
+        sys.argv[4]
+        if len(sys.argv) > 4
+        else "1-20 words"
+    )
     age = int(sys.argv[4]) if len(sys.argv) > 4 else 7
     result = create_social_story_schema(
         situation=situation,
         trigger=trigger,
         reading_level=reading_level,
         target_age=age,
+        functional_word_range=functional_word_range
     )
     if isinstance(result, SocialStorySchema):
         print(extract_story_text(result))

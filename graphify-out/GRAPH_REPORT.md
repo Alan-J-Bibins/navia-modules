@@ -1,7 +1,7 @@
-# Graph Report - navia-modules  (2026-06-15)
+# Graph Report - navia-modules  (2026-06-25)
 
 ## Corpus Check
-- 31 files · ~8,363 words
+- 31 files · ~8,428 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b23f9f74`
+- Built from commit: `a74d7a4b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,23 +34,23 @@
 3. `call_llm()` - 15 edges
 4. `str` - 11 edges
 5. `SocialStoryScoreResponse` - 10 edges
-6. `evaluate_social_story()` - 9 edges
-7. `create_social_story()` - 9 edges
-8. `LearnerProfile` - 9 edges
-9. `extract_story_text()` - 9 edges
+6. `LearnerProfile` - 9 edges
+7. `extract_story_text()` - 9 edges
+8. `create_social_story()` - 9 edges
+9. `evaluate_social_story()` - 9 edges
 10. `judge_social_story()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `SentenceListResponse` --uses--> `SocialStorySchema`  [INFERRED]
-  src/activities/social_story/evaluation/deterministic_analysis.py → src/activities/social_story/model.py
-- `DeterministicAnalysisReport` --uses--> `SocialStorySchema`  [INFERRED]
-  src/activities/social_story/evaluation/deterministic_analysis.py → src/activities/social_story/model.py
 - `annotate_sentences()` --calls--> `call_llm()`  [INFERRED]
   src/activities/social_story/evaluation/deterministic_analysis.py → src/wrappers/text_gen/llm.py
-- `str` --uses--> `SocialStorySchema`  [INFERRED]
-  src/activities/social_story/evaluation/deterministic_analysis.py → src/activities/social_story/model.py
-- `SocialStorySchema` --uses--> `SocialStorySchema`  [INFERRED]
-  src/activities/social_story/evaluation/deterministic_analysis.py → src/activities/social_story/model.py
+- `probabilistic_analysis()` --calls--> `call_llm()`  [INFERRED]
+  src/activities/social_story/evaluation/probabilistic_analysis.py → src/wrappers/text_gen/llm.py
+- `judge_social_story()` --calls--> `call_llm()`  [INFERRED]
+  src/activities/social_story/judge.py → src/wrappers/text_gen/llm.py
+- `create_social_story()` --calls--> `call_llm()`  [INFERRED]
+  src/activities/social_story/main.py → src/wrappers/text_gen/llm.py
+- `create_social_story_schema()` --calls--> `call_llm()`  [INFERRED]
+  src/activities/social_story/main.py → src/wrappers/text_gen/llm.py
 
 ## Import Cycles
 - None detected.
@@ -86,7 +86,7 @@ Cohesion: 0.40
 Nodes (5): Runs a lean linguistic audit calibrated dynamically for neurodivergent      read, readability_analysis(), ReadabilityAnalysisReport, int, str
 
 ## Knowledge Gaps
-- **6 isolated node(s):** `str`, `int`, `str`, `str`, `str` (+1 more)
+- **6 isolated node(s):** `str`, `str`, `str`, `str`, `int` (+1 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
