@@ -1,31 +1,58 @@
 import re
-from pydantic import BaseModel
+from typing import Literal
+from pydantic import BaseModel, Field
 
-from activities.social_story.model import SentenceItem, SocialStorySchema
+from activities.social_story.model import SocialStorySchema
 from activities.social_story.utils import extract_story_text
 from wrappers.text_gen.llm import call_llm
 
 from pydantic import BaseModel
 
 
+class SentenceEntry(BaseModel):
+    id: int = Field(description="1-Indexed id of the sentence. Do not start from 0")
+    text: str = Field(description="Exactly one sentence of prose for the social story.")
+    type: Literal["Descriptive", "Perspective", "Affirming", "Coaching", "INVALID"] = (
+        Field(
+            description="The clinical classification of the sentence according to Carol Gray's framework."
+        )
+    )
+
+
 class SentenceListResponse(BaseModel):
-    sentences: list[SentenceItem]
+    sentences: list[SentenceEntry]
 
 
 class DeterministicAnalysisReport(BaseModel):
-    second_person_pronouns: bool
-    absolute_constraints: bool
-    sentence_ratio_criteria: bool
+    second_person_pronouns: bool = Field(
+        ..., description="Checks for Criterion 5 of Carol Gray Criteria"
+    )
+    absolute_constraints: bool = Field(
+        ..., description="Checks for Criterion 5 of Carol Gray Criteria"
+    )
+    sentence_ratio_criteria: bool = Field(
+        ..., description="Checks for Criterion 8 of Carol Gray Criteria"
+    )
+    sentence_type_criteria: bool = Field(
+        ..., description="Checks for Criterion 7 of Carol Gray Criteria"
+    )
     story_rating: float
     tier1_passed: bool
 
 
 def annotate_sentences(story: str | SocialStorySchema) -> SentenceListResponse | None:
     if isinstance(story, SocialStorySchema):
-        sentence_list: list[SentenceItem] = []
+        sentence_list: list[SentenceEntry] = []
         for page in story.pages:
             for sentence_item in page.sentences:
-                sentence_list.append(sentence_item)
+                # Convert SentenceItem to SentenceEntry
+                sentence_list.append(
+                    SentenceEntry(
+                        id=sentence_item.id,
+                        text=sentence_item.text,
+                        type=sentence_item.type,
+                    )
+                )
 
         return SentenceListResponse(sentences=sentence_list)
     else:
@@ -38,6 +65,7 @@ def annotate_sentences(story: str | SocialStorySchema) -> SentenceListResponse |
         2. PERSPECTIVE sentences describe internal states (feelings, thoughts, beliefs, motivations) of other people. Look for advanced emotional indicators (e.g., "Supervisors feel apprehensive" is PERSPECTIVE).
         3. COOPERATIVE sentences detail what others will do to assist. Look for supportive professional roles (e.g., "The HR team ensures accommodations are met" is COOPERATIVE).
         4. DESCRIPTIVE sentences are objective, observable facts. If a sentence contains no internal states or behavioral instructions, default to DESCRIPTIVE. The story title is considered a descriptive sentence.
+        5. INVALID sentences are those sentences which are do not belong to any of the categories above.
         
         STORY TO BE ANALYZED: {story}
         """
@@ -70,16 +98,18 @@ def deterministic_analysis(
     )
 
     obeys_sentence_ratio = False
+    obeys_sentence_type = False
     annotate_sentences_response = annotate_sentences(story)
-    print("annotated_sentences: ", annotate_sentences_response.sentences)
-
+    
     story_rating = -1
-    if isinstance(annotate_sentences_response, SentenceListResponse):
+    # Check if response is not None before accessing .sentences
+    if annotate_sentences_response is not None:
         annotated_sentences = annotate_sentences_response.sentences
         descriptive_sentence_count = 0
         coaching_sentence_count = 0
         perspective_sentence_count = 0
         affirming_sentence_count = 0
+        invalid_sentence_count = 0
 
         for sentence_item in annotated_sentences:
             match sentence_item.type:
@@ -91,32 +121,34 @@ def deterministic_analysis(
                     descriptive_sentence_count += 1
                 case "Perspective":
                     perspective_sentence_count += 1
+                case "INVALID":
+                    invalid_sentence_count += 1
 
-        # FIX 1 & 3: Handle 0 coaching sentences safely, and cap total coaching count at 1
+        obeys_sentence_type = (invalid_sentence_count == 0)
+
         if coaching_sentence_count == 0:
             obeys_sentence_ratio = True
-            story_rating = float("inf")  # Mathematically infinite ratio
+            story_rating = float("inf")
         else:
-            # Calculate the actual ratio regardless of coaching count
             story_rating = (
                 descriptive_sentence_count
                 + affirming_sentence_count
                 + perspective_sentence_count
             ) / coaching_sentence_count
 
-            # Passes ONLY if ratio >= 4 AND coaching count is exactly 1
             obeys_sentence_ratio = (story_rating >= 4) and (
                 coaching_sentence_count == 1
             )
 
     has_passed_tier1 = all(
-        [not has_pronouns, not has_constraints, obeys_sentence_ratio]
+        [not has_pronouns, not has_constraints, obeys_sentence_ratio, obeys_sentence_type]
     )
 
     return DeterministicAnalysisReport(
         second_person_pronouns=has_pronouns,
         absolute_constraints=has_constraints,
         sentence_ratio_criteria=obeys_sentence_ratio,
+        sentence_type_criteria=obeys_sentence_type,
         story_rating=story_rating,
         tier1_passed=has_passed_tier1,
     )

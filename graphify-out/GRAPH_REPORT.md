@@ -1,16 +1,16 @@
-# Graph Report - navia-modules  (2026-06-29)
+# Graph Report - navia-modules  (2026-07-02)
 
 ## Corpus Check
-- 31 files · ~8,864 words
+- 31 files · ~9,015 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 157 nodes · 353 edges · 33 communities (28 shown, 5 thin omitted)
-- Extraction: 58% EXTRACTED · 42% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.55)
+- 160 nodes · 359 edges · 33 communities (28 shown, 5 thin omitted)
+- Extraction: 58% EXTRACTED · 42% INFERRED · 0% AMBIGUOUS · INFERRED: 149 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3f94bcbb`
+- Built from commit: `78043655`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -29,15 +29,15 @@
 - [[_COMMUNITY_Community 31|Community 31]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `SocialStorySchema` - 41 edges
-2. `evaluate_social_story_as_dict()` - 17 edges
+1. `SocialStorySchema` - 42 edges
+2. `evaluate_social_story_as_dict()` - 18 edges
 3. `SentenceItem` - 16 edges
 4. `call_llm()` - 15 edges
 5. `DeterministicAnalysisReport` - 15 edges
 6. `QualitativeMatrix` - 15 edges
 7. `ProbabilisticAnalysisReport` - 15 edges
-8. `ReadabilityAnalysisReport` - 13 edges
-9. `evaluate_social_story()` - 13 edges
+8. `evaluate_social_story()` - 14 edges
+9. `ReadabilityAnalysisReport` - 13 edges
 10. `str` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -70,12 +70,12 @@ Cohesion: 0.80
 Nodes (4): generate_lightning_image(), generate_with_image_continuity(), sdxl_create_image(), str
 
 ### Community 3 - "Community 3"
-Cohesion: 0.18
-Nodes (29): BaseModel, DeterministicAnalysisReport, Therapist, DeterministicAnalysisReport, _compute_tier1_reasons(), _compute_tier2_reasons(), evaluate_social_story(), evaluate_social_story_as_dict() (+21 more)
+Cohesion: 0.16
+Nodes (31): BaseModel, DeterministicAnalysisReport, Therapist, DeterministicAnalysisReport, _compute_tier1_reasons(), _compute_tier2_reasons(), evaluate_social_story(), evaluate_social_story_as_dict() (+23 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.60
-Nodes (5): annotate_sentences(), deterministic_analysis(), SentenceListResponse, SocialStorySchema, str
+Cohesion: 0.52
+Nodes (6): annotate_sentences(), deterministic_analysis(), SentenceEntry, SentenceListResponse, SocialStorySchema, str
 
 ### Community 22 - "Community 22"
 Cohesion: 0.24
@@ -94,13 +94,13 @@ Nodes (17): generate_fanar_image(), SentenceItem, create_social_story(), create_
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `SocialStorySchema` connect `Community 22` to `Community 0`, `Community 10`, `Community 3`, `Community 30`?**
-  _High betweenness centrality (0.218) - this node is a cross-community bridge._
+  _High betweenness centrality (0.221) - this node is a cross-community bridge._
 - **Why does `call_llm()` connect `Community 1` to `Community 10`, `Community 22`, `Community 30`?**
   _High betweenness centrality (0.085) - this node is a cross-community bridge._
 - **Why does `str` connect `Community 0` to `Community 22`?**
   _High betweenness centrality (0.065) - this node is a cross-community bridge._
-- **Are the 39 inferred relationships involving `SocialStorySchema` (e.g. with `bool` and `DeterministicAnalysisReport`) actually correct?**
-  _`SocialStorySchema` has 39 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 40 inferred relationships involving `SocialStorySchema` (e.g. with `bool` and `DeterministicAnalysisReport`) actually correct?**
+  _`SocialStorySchema` has 40 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 4 inferred relationships involving `evaluate_social_story_as_dict()` (e.g. with `deterministic_analysis()` and `probabilistic_analysis()`) actually correct?**
   _`evaluate_social_story_as_dict()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 14 inferred relationships involving `SentenceItem` (e.g. with `DeterministicAnalysisReport` and `SentenceListResponse`) actually correct?**

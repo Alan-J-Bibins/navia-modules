@@ -16,7 +16,6 @@ from activities.social_story.evaluation.probabilistic_analysis import (
     QualitativeMatrix,
 )
 
-
 # ── JSON Response Models ────────────────────────────────────────────────
 
 
@@ -24,6 +23,7 @@ class Tier1Result(BaseModel):
     second_person_pronouns: bool
     absolute_constraints: bool
     sentence_ratio_criteria: bool
+    sentence_type_criteria: bool
     story_rating: float
     tier1_passed: bool
     failure_reasons: list[str]
@@ -63,25 +63,39 @@ def _get_age_thresholds(scaling_age: int) -> dict:
     """Returns age-calibrated thresholds for Tier 2 readability guardrails."""
     if scaling_age <= 5:
         return dict(
-            max_grade=0.5, min_first=95.0, max_len=6,
-            max_passives=0, max_pronouns=0.20, max_neg=1.0,
+            max_grade=0.5,
+            min_first=95.0,
+            max_len=6,
+            max_passives=0,
+            max_pronouns=0.20,
+            max_neg=1.0,
         )
     elif scaling_age <= 9:
         return dict(
             max_grade=float(scaling_age - 5.0),
             min_first=95.0 - (2.5 * (scaling_age - 7)),
-            max_len=12, max_passives=0, max_pronouns=0.35, max_neg=1.5,
+            max_len=12,
+            max_passives=0,
+            max_pronouns=0.35,
+            max_neg=1.5,
         )
     elif scaling_age <= 14:
         return dict(
             max_grade=float(scaling_age - 4.0),
-            min_first=80.0, max_len=15,
-            max_passives=1, max_pronouns=0.50, max_neg=2.0,
+            min_first=80.0,
+            max_len=15,
+            max_passives=1,
+            max_pronouns=0.50,
+            max_neg=2.0,
         )
     else:
         return dict(
-            max_grade=10.0, min_first=70.0, max_len=18,
-            max_passives=2, max_pronouns=0.60, max_neg=2.5,
+            max_grade=10.0,
+            min_first=70.0,
+            max_len=18,
+            max_passives=2,
+            max_pronouns=0.60,
+            max_neg=2.5,
         )
 
 
@@ -92,8 +106,10 @@ def _compute_tier1_reasons(det_report: DeterministicAnalysisReport) -> list[str]
     if det_report.absolute_constraints:
         reasons.append("Uses absolute constraints (must/should/never)")
     if not det_report.sentence_ratio_criteria:
+        reasons.append("Sentence ratio failed (Coaching sentences > 1 or Ratio < 4)")
+    if not det_report.sentence_type_criteria:
         reasons.append(
-            "Sentence ratio failed (Coaching sentences > 1 or Ratio < 4)"
+            "Sentence type criteria failed (Contains INVALID sentence types)"
         )
     return reasons
 
@@ -171,6 +187,7 @@ def evaluate_social_story(story: str | SocialStorySchema, target_age: int = 8) -
         f"  Second Person Pronouns: {'FAIL' if det_report.second_person_pronouns else 'PASS'}",
         f"  Absolute Constraints:   {'FAIL' if det_report.absolute_constraints else 'PASS'}",
         f"  Sentence Ratio:         {'PASS' if det_report.sentence_ratio_criteria else 'FAIL'}",
+        f"  Sentence Types:         {'PASS' if det_report.sentence_type_criteria else 'FAIL'}",
         f"  Story Rating:           {rating_display}",
         f"  TIER 1 STATUS:          {'PASSED' if det_report.tier1_passed else 'FAILED'}",
     ]
@@ -260,7 +277,9 @@ def evaluate_social_story_as_dict(
 
     # 2. Conditionally execute tiers
     det_report = deterministic_analysis(story) if tier1_enabled else None
-    readability_report = readability_analysis(story_text, target_age=age) if tier2_enabled else None
+    readability_report = (
+        readability_analysis(story_text, target_age=age) if tier2_enabled else None
+    )
     prob_report = probabilistic_analysis(story) if tier3_enabled else None
 
     thresholds = _get_age_thresholds(scaling_age)
@@ -275,6 +294,7 @@ def evaluate_social_story_as_dict(
             second_person_pronouns=det_report.second_person_pronouns,
             absolute_constraints=det_report.absolute_constraints,
             sentence_ratio_criteria=det_report.sentence_ratio_criteria,
+            sentence_type_criteria=det_report.sentence_ratio_criteria,
             story_rating=safe_rating,
             tier1_passed=det_report.tier1_passed,
             failure_reasons=tier1_reasons,

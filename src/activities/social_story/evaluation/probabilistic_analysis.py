@@ -4,18 +4,22 @@ from activities.social_story.utils import extract_story_text
 from wrappers.text_gen.llm import call_llm
 
 class QualitativeMatrix(BaseModel):
+    # Criterion 1
     goal_alignment: int = Field(
         ...,
         description="Score 0-5. Measures if the text shares meaningful info patiently (5) or acts as an authoritarian compliance checklist (0).",
     )
+    # Criterion 3
     structural_cohesion: int = Field(
         ...,
         description="Score 0-5. Measures if the story progresses chronologically from a factual setting to a safe, reassuring closure (5).",
     )
+    # Criterion 5
     literal_precision: int = Field(
         ...,
         description="Score 0-5. Tracks avoidance of abstract tracking issues, double-meanings, or figures of speech missed by regex (5).",
     )
+    # Criterion 6
     social_rationale: int = Field(
         ...,
         description="Score 0-5. Evaluates how clearly the story explains the underlying social 'Why' behind an expectation (5).",
