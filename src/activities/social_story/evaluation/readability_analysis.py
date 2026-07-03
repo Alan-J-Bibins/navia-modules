@@ -28,7 +28,7 @@ class ReadabilityAnalysisReport(BaseModel):
     )
     passed_all_guardrails: bool = Field(
         ...,
-        description="True if text safely satisfies the age-calibrated developmental threshold.",
+        description="True if text safely satisfies the age-calibrated developmental threshold. Coincides with Carol Gray Criteria 4(Format).",
     )
 
 

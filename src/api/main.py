@@ -5,8 +5,7 @@ import os
 from fastapi import Body, Depends, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import StreamingResponse
-from activities.social_story.evaluation.main import evaluate_social_story_as_dict
-from activities.social_story.judge import judge_social_story
+from activities.social_story.evaluation.main import evaluate_social_story_as_dict, evaluate_social_story_as_metrics
 from activities.social_story.model import SocialStorySchema
 from api.utils import create_mock_profile
 from entities.learner import LearnerProfile
@@ -196,22 +195,6 @@ async def generate_social_story_stream(
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
 
-@app.post("/activity/social_story/judge")
-async def judge_social_story_handler(
-    profile: LearnerProfile = Depends(get_learner_profile),
-    story: SocialStorySchema = Body(..., embed=True),
-):
-    result = await asyncio.to_thread(
-        judge_social_story, story_schema=story, age=profile.age, judge=2
-    )
-    if result is None:
-        return {"error": "Failed to evaluate story - LLM returned invalid response"}
-    return {
-        "score": result.score,
-        "remarks": result.remarks,
-    }
-
-
 @app.post("/activity/social_story/regenerate_sentence")
 async def regenerate_sentence_stream(
     request: Request,
@@ -261,8 +244,8 @@ async def regenerate_sentence_stream(
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
 
-@app.post("/activity/social_story/evaluate")
-async def evaluate_social_story_handler(
+@app.post("/activity/social_story/tier_evaluate")
+async def tier_evaluate_social_story_handler(
     profile: LearnerProfile = Depends(get_learner_profile),
     story: SocialStorySchema = Body(..., embed=True),
     tier1_enabled: bool = Query(True, description="Run deterministic checks"),
@@ -276,5 +259,18 @@ async def evaluate_social_story_handler(
         tier1_enabled=tier1_enabled,
         tier2_enabled=tier2_enabled,
         tier3_enabled=tier3_enabled,
+    )
+    return result
+
+
+@app.post("/activity/social_story/evaluate")
+async def evaluate_social_story_handler(
+    profile: LearnerProfile = Depends(get_learner_profile),
+    story: SocialStorySchema = Body(..., embed=True),
+):
+    result = await asyncio.to_thread(
+        evaluate_social_story_as_metrics,
+        story=story,
+        target_age=profile.age,
     )
     return result

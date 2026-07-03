@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 from activities.social_story.model import SocialStorySchema
 from activities.social_story.utils import extract_story_text
+from typing import Any
 from activities.social_story.evaluation.deterministic_analysis import (
     deterministic_analysis,
     DeterministicAnalysisReport,
@@ -12,7 +13,6 @@ from activities.social_story.evaluation.readability_analysis import (
 )
 from activities.social_story.evaluation.probabilistic_analysis import (
     probabilistic_analysis,
-    ProbabilisticAnalysisReport,
     QualitativeMatrix,
 )
 
@@ -222,8 +222,8 @@ def evaluate_social_story(story: str | SocialStorySchema, target_age: int = 8) -
                 "--- TIER 3: QUALITATIVE REVIEW ---",
                 f"  Goal Alignment:       {q.goal_alignment}/5",
                 f"  Structural Cohesion:  {q.structural_cohesion}/5",
-                f"  Literal Precision:    {q.literal_precision}/5",
-                f"  Social Rationale:     {q.social_rationale}/5",
+                f"  Celebratory Framing:  {q.celebratory_framing}/5",
+                f"  Contextual Rationale: {q.contextual_rationale}/5",
                 f"  TIER 3 STATUS:         {'PASSED' if prob_report.tier3_passed else 'FAILED'}",
                 "",
                 "--- CONSTRUCTIVE FEEDBACK ---",
@@ -351,3 +351,49 @@ def evaluate_social_story_as_dict(
     )
 
     return report.model_dump()
+
+
+def evaluate_social_story_as_metrics(
+    story: str | SocialStorySchema,
+    target_age: int = 8,
+) -> dict:
+    """
+    Runs all three analysis tiers and returns a flat dict of metric values
+    keyed by the canonical names in SOCIAL_STORY_METRIC_MATRIX.
+
+    Deterministic metrics return booleans, readability returns a boolean,
+    and probabilistic metrics return integer scores (0-5).
+    """
+    story_text = (
+        extract_story_text(story) if isinstance(story, SocialStorySchema) else story
+    )
+    raw_age = story.target_age if isinstance(story, SocialStorySchema) else target_age
+    age = max(3, raw_age)
+
+    det_report = deterministic_analysis(story)
+    readability_report = readability_analysis(story_text, target_age=age)
+    prob_report = probabilistic_analysis(story)
+
+    metrics: dict[str, Any] = {
+        # Deterministic (Tier 1)
+        "second_person_pronouns": det_report.second_person_pronouns,
+        "absolute_constraints": det_report.absolute_constraints,
+        "sentence_ratio_criteria": det_report.sentence_ratio_criteria,
+        # Readability (Tier 2)
+        "passed_all_guardrails": readability_report.passed_all_guardrails,
+    }
+
+    # Probabilistic (Tier 3) — may be None if LLM call fails
+    if prob_report and prob_report.qualitative_reviews:
+        q = prob_report.qualitative_reviews
+        metrics["goal_alignment"] = q.goal_alignment
+        metrics["structural_cohesion"] = q.structural_cohesion
+        metrics["celebratory_framing"] = q.celebratory_framing
+        metrics["contextual_rationale"] = q.contextual_rationale
+    else:
+        metrics["goal_alignment"] = None
+        metrics["structural_cohesion"] = None
+        metrics["celebratory_framing"] = None
+        metrics["contextual_rationale"] = None
+
+    return metrics

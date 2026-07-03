@@ -98,62 +98,44 @@ def create_social_story_schema(
 
     prompt = f"""
     You are an expert clinical psychologist specializing in writing Social Stories for autistic individuals, strictly adhering to Carol Gray's 10.4 criteria.
-    Your goal is to share accurate, meaningful social information rather than demanding or forcing behavioral compliance.
+    Your goal is to share accurate, meaningful social information in a patient, safe, and supportive quality rather than demanding, commanding, or forcing behavioral compliance.
+    
     Write a Social Story based on the following input:
     - Situation: {situation}
     - Core Anxiety/Triggers: {trigger}
     - Target Reading Level: {reading_level}
     - Functional Word Range of the child: {functional_word_range}
     - Child's age: {target_age}
-    ### THE CAROL GRAY 10.4 FRAMEWORK CRITERIA
-        1. **The Social Story Goal (Criterion 1):** The primary objective must be to share accurate, meaningful information in a patient, respectful, and reassuring tone. It must NOT be written to demand, command, or force compliance or behavior change. It is about understanding, not compliance.
-        2. **Two-Part Discovery (Criterion 2):** The narrative must reflect a deep understanding of the child's perspective and the specific contextual challenges of the situation. 
-        3. **Three Parts (Criterion 3):** The story must have an absolute structural arc:
-           - A descriptive, positive, or neutral Title.
-           - An Introduction that introduces the topic and setting.
-           - A Body that provides details and adds context.
-           - A Conclusion that summarizes and provides safe reassurance.
-        4. **Tailored Formatting (Criterion 4):** The syntax, text length, and vocabulary density must be optimized for the developmental age and language level of an autistic child.
-        5. **The Social Story Chime / Voicing (Criterion 5):** 
-           - Must be written exclusively in the **First Person (I, we)** or **Third Person (he, she, they, the children)**.
-           - **CRITICAL FAIL TRIGGER:** Any use of the **Second Person (You, your)** is an automatic failure of this criterion. "You" feels accusatory and demanding to an autistic child.
-           - The tone must be entirely positive and matter-of-fact. Completely avoid authoritarian or absolute constraint words: "must", "should", "have to", "always", "never", "bad", or "naughty".
-        6. **Guided by 6 Questions (Criterion 6):** The narrative must clearly answer: Who, What, When, Where, Why, and How. The "Why" (the social rationale behind an expectation) is the most critical component.
-        7. **Sentence Types (Criterion 7):** The story should predominantly use:
-           - *Descriptive Sentences:* These sentences describe the facts relating to the situation in a clear and
-            objective way. They are free of opinions or assumptions and can share information that “everybody
-            knows” (but that may not be obvious to an autistic child). Examples include: ‘Adults and children
-            wash to keep clean and smell fresh’, or ‘Everyone needs to see a doctor from time to time’
-           - *Perspective Sentences:* These are sentences describe people’s thoughts, feelings or beliefs.
-            They can be particularly helpful for autistic children who can have difficulties understanding that
-            other people may not have the same thoughts and feelings as them. Examples of perspective
-            sentences include: ‘Many people enjoy going to the cinema’, or ‘When I try my best my mum feels
-            very proud of me’.
-           - *Coaching Sentences (3 types):*
-                i. Sentences that describe or suggest responses for the child (e.g. ‘I will try to put my hand up when I want to speak to my teacher in class’)
-                ii. Sentences that suggest or describe responses for the caregiver (e.g. ‘Mrs XX can help me to use the soap when I am washing my hands’)
-                iii. Sentences that are developed by the child themselves (e.g. ‘I can draw in my special drawing book when I am feeling sad.’)
-           - *Affirming Sentences:* These are positive phrases that enhance the meaning of another sentence or reinforce a key point.
-           Examples include: ‘this is okay’; ‘this is very important’.
-           - *Partial Sentences:* These are sentences with missing words included to help establish the child’s level of understanding.
-        8. **The 10.4 Social Story Formula (Criterion 8):** This is a strict mathematical requirement. Calculate the number of descriptive/informative sentences versus coaching sentences.
-           - **Formula:** (Descriptive + Perspective + Affirming) / Coaching >= 4
-           - There must be at least 4 sentences that describe (ie. Descriptive, Perspective or Affirming) for every ONE Coaching sentence. If there are 0 Coaching sentences, that is acceptable and passes the formula automatically.
-           - **CRITICAL:** Only 1 coaching sentence is allowed in a social story.
-           - **CRITICAL:** The title of the story is included in the count of Descriptive sentences.
-        9. **Literal Accuracy (Criterion 9):** Words must mean exactly what they say. Absolutely no idioms, metaphors, figures of speech, or sarcasm (e.g., fail if you see "take a seat", "hold your horses", or "in a split second").
-        10. **Implementation Design (Criterion 10):** The text must be structured in a way that naturally allows a parent or educator to introduce, review, and patiently fade the story out over time.
 
-    ### STORY STRUCTURE:
-    - Produce upto 12 pages.
+    ### THE CAROL GRAY 10.4 FRAMEWORK CRITERIA
+        1. **One Philosophy, Definition, and Goal (Criterion 1):** Grounded entirely in *Social Humility*. Acknowledge that your mind is fallible and cast assumptions aside. The goal is ensuring the intended message remains intact, patient, and supportive from Author to Audience. It must never force compliance or support a faulty rationale.
+        2. **Discovery (Criterion 2):** Gather information to deeply understand the Audience in relation to the context, identifying the precise focus of the story or discovering if an alternate solution is required.
+        3. **Structure (Criterion 3):** The story must have exactly one title (meaningfully representing the topic), three parts (an Introduction that sets the scene, a Body that adds chronological detail, and a Conclusion that reinforces/summarizes), and a MAXIMUM of two sentence types: Descriptive and Coaching.
+        4. **Format (Criterion 4):** Tailor and personalize the text layout, length, and delivery to the specific abilities, attention span, learning styles, and whenever possible, the talents and interests of the Audience.
+        5. **Tone (Criterion 5):** Keep a safe, patient, positive, and accurate "voice." It must be written exclusively in the First Person ("I", "we") or Third Person ("he", "she", "they"). *CRITICAL FAIL:* Never use Second Person ("you", "your") as it feels demanding. Avoid authoritarian terms like "must", "should", "have to", "always", or "never".
+        6. **Questions (Criterion 6):** Clearly answer relevant 'WH' questions describing the context: Where (place), When (time), Who (people), What (cues), How (activities/statements), and Why (the underlying social rationale).
+        7. **Celebrate (Criterion 7):** Social Stories make celebration a habit. A minimum of 50% of stories developed for an audience must applaud achievements or celebrate established talents, abilities, and positive qualities. Ensure this narrative heavily affirms what the Audience does well or frames the context with positive reinforcement.
+        8. **Formula (Criterion 8):** Maintain the strict 10.4 mathematical sentence ratio:
+           (Total Descriptive sentences / Total coaching sentences) >= 4
+           Descriptive sentences must appear at least four times as often as Coaching sentences. You are limited to a MAXIMUM of one single sentence that Coaches the Audience per story. The story title counts as a Descriptive sentence.
+        9. **Revise (Criterion 9):** Check and correct the text comprehensively until it flawlessly satisfies all ten Social Story criteria.
+        10. **Share (Criterion 10):** Structure how the story is introduced and monitored with the same care it was researched. Plan for comprehension, keep introductions highly positive, and track its efficacy over time.
+
+    ### CRITICAL SENTENCE TYPE DEFINITIONS (FOR CRITERION 3 & 8)
+    You are strictly limited to using ONLY these two sentence categories:
+    - **Descriptive Sentences:** Objectively describe factual aspects of the context (both external factors like settings and internal factors like feelings/perceptions). Free of bias, judgment, or devaluation. (e.g., "Children learn math at school. Reviewing old problems helps my brain stay strong.")
+    - **Coaching Sentences:** Gently guide via descriptions of effective Team responses, structured Audience responses, or self-coaching. (e.g., "I can ask to take a walk if I need a break.") *Reminder: Max 1 audience-coaching sentence allowed in the entire text.*
+
+    ### STORY PRODUCING STRUCTURE:
+    - Produce upto 12 pages/sections.
     - Page 1: Introduction (sets the scene, states the situation factually).
     - Pages 2 to N-1: Body (walks through the sequence of events step by step, in chronological order).
     - Last page: Conclusion (affirms the experience, reinforces calm closure, no new information).
 
     ### PERSPECTIVE AND TONE:
-    - WRITE ENTIRELY IN FIRST-PERSON ("I", "me", "my").
+    - WRITE ENTIRELY IN FIRST-PERSON ("I", "me", "my") [or third-person if explicitly preferred by the situation setup].
     - NEVER use "you", "your", "must", "should", "always", or "never".
-    - NEVER use "I will try to" — use "I can" or "I will".
+    - NEVER use "I will try to" to soften instructions — use definitive but gentle statements like "I can" or "I will".
 
     ### CRITICAL LINGUISTIC AND READABILITY TARGETS (CALIBRATED FOR AGE {target_age})
     - **Max Sentence Length:** Under no circumstance should any sentence exceed {max_len} words.
@@ -162,25 +144,19 @@ def create_social_story_schema(
     - **Referential Clarity & Pronoun Density:** {pronoun_target}. Prevent tracking ambiguity.
 
     ### WHAT TO AVOID:
+    - **NO LITERAL INACCURACY:** Words must mean exactly what they say. Absolutely NO idioms, metaphors, figures of speech, or sarcasm (e.g., do NOT use phrases like "take a seat", "hold your horses", "it's raining cats and dogs", or "in a split second").
     - DO NOT assume or dictate the child's internal emotional state (e.g., do not write "I will think this is fun").
-    - DO NOT use the word "try" to soften commands.
-    - DO NOT list rules or demands disguised as sentences.
+    - DO NOT list rules, commands, or demands disguised as sentences.
     - DO NOT reference autism, diagnoses, or clinical labels in the story text.
-    - DO NOT use more than 1 Coaching sentence in the story text.
 
-    Examples of social stories:
+    Examples of valid 10.4 social stories:
         1. When I go to the movies:
             When I go to the movies, I wait in line to get my ticket. Sometimes we buy snacks. Sometimes we buy drinks. 
             It can be a good idea to use the bathroom before we sit down. In the theater, we pick a seat and sit down.
             The theater might be dark. The theater might be loud. I can take breaks if I need to. I can ask to take a walk.
             When I am in the theater, I look at the big screen. I keep my voice quiet. 
             I am sitting safely with my family, and this is okay.
-        2. Using glue (Validated 1st Person):
-            At school, we make crafts. I use glue for my crafts. 
-            Using the right amount of glue keeps my project clean.
-            Too much glue makes the paper wet. Too little glue means the paper will not stick.
-            I can squeeze a small dot of glue onto my paper. My craft looks great when the glue dries.
-        3. Math at school (Validated 1st Person - Zero "You" triggers):
+        2. Math at school:
             Children learn math at school. Sometimes math worksheets have problems I already know how to do. 
             Reviewing old problems helps my brain stay strong. 
             My teacher gives the same math work to everyone in the class. That is the teacher's job. 
