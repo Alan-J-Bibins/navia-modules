@@ -5,16 +5,19 @@ from pydantic import BaseModel, Field
 class SentenceItem(BaseModel):
     id: int = Field(description="1-Indexed id of the sentence. Do not start from 0")
     text: str = Field(description="Exactly one sentence of prose for the social story.")
-    type: Literal["Descriptive", "Coaching"] = Field(
+    type: Literal["Descriptive", "Coaching"] | None = Field(
+        default=None,
         description="The clinical classification according to Carol Gray's 10.4 framework. "
         "Use 'Descriptive' for objective facts, internal states, or thoughts/feelings of others. "
-        "Use 'Coaching' for gentle self-determined strategies or caregiver support."
+        "Use 'Coaching' for gentle self-determined strategies or caregiver support. "
+        "Optional - may be None if not specified.",
     )
 
 
 class StoryPage(BaseModel):
     page_number: int
     sentences: list[SentenceItem]
+    visual_prompt: str = Field(description="Simple image prompt which describes the scene for passing to stable diffusion xl. Keep wordings simple, only describe the scene and do not describe the artstyle or lighting")
 
 
 class SocialStorySchema(BaseModel):

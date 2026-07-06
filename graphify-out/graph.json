@@ -4,6 +4,564 @@
   "graph": {},
   "nodes": [
     {
+      "label": "workflow_api.json",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L1",
+      "id": "workflow_api_json",
+      "community": 32,
+      "norm_label": "workflow_api.json"
+    },
+    {
+      "label": "1",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L2",
+      "id": "navia_modules_workflow_api_1",
+      "community": 32,
+      "norm_label": "1"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L3",
+      "id": "navia_modules_workflow_api_1_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "ckpt_name",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L4",
+      "id": "navia_modules_workflow_api_inputs_ckpt_name",
+      "community": 32,
+      "norm_label": "ckpt_name"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L6",
+      "id": "navia_modules_workflow_api_1_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L7",
+      "id": "navia_modules_workflow_api_1_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "title",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L8",
+      "id": "navia_modules_workflow_api_meta_title",
+      "community": 32,
+      "norm_label": "title"
+    },
+    {
+      "label": "2",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L11",
+      "id": "navia_modules_workflow_api_2",
+      "community": 32,
+      "norm_label": "2"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L12",
+      "id": "navia_modules_workflow_api_2_inputs",
+      "community": 35,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "lora_name",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L13",
+      "id": "navia_modules_workflow_api_inputs_lora_name",
+      "community": 35,
+      "norm_label": "lora_name"
+    },
+    {
+      "label": "strength_model",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L14",
+      "id": "navia_modules_workflow_api_inputs_strength_model",
+      "community": 35,
+      "norm_label": "strength_model"
+    },
+    {
+      "label": "strength_clip",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L15",
+      "id": "navia_modules_workflow_api_inputs_strength_clip",
+      "community": 35,
+      "norm_label": "strength_clip"
+    },
+    {
+      "label": "model",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L16",
+      "id": "navia_modules_workflow_api_inputs_model",
+      "community": 35,
+      "norm_label": "model"
+    },
+    {
+      "label": "clip",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L20",
+      "id": "navia_modules_workflow_api_inputs_clip",
+      "community": 32,
+      "norm_label": "clip"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L25",
+      "id": "navia_modules_workflow_api_2_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L26",
+      "id": "navia_modules_workflow_api_2_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "3",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L30",
+      "id": "navia_modules_workflow_api_3",
+      "community": 32,
+      "norm_label": "3"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L31",
+      "id": "navia_modules_workflow_api_3_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "vae_name",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L32",
+      "id": "navia_modules_workflow_api_inputs_vae_name",
+      "community": 32,
+      "norm_label": "vae_name"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L34",
+      "id": "navia_modules_workflow_api_3_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L35",
+      "id": "navia_modules_workflow_api_3_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "4",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L39",
+      "id": "navia_modules_workflow_api_4",
+      "community": 32,
+      "norm_label": "4"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L40",
+      "id": "navia_modules_workflow_api_4_inputs",
+      "community": 35,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "seed",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L41",
+      "id": "navia_modules_workflow_api_inputs_seed",
+      "community": 35,
+      "norm_label": "seed"
+    },
+    {
+      "label": "steps",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L42",
+      "id": "navia_modules_workflow_api_inputs_steps",
+      "community": 35,
+      "norm_label": "steps"
+    },
+    {
+      "label": "cfg",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L43",
+      "id": "navia_modules_workflow_api_inputs_cfg",
+      "community": 35,
+      "norm_label": "cfg"
+    },
+    {
+      "label": "sampler_name",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L44",
+      "id": "navia_modules_workflow_api_inputs_sampler_name",
+      "community": 35,
+      "norm_label": "sampler_name"
+    },
+    {
+      "label": "scheduler",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L45",
+      "id": "navia_modules_workflow_api_inputs_scheduler",
+      "community": 35,
+      "norm_label": "scheduler"
+    },
+    {
+      "label": "denoise",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L46",
+      "id": "navia_modules_workflow_api_inputs_denoise",
+      "community": 35,
+      "norm_label": "denoise"
+    },
+    {
+      "label": "positive",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L51",
+      "id": "navia_modules_workflow_api_inputs_positive",
+      "community": 35,
+      "norm_label": "positive"
+    },
+    {
+      "label": "negative",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L55",
+      "id": "navia_modules_workflow_api_inputs_negative",
+      "community": 35,
+      "norm_label": "negative"
+    },
+    {
+      "label": "latent_image",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L59",
+      "id": "navia_modules_workflow_api_inputs_latent_image",
+      "community": 35,
+      "norm_label": "latent_image"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L64",
+      "id": "navia_modules_workflow_api_4_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L65",
+      "id": "navia_modules_workflow_api_4_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "5",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L69",
+      "id": "navia_modules_workflow_api_5",
+      "community": 32,
+      "norm_label": "5"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L70",
+      "id": "navia_modules_workflow_api_5_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "text",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L71",
+      "id": "navia_modules_workflow_api_inputs_text",
+      "community": 32,
+      "norm_label": "text"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L77",
+      "id": "navia_modules_workflow_api_5_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L78",
+      "id": "navia_modules_workflow_api_5_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "6",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L82",
+      "id": "navia_modules_workflow_api_6",
+      "community": 32,
+      "norm_label": "6"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L83",
+      "id": "navia_modules_workflow_api_6_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L90",
+      "id": "navia_modules_workflow_api_6_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L91",
+      "id": "navia_modules_workflow_api_6_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "7",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L95",
+      "id": "navia_modules_workflow_api_7",
+      "community": 32,
+      "norm_label": "7"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L96",
+      "id": "navia_modules_workflow_api_7_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "width",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L97",
+      "id": "navia_modules_workflow_api_inputs_width",
+      "community": 32,
+      "norm_label": "width"
+    },
+    {
+      "label": "height",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L98",
+      "id": "navia_modules_workflow_api_inputs_height",
+      "community": 32,
+      "norm_label": "height"
+    },
+    {
+      "label": "batch_size",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L99",
+      "id": "navia_modules_workflow_api_inputs_batch_size",
+      "community": 32,
+      "norm_label": "batch_size"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L101",
+      "id": "navia_modules_workflow_api_7_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L102",
+      "id": "navia_modules_workflow_api_7_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "8",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L106",
+      "id": "navia_modules_workflow_api_8",
+      "community": 32,
+      "norm_label": "8"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L107",
+      "id": "navia_modules_workflow_api_8_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "samples",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L108",
+      "id": "navia_modules_workflow_api_inputs_samples",
+      "community": 32,
+      "norm_label": "samples"
+    },
+    {
+      "label": "vae",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L112",
+      "id": "navia_modules_workflow_api_inputs_vae",
+      "community": 32,
+      "norm_label": "vae"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L117",
+      "id": "navia_modules_workflow_api_8_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L118",
+      "id": "navia_modules_workflow_api_8_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
+      "label": "9",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L122",
+      "id": "navia_modules_workflow_api_9",
+      "community": 32,
+      "norm_label": "9"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L123",
+      "id": "navia_modules_workflow_api_9_inputs",
+      "community": 32,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "filename_prefix",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L124",
+      "id": "navia_modules_workflow_api_inputs_filename_prefix",
+      "community": 32,
+      "norm_label": "filename_prefix"
+    },
+    {
+      "label": "images",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L125",
+      "id": "navia_modules_workflow_api_inputs_images",
+      "community": 32,
+      "norm_label": "images"
+    },
+    {
+      "label": "class_type",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L130",
+      "id": "navia_modules_workflow_api_9_class_type",
+      "community": 32,
+      "norm_label": "class_type"
+    },
+    {
+      "label": "_meta",
+      "file_type": "code",
+      "source_file": "workflow_api.json",
+      "source_location": "L131",
+      "id": "navia_modules_workflow_api_9_meta",
+      "community": 32,
+      "norm_label": "_meta"
+    },
+    {
       "label": "config.py",
       "file_type": "code",
       "source_file": "src/config.py",
@@ -16,7 +574,7 @@
       "label": "Settings",
       "file_type": "code",
       "source_file": "src/config.py",
-      "source_location": "L3",
+      "source_location": "L4",
       "id": "src_config_settings",
       "community": 5,
       "norm_label": "settings"
@@ -128,6 +686,123 @@
       "id": "src_wrappers_image_gen_huggingface_py_str",
       "community": 8,
       "norm_label": "str"
+    },
+    {
+      "label": "comfyui.py",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L1",
+      "id": "src_wrappers_image_gen_comfyui_py",
+      "community": 0,
+      "norm_label": "comfyui.py"
+    },
+    {
+      "label": "_queue_prompt()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L19",
+      "id": "image_gen_comfyui_queue_prompt",
+      "community": 0,
+      "norm_label": "_queue_prompt()"
+    },
+    {
+      "label": "_get_image()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "id": "image_gen_comfyui_get_image",
+      "community": 0,
+      "norm_label": "_get_image()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "id": "src_wrappers_image_gen_comfyui_py_str",
+      "community": 0,
+      "norm_label": "str"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "id": "bytes",
+      "community": 0,
+      "norm_label": "bytes"
+    },
+    {
+      "label": "_wait_for_completion()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L38",
+      "id": "image_gen_comfyui_wait_for_completion",
+      "community": 0,
+      "norm_label": "_wait_for_completion()"
+    },
+    {
+      "label": "_get_output_image_bytes()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L58",
+      "id": "image_gen_comfyui_get_output_image_bytes",
+      "community": 0,
+      "norm_label": "_get_output_image_bytes()"
+    },
+    {
+      "label": "generate_comfyui_image()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L72",
+      "id": "image_gen_comfyui_generate_comfyui_image",
+      "community": 0,
+      "norm_label": "generate_comfyui_image()"
+    },
+    {
+      "label": "Sends the execution payload to ComfyUI.",
+      "file_type": "rationale",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L20",
+      "id": "image_gen_comfyui_rationale_20",
+      "community": 0,
+      "norm_label": "sends the execution payload to comfyui."
+    },
+    {
+      "label": "Fetches the generated image bytes from the ComfyUI server.",
+      "file_type": "rationale",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L30",
+      "id": "image_gen_comfyui_rationale_30",
+      "community": 0,
+      "norm_label": "fetches the generated image bytes from the comfyui server."
+    },
+    {
+      "label": "Blocks until the ComfyUI workflow finishes executing.",
+      "file_type": "rationale",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L39",
+      "id": "image_gen_comfyui_rationale_39",
+      "community": 0,
+      "norm_label": "blocks until the comfyui workflow finishes executing."
+    },
+    {
+      "label": "Retrieves the first generated image from ComfyUI history.",
+      "file_type": "rationale",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L59",
+      "id": "image_gen_comfyui_rationale_59",
+      "community": 0,
+      "norm_label": "retrieves the first generated image from comfyui history."
+    },
+    {
+      "label": "Generate an image via ComfyUI and save it to disk.      Args:         prompt: Th",
+      "file_type": "rationale",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L78",
+      "id": "image_gen_comfyui_rationale_78",
+      "community": 0,
+      "norm_label": "generate an image via comfyui and save it to disk.      args:         prompt: th"
     },
     {
       "label": "sdxl.py",
@@ -306,7 +981,7 @@
       "source_file": "src/api/utils.py",
       "source_location": "L1",
       "id": "src_api_utils_py",
-      "community": 0,
+      "community": 34,
       "norm_label": "utils.py"
     },
     {
@@ -315,7 +990,7 @@
       "source_file": "src/api/utils.py",
       "source_location": "L11",
       "id": "api_utils_create_mock_profile",
-      "community": 0,
+      "community": 34,
       "norm_label": "create_mock_profile()"
     },
     {
@@ -324,7 +999,7 @@
       "source_file": "src/api/utils.py",
       "source_location": "L11",
       "id": "src_api_utils_py_learnerprofile",
-      "community": 0,
+      "community": 34,
       "norm_label": "learnerprofile"
     },
     {
@@ -340,34 +1015,34 @@
       "label": "get_learner_profile()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L29",
+      "source_location": "L47",
       "id": "api_main_get_learner_profile",
-      "community": 0,
+      "community": 34,
       "norm_label": "get_learner_profile()"
     },
     {
       "label": "sse_event()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L33",
+      "source_location": "L51",
       "id": "api_main_sse_event",
-      "community": 0,
+      "community": 34,
       "norm_label": "sse_event()"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L33",
+      "source_location": "L51",
       "id": "src_api_main_py_str",
-      "community": 0,
+      "community": 34,
       "norm_label": "str"
     },
     {
       "label": "generate_social_story_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L57",
       "id": "api_main_generate_social_story_stream",
       "community": 34,
       "norm_label": "generate_social_story_stream()"
@@ -376,7 +1051,7 @@
       "label": "Request",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L57",
       "id": "request",
       "community": 34,
       "norm_label": "request"
@@ -385,7 +1060,7 @@
       "label": "LearnerProfile",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L57",
       "id": "src_api_main_py_learnerprofile",
       "community": 34,
       "norm_label": "learnerprofile"
@@ -394,7 +1069,7 @@
       "label": "bool",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L39",
+      "source_location": "L57",
       "id": "src_api_main_py_bool",
       "community": 34,
       "norm_label": "bool"
@@ -403,7 +1078,7 @@
       "label": "regenerate_sentence_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L199",
+      "source_location": "L217",
       "id": "api_main_regenerate_sentence_stream",
       "community": 34,
       "norm_label": "regenerate_sentence_stream()"
@@ -412,7 +1087,7 @@
       "label": "SocialStorySchema",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L199",
+      "source_location": "L217",
       "id": "src_api_main_py_socialstoryschema",
       "community": 34,
       "norm_label": "socialstoryschema"
@@ -421,7 +1096,7 @@
       "label": "int",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L199",
+      "source_location": "L217",
       "id": "src_api_main_py_int",
       "community": 34,
       "norm_label": "int"
@@ -430,7 +1105,7 @@
       "label": "tier_evaluate_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L248",
+      "source_location": "L266",
       "id": "api_main_tier_evaluate_social_story_handler",
       "community": 34,
       "norm_label": "tier_evaluate_social_story_handler()"
@@ -439,18 +1114,36 @@
       "label": "evaluate_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L267",
+      "source_location": "L285",
       "id": "api_main_evaluate_social_story_handler",
       "community": 34,
       "norm_label": "evaluate_social_story_handler()"
     },
     {
+      "label": "generate_image()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L297",
+      "id": "api_main_generate_image",
+      "community": 34,
+      "norm_label": "generate_image()"
+    },
+    {
+      "label": "generate_story_image()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L317",
+      "id": "api_main_generate_story_image",
+      "community": 34,
+      "norm_label": "generate_story_image()"
+    },
+    {
       "label": "Helper to format SSE events consistently.",
       "file_type": "rationale",
       "source_file": "src/api/main.py",
-      "source_location": "L34",
-      "id": "api_main_rationale_34",
-      "community": 0,
+      "source_location": "L52",
+      "id": "api_main_rationale_52",
+      "community": 34,
       "norm_label": "helper to format sse events consistently."
     },
     {
@@ -459,7 +1152,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L1",
       "id": "src_entities_learner_py",
-      "community": 0,
+      "community": 34,
       "norm_label": "learner.py"
     },
     {
@@ -468,7 +1161,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L9",
       "id": "entities_learner_genderenum",
-      "community": 0,
+      "community": 34,
       "norm_label": "genderenum"
     },
     {
@@ -477,7 +1170,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 0,
+      "community": 34,
       "norm_label": "str"
     },
     {
@@ -486,7 +1179,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 0,
+      "community": 34,
       "norm_label": "enum"
     },
     {
@@ -495,7 +1188,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L16",
       "id": "entities_learner_verbalabilityenum",
-      "community": 0,
+      "community": 34,
       "norm_label": "verbalabilityenum"
     },
     {
@@ -504,7 +1197,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L23",
       "id": "entities_learner_functionalwordrangeenum",
-      "community": 0,
+      "community": 34,
       "norm_label": "functionalwordrangeenum"
     },
     {
@@ -513,7 +1206,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L36",
       "id": "entities_learner_familymember",
-      "community": 0,
+      "community": 34,
       "norm_label": "familymember"
     },
     {
@@ -522,7 +1215,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 32,
+      "community": 3,
       "norm_label": "basemodel"
     },
     {
@@ -531,7 +1224,7 @@
       "source_file": "src/entities/learner.py",
       "source_location": "L45",
       "id": "entities_learner_caregiver",
-      "community": 0,
+      "community": 34,
       "norm_label": "caregiver"
     },
     {
@@ -558,7 +1251,7 @@
       "source_file": "src/entities/therapist.py",
       "source_location": "L1",
       "id": "src_entities_therapist_py",
-      "community": 32,
+      "community": 3,
       "norm_label": "therapist.py"
     },
     {
@@ -567,7 +1260,7 @@
       "source_file": "src/entities/therapist.py",
       "source_location": "L8",
       "id": "entities_therapist_therapist",
-      "community": 32,
+      "community": 3,
       "norm_label": "therapist"
     },
     {
@@ -610,7 +1303,7 @@
       "label": "StoryPage",
       "file_type": "code",
       "source_file": "src/activities/social_story/model.py",
-      "source_location": "L15",
+      "source_location": "L17",
       "id": "social_story_model_storypage",
       "community": 30,
       "norm_label": "storypage"
@@ -619,16 +1312,16 @@
       "label": "SocialStorySchema",
       "file_type": "code",
       "source_file": "src/activities/social_story/model.py",
-      "source_location": "L20",
+      "source_location": "L23",
       "id": "social_story_model_socialstoryschema",
-      "community": 32,
+      "community": 3,
       "norm_label": "socialstoryschema"
     },
     {
       "label": "SocialStoryScoreResponse",
       "file_type": "code",
       "source_file": "src/activities/social_story/model.py",
-      "source_location": "L28",
+      "source_location": "L31",
       "id": "social_story_model_socialstoryscoreresponse",
       "community": 22,
       "norm_label": "socialstoryscoreresponse"
@@ -637,7 +1330,7 @@
       "label": "PageVisualPrompt",
       "file_type": "code",
       "source_file": "src/activities/social_story/model.py",
-      "source_location": "L39",
+      "source_location": "L42",
       "id": "social_story_model_pagevisualprompt",
       "community": 30,
       "norm_label": "pagevisualprompt"
@@ -646,7 +1339,7 @@
       "label": "StoryVisualSchema",
       "file_type": "code",
       "source_file": "src/activities/social_story/model.py",
-      "source_location": "L46",
+      "source_location": "L49",
       "id": "social_story_model_storyvisualschema",
       "community": 30,
       "norm_label": "storyvisualschema"
@@ -846,7 +1539,7 @@
       "source_file": "src/activities/social_story/evaluation/deterministic_analysis.py",
       "source_location": "L21",
       "id": "evaluation_deterministic_analysis_deterministicanalysisreport",
-      "community": 32,
+      "community": 3,
       "norm_label": "deterministicanalysisreport"
     },
     {
@@ -891,7 +1584,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L1",
       "id": "src_activities_social_story_evaluation_probabilistic_analysis_py",
-      "community": 32,
+      "community": 3,
       "norm_label": "probabilistic_analysis.py"
     },
     {
@@ -900,7 +1593,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L7",
       "id": "evaluation_probabilistic_analysis_qualitativematrix",
-      "community": 32,
+      "community": 3,
       "norm_label": "qualitativematrix"
     },
     {
@@ -909,7 +1602,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L36",
       "id": "evaluation_probabilistic_analysis_qualitativematrix_validate_scores",
-      "community": 32,
+      "community": 3,
       "norm_label": ".validate_scores()"
     },
     {
@@ -918,7 +1611,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L36",
       "id": "src_activities_social_story_evaluation_probabilistic_analysis_py_int",
-      "community": 32,
+      "community": 3,
       "norm_label": "int"
     },
     {
@@ -927,7 +1620,7 @@
       "source_file": "src/activities/social_story/evaluation/probabilistic_analysis.py",
       "source_location": "L44",
       "id": "evaluation_probabilistic_analysis_probabilisticanalysisreport",
-      "community": 32,
+      "community": 3,
       "norm_label": "probabilisticanalysisreport"
     },
     {
@@ -972,7 +1665,7 @@
       "source_file": "src/activities/social_story/evaluation/readability_analysis.py",
       "source_location": "L9",
       "id": "evaluation_readability_analysis_readabilityanalysisreport",
-      "community": 32,
+      "community": 3,
       "norm_label": "readabilityanalysisreport"
     },
     {
@@ -1026,7 +1719,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L22",
       "id": "evaluation_main_tier1result",
-      "community": 32,
+      "community": 3,
       "norm_label": "tier1result"
     },
     {
@@ -1035,7 +1728,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L32",
       "id": "evaluation_main_tier2result",
-      "community": 32,
+      "community": 3,
       "norm_label": "tier2result"
     },
     {
@@ -1044,7 +1737,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L43",
       "id": "evaluation_main_tier3result",
-      "community": 32,
+      "community": 3,
       "norm_label": "tier3result"
     },
     {
@@ -1053,7 +1746,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L50",
       "id": "evaluation_main_evaluationreportresponse",
-      "community": 32,
+      "community": 3,
       "norm_label": "evaluationreportresponse"
     },
     {
@@ -1089,7 +1782,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L102",
       "id": "deterministicanalysisreport",
-      "community": 32,
+      "community": 3,
       "norm_label": "deterministicanalysisreport"
     },
     {
@@ -1116,7 +1809,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L117",
       "id": "readabilityanalysisreport",
-      "community": 32,
+      "community": 3,
       "norm_label": "readabilityanalysisreport"
     },
     {
@@ -1134,7 +1827,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L151",
       "id": "src_activities_social_story_evaluation_main_py_socialstoryschema",
-      "community": 32,
+      "community": 3,
       "norm_label": "socialstoryschema"
     },
     {
@@ -1152,7 +1845,7 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L249",
       "id": "src_activities_social_story_evaluation_main_py_bool",
-      "community": 32,
+      "community": 3,
       "norm_label": "bool"
     },
     {
@@ -1264,6 +1957,96 @@
       "norm_label": "@opencode-ai/plugin"
     },
     {
+      "label": "queue_prompt()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L292",
+      "community": 34,
+      "norm_label": "queue_prompt()",
+      "id": "api_main_queue_prompt"
+    },
+    {
+      "label": "get_image()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L300",
+      "community": 34,
+      "norm_label": "get_image()",
+      "id": "api_main_get_image"
+    },
+    {
+      "label": "track_workflow_progress()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L307",
+      "community": 34,
+      "norm_label": "track_workflow_progress()",
+      "id": "api_main_track_workflow_progress"
+    },
+    {
+      "label": "get_history()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L322",
+      "community": 34,
+      "norm_label": "get_history()",
+      "id": "api_main_get_history"
+    },
+    {
+      "label": "Helper to format SSE events consistently.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L48",
+      "community": 34,
+      "norm_label": "helper to format sse events consistently.",
+      "id": "api_main_rationale_48"
+    },
+    {
+      "label": "Sends the execution payload to ComfyUI.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L293",
+      "community": 34,
+      "norm_label": "sends the execution payload to comfyui.",
+      "id": "api_main_rationale_293"
+    },
+    {
+      "label": "Fetches the generated image file from ComfyUI server.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L301",
+      "community": 34,
+      "norm_label": "fetches the generated image file from comfyui server.",
+      "id": "api_main_rationale_301"
+    },
+    {
+      "label": "Listens to the websocket until the prompt execution finishes.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L308",
+      "community": 34,
+      "norm_label": "listens to the websocket until the prompt execution finishes.",
+      "id": "api_main_rationale_308"
+    },
+    {
+      "label": "Retrieves the execution history to find the output filenames.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L323",
+      "community": 34,
+      "norm_label": "retrieves the execution history to find the output filenames.",
+      "id": "api_main_rationale_323"
+    },
+    {
+      "label": "Helper to format SSE events consistently.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L34",
+      "community": 34,
+      "norm_label": "helper to format sse events consistently.",
+      "id": "api_main_rationale_34"
+    },
+    {
       "label": "judge_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
@@ -1277,7 +2060,7 @@
       "file_type": "rationale",
       "source_file": "src/api/main.py",
       "source_location": "L35",
-      "community": 0,
+      "community": 34,
       "norm_label": "helper to format sse events consistently.",
       "id": "api_main_rationale_35"
     },
@@ -1430,6 +2213,736 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_4"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_5"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_6"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_7"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_8"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L122",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_api_json",
+      "target": "navia_modules_workflow_api_9"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_1",
+      "target": "navia_modules_workflow_api_1_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_1",
+      "target": "navia_modules_workflow_api_1_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_1",
+      "target": "navia_modules_workflow_api_1_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_1_inputs",
+      "target": "navia_modules_workflow_api_inputs_ckpt_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_1_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_3_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9_meta",
+      "target": "navia_modules_workflow_api_meta_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2",
+      "target": "navia_modules_workflow_api_2_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2",
+      "target": "navia_modules_workflow_api_2_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2",
+      "target": "navia_modules_workflow_api_2_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_inputs",
+      "target": "navia_modules_workflow_api_inputs_clip"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_inputs",
+      "target": "navia_modules_workflow_api_inputs_lora_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_inputs",
+      "target": "navia_modules_workflow_api_inputs_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_inputs",
+      "target": "navia_modules_workflow_api_inputs_strength_clip"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_2_inputs",
+      "target": "navia_modules_workflow_api_inputs_strength_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5_inputs",
+      "target": "navia_modules_workflow_api_inputs_clip"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6_inputs",
+      "target": "navia_modules_workflow_api_inputs_clip"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_3",
+      "target": "navia_modules_workflow_api_3_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_3",
+      "target": "navia_modules_workflow_api_3_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_3",
+      "target": "navia_modules_workflow_api_3_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_3_inputs",
+      "target": "navia_modules_workflow_api_inputs_vae_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4",
+      "target": "navia_modules_workflow_api_4_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4",
+      "target": "navia_modules_workflow_api_4_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4",
+      "target": "navia_modules_workflow_api_4_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_cfg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_denoise"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_latent_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_negative"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_positive"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_sampler_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_scheduler"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_seed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_4_inputs",
+      "target": "navia_modules_workflow_api_inputs_steps"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5",
+      "target": "navia_modules_workflow_api_5_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5",
+      "target": "navia_modules_workflow_api_5_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5",
+      "target": "navia_modules_workflow_api_5_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_5_inputs",
+      "target": "navia_modules_workflow_api_inputs_text"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6_inputs",
+      "target": "navia_modules_workflow_api_inputs_text"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6",
+      "target": "navia_modules_workflow_api_6_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6",
+      "target": "navia_modules_workflow_api_6_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L91",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_6",
+      "target": "navia_modules_workflow_api_6_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7",
+      "target": "navia_modules_workflow_api_7_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7",
+      "target": "navia_modules_workflow_api_7_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7",
+      "target": "navia_modules_workflow_api_7_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7_inputs",
+      "target": "navia_modules_workflow_api_inputs_batch_size"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7_inputs",
+      "target": "navia_modules_workflow_api_inputs_height"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_7_inputs",
+      "target": "navia_modules_workflow_api_inputs_width"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L117",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8",
+      "target": "navia_modules_workflow_api_8_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8",
+      "target": "navia_modules_workflow_api_8_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L118",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8",
+      "target": "navia_modules_workflow_api_8_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8_inputs",
+      "target": "navia_modules_workflow_api_inputs_samples"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L112",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_8_inputs",
+      "target": "navia_modules_workflow_api_inputs_vae"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9",
+      "target": "navia_modules_workflow_api_9_class_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9",
+      "target": "navia_modules_workflow_api_9_inputs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L131",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9",
+      "target": "navia_modules_workflow_api_9_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L124",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9_inputs",
+      "target": "navia_modules_workflow_api_inputs_filename_prefix"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "workflow_api.json",
+      "source_location": "L125",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "navia_modules_workflow_api_9_inputs",
+      "target": "navia_modules_workflow_api_inputs_images"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/config.py",
       "source_location": "L3",
       "weight": 1.0,
@@ -1520,6 +3033,216 @@
       "confidence_score": 1.0,
       "source": "image_gen_huggingface_hf_create_image",
       "target": "src_wrappers_image_gen_huggingface_py_str"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "src_wrappers_image_gen_comfyui_py",
+      "target": "image_gen_comfyui_generate_comfyui_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "src_wrappers_image_gen_comfyui_py",
+      "target": "image_gen_comfyui_get_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "src_wrappers_image_gen_comfyui_py",
+      "target": "image_gen_comfyui_get_output_image_bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_wrappers_image_gen_comfyui_py",
+      "target": "image_gen_comfyui_queue_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "src_wrappers_image_gen_comfyui_py",
+      "target": "image_gen_comfyui_wait_for_completion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_generate_comfyui_image",
+      "target": "image_gen_comfyui_queue_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_rationale_20",
+      "target": "image_gen_comfyui_queue_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_get_image",
+      "target": "bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_get_image",
+      "target": "src_wrappers_image_gen_comfyui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_get_output_image_bytes",
+      "target": "image_gen_comfyui_get_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_rationale_30",
+      "target": "image_gen_comfyui_get_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_generate_comfyui_image",
+      "target": "src_wrappers_image_gen_comfyui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_get_output_image_bytes",
+      "target": "src_wrappers_image_gen_comfyui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_wait_for_completion",
+      "target": "src_wrappers_image_gen_comfyui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_get_output_image_bytes",
+      "target": "bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_generate_comfyui_image",
+      "target": "image_gen_comfyui_wait_for_completion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_rationale_39",
+      "target": "image_gen_comfyui_wait_for_completion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_generate_comfyui_image",
+      "target": "image_gen_comfyui_get_output_image_bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_rationale_59",
+      "target": "image_gen_comfyui_get_output_image_bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/comfyui.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "image_gen_comfyui_rationale_78",
+      "target": "image_gen_comfyui_generate_comfyui_image",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2067,11 +3790,51 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L329",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_generate_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L146",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_api_main_py",
       "target": "api_main_generate_social_story_stream"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L317",
+      "weight": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_generate_story_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L322",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_get_history"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_get_image"
     },
     {
       "relation": "contains",
@@ -2092,6 +3855,16 @@
       "confidence_score": 1.0,
       "source": "src_api_main_py",
       "target": "api_main_judge_social_story_handler"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L292",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_queue_prompt"
     },
     {
       "relation": "contains",
@@ -2119,9 +3892,19 @@
       "source_file": "src/api/main.py",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_api_main_py",
-      "target": "api_main_tier_evaluate_social_story_handler",
-      "confidence_score": 1.0
+      "target": "api_main_tier_evaluate_social_story_handler"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L307",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_track_workflow_progress"
     },
     {
       "relation": "references",
@@ -2155,6 +3938,26 @@
       "target": "api_main_sse_event"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_48",
+      "target": "api_main_sse_event"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "api_main_rationale_52",
+      "target": "api_main_sse_event",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -2163,6 +3966,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "api_main_sse_event",
+      "target": "src_api_main_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L329",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
       "target": "src_api_main_py_str"
     },
     {
@@ -2317,6 +4131,17 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L317",
+      "weight": 1.0,
+      "source": "api_main_generate_story_image",
+      "target": "request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L214",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2372,9 +4197,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_tier_evaluate_social_story_handler",
-      "target": "src_api_main_py_learnerprofile",
-      "confidence_score": 1.0
+      "target": "src_api_main_py_learnerprofile"
     },
     {
       "relation": "uses",
@@ -2414,9 +4239,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_tier_evaluate_social_story_handler",
-      "target": "src_api_main_py_bool",
-      "confidence_score": 1.0
+      "target": "src_api_main_py_bool"
     },
     {
       "relation": "uses",
@@ -2476,6 +4301,17 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L317",
+      "weight": 1.0,
+      "source": "api_main_generate_story_image",
+      "target": "src_api_main_py_socialstoryschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L196",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2489,9 +4325,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_tier_evaluate_social_story_handler",
-      "target": "src_api_main_py_socialstoryschema",
-      "confidence_score": 1.0
+      "target": "src_api_main_py_socialstoryschema"
     },
     {
       "relation": "uses",
@@ -2532,6 +4368,50 @@
       "confidence_score": 0.5,
       "source": "src_api_main_py_int",
       "target": "social_story_model_socialstoryschema"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L358",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_get_history"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L366",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_get_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L350",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_queue_prompt"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L354",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_track_workflow_progress"
     },
     {
       "relation": "contains",
@@ -3241,9 +5121,9 @@
       "source_file": "src/activities/social_story/utils.py",
       "source_location": "L1",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "socialstoryscoreresponse",
-      "target": "social_story_model_socialstoryschema",
-      "confidence_score": 0.5
+      "target": "social_story_model_socialstoryschema"
     },
     {
       "relation": "uses",
@@ -3411,9 +5291,9 @@
       "source_file": "src/activities/social_story/utils.py",
       "source_location": "L1",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "socialstoryscoreresponse",
-      "target": "social_story_model_socialstoryscoreresponse",
-      "confidence_score": 0.5
+      "target": "social_story_model_socialstoryscoreresponse"
     },
     {
       "relation": "uses",
@@ -3653,9 +5533,9 @@
       "source_file": "src/activities/social_story/utils.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "social_story_utils_save_as_md",
-      "target": "socialstoryscoreresponse",
-      "confidence_score": 1.0
+      "target": "socialstoryscoreresponse"
     },
     {
       "relation": "references",
@@ -4713,9 +6593,9 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_activities_social_story_evaluation_main_py",
-      "target": "evaluation_main_evaluate_social_story_as_metrics",
-      "confidence_score": 1.0
+      "target": "evaluation_main_evaluate_social_story_as_metrics"
     },
     {
       "relation": "contains",
@@ -4883,9 +6763,9 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "evaluation_main_evaluate_social_story_as_metrics",
-      "target": "src_activities_social_story_evaluation_main_py_int",
-      "confidence_score": 1.0
+      "target": "src_activities_social_story_evaluation_main_py_int"
     },
     {
       "relation": "references",
@@ -4971,9 +6851,9 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "evaluation_main_evaluate_social_story_as_metrics",
-      "target": "src_activities_social_story_evaluation_main_py_str",
-      "confidence_score": 1.0
+      "target": "src_activities_social_story_evaluation_main_py_str"
     },
     {
       "relation": "references",
@@ -5067,9 +6947,9 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "evaluation_main_evaluate_social_story_as_metrics",
-      "target": "src_activities_social_story_evaluation_main_py_socialstoryschema",
-      "confidence_score": 1.0
+      "target": "src_activities_social_story_evaluation_main_py_socialstoryschema"
     },
     {
       "relation": "references",
@@ -5108,9 +6988,9 @@
       "source_file": "src/activities/social_story/evaluation/main.py",
       "source_location": "L360",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "evaluation_main_rationale_360",
-      "target": "evaluation_main_evaluate_social_story_as_metrics",
-      "confidence_score": 1.0
+      "target": "evaluation_main_evaluate_social_story_as_metrics"
     },
     {
       "relation": "rationale_for",
@@ -5143,6 +7023,46 @@
       "target": "opencode_package_dependencies_opencode_ai_plugin"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_293",
+      "target": "api_main_queue_prompt"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L301",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_301",
+      "target": "api_main_get_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L308",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_308",
+      "target": "api_main_track_workflow_progress"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L323",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_323",
+      "target": "api_main_get_history"
+    },
+    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
@@ -5155,5 +7075,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "28da79089b5130f3fa193b9b7d93a556c24235fa"
+  "built_at_commit": "b86b69ed0581e3880f892b0795997c0ddf7be6f1"
 }
