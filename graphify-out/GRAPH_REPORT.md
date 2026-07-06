@@ -1,16 +1,16 @@
 # Graph Report - navia-modules  (2026-07-06)
 
 ## Corpus Check
-- 32 files · ~8,947 words
+- 32 files · ~9,448 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 245 nodes · 471 edges · 36 communities (31 shown, 5 thin omitted)
-- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 144 edges (avg confidence: 0.55)
+- 247 nodes · 475 edges · 36 communities (31 shown, 5 thin omitted)
+- Extraction: 70% EXTRACTED · 30% INFERRED · 0% AMBIGUOUS · INFERRED: 144 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b86b69ed`
+- Built from commit: `07c1f81e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,8 +61,8 @@
 ## Communities (36 total, 5 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.26
-Nodes (12): bytes, generate_comfyui_image(), _get_image(), _get_output_image_bytes(), _queue_prompt(), Sends the execution payload to ComfyUI., Fetches the generated image bytes from the ComfyUI server., Blocks until the ComfyUI workflow finishes executing. (+4 more)
+Cohesion: 0.22
+Nodes (14): bytes, generate_comfyui_image(), _get_image(), _get_output_image_bytes(), _queue_prompt(), Fetches the generated image bytes from the ComfyUI server., Sends the execution payload to ComfyUI., Retrieves the first generated image from ComfyUI history. (+6 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.64
@@ -89,16 +89,16 @@ Cohesion: 0.22
 Nodes (16): generate_fanar_image(), SentenceItem, create_social_story(), create_social_story_schema(), generate_story_visual_plan(), main(), regenerate_sentence_item(), PageVisualPrompt (+8 more)
 
 ### Community 32 - "Community 32"
-Cohesion: 0.05
-Nodes (46): 1, class_type, inputs, _meta, 2, class_type, _meta, 3 (+38 more)
+Cohesion: 0.06
+Nodes (42): 1, class_type, inputs, _meta, 2, class_type, _meta, 3 (+34 more)
 
 ### Community 34 - "Community 34"
 Cohesion: 0.10
 Nodes (39): evaluate_social_story_handler(), generate_image(), generate_social_story_stream(), generate_story_image(), get_history(), get_image(), get_learner_profile(), judge_social_story_handler() (+31 more)
 
 ### Community 35 - "Community 35"
-Cohesion: 0.13
-Nodes (15): inputs, inputs, cfg, denoise, latent_image, lora_name, model, negative (+7 more)
+Cohesion: 0.11
+Nodes (19): inputs, inputs, inputs, inputs, cfg, clip, denoise, latent_image (+11 more)
 
 ## Knowledge Gaps
 - **36 isolated node(s):** `ckpt_name`, `class_type`, `lora_name`, `strength_model`, `strength_clip` (+31 more)
@@ -109,11 +109,11 @@ Nodes (15): inputs, inputs, cfg, denoise, latent_image, lora_name, model, negati
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `SocialStorySchema` connect `Community 3` to `Community 34`, `Community 10`, `Community 30`, `Community 22`?**
-  _High betweenness centrality (0.125) - this node is a cross-community bridge._
+  _High betweenness centrality (0.124) - this node is a cross-community bridge._
 - **Why does `str` connect `Community 34` to `Community 3`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Why does `call_llm()` connect `Community 1` to `Community 10`, `Community 3`, `Community 30`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **Are the 37 inferred relationships involving `SocialStorySchema` (e.g. with `bool` and `DeterministicAnalysisReport`) actually correct?**
   _`SocialStorySchema` has 37 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 4 inferred relationships involving `evaluate_social_story_as_dict()` (e.g. with `deterministic_analysis()` and `probabilistic_analysis()`) actually correct?**
