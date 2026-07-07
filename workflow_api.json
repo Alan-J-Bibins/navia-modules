@@ -38,7 +38,7 @@
   },
   "4": {
     "inputs": {
-      "seed": 219081182130892,
+      "seed": 1085582575749577,
       "steps": 30,
       "cfg": 7,
       "sampler_name": "euler_ancestral",
@@ -68,7 +68,7 @@
   },
   "5": {
     "inputs": {
-      "text": "<lora:children huiben11-20231007-000006:0.75>,children's picture books,crayon paintings,blush,white background,simple background,\nA boy is fighting with another man,raising his fists",
+      "text": "<lora:children huiben11-20231007-000006:0.75>,children's picture books,crayon paintings,blush,white background,simple background,\nCar driving next to a train in a snowy region.",
       "clip": [
         "2",
         1
@@ -94,8 +94,8 @@
   },
   "7": {
     "inputs": {
-      "width": 1024,
-      "height": 1024,
+      "width": 1344,
+      "height": 768,
       "batch_size": 1
     },
     "class_type": "EmptyLatentImage",

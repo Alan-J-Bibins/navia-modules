@@ -612,7 +612,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L1",
       "id": "src_wrappers_image_gen_fanar_py",
-      "community": 30,
+      "community": 0,
       "norm_label": "fanar.py"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L9",
       "id": "image_gen_fanar_generate_fanar_image",
-      "community": 30,
+      "community": 0,
       "norm_label": "generate_fanar_image()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L9",
       "id": "src_wrappers_image_gen_fanar_py_str",
-      "community": 30,
+      "community": 0,
       "norm_label": "str"
     },
     {
@@ -814,22 +814,58 @@
       "norm_label": "sdxl_create_image()"
     },
     {
+      "label": "gemini.py",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/gemini.py",
+      "source_location": "L1",
+      "id": "src_wrappers_image_gen_gemini_py",
+      "community": 0,
+      "norm_label": "gemini.py"
+    },
+    {
+      "label": "generate_gemini_image()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/gemini.py",
+      "source_location": "L11",
+      "id": "image_gen_gemini_generate_gemini_image",
+      "community": 0,
+      "norm_label": "generate_gemini_image()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/gemini.py",
+      "source_location": "L11",
+      "id": "src_wrappers_image_gen_gemini_py_str",
+      "community": 0,
+      "norm_label": "str"
+    },
+    {
       "label": "main.py",
       "file_type": "code",
       "source_file": "src/wrappers/image_gen/main.py",
       "source_location": "L1",
       "id": "src_wrappers_image_gen_main_py",
-      "community": 9,
+      "community": 0,
       "norm_label": "main.py"
     },
     {
-      "label": "main()",
+      "label": "generate_image()",
       "file_type": "code",
       "source_file": "src/wrappers/image_gen/main.py",
-      "source_location": "L1",
-      "id": "image_gen_main_main",
-      "community": 9,
-      "norm_label": "main()"
+      "source_location": "L7",
+      "id": "image_gen_main_generate_image",
+      "community": 0,
+      "norm_label": "generate_image()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L7",
+      "id": "src_wrappers_image_gen_main_py_str",
+      "community": 0,
+      "norm_label": "str"
     },
     {
       "label": "__init__.py",
@@ -846,7 +882,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L1",
       "id": "src_wrappers_text_gen_llm_py",
-      "community": 1,
+      "community": 9,
       "norm_label": "llm.py"
     },
     {
@@ -855,7 +891,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L15",
       "id": "text_gen_llm_call_llm",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_llm()"
     },
     {
@@ -864,7 +900,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L15",
       "id": "src_wrappers_text_gen_llm_py_str",
-      "community": 1,
+      "community": 9,
       "norm_label": "str"
     },
     {
@@ -873,7 +909,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L15",
       "id": "t",
-      "community": 1,
+      "community": 9,
       "norm_label": "t"
     },
     {
@@ -882,7 +918,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L33",
       "id": "text_gen_llm_call_gemini",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_gemini()"
     },
     {
@@ -891,7 +927,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L78",
       "id": "text_gen_llm_call_gemma",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_gemma()"
     },
     {
@@ -900,7 +936,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L100",
       "id": "text_gen_llm_call_deepseek",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_deepseek()"
     },
     {
@@ -909,7 +945,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L129",
       "id": "text_gen_llm_call_qwen3dot6",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_qwen3dot6()"
     },
     {
@@ -918,7 +954,7 @@
       "source_file": "src/wrappers/text_gen/llm.py",
       "source_location": "L161",
       "id": "text_gen_llm_call_fanar",
-      "community": 1,
+      "community": 9,
       "norm_label": "call_fanar()"
     },
     {
@@ -979,7 +1015,7 @@
       "label": "get_learner_profile()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L47",
+      "source_location": "L50",
       "id": "api_main_get_learner_profile",
       "community": 34,
       "norm_label": "get_learner_profile()"
@@ -988,16 +1024,16 @@
       "label": "sse_event()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L51",
+      "source_location": "L54",
       "id": "api_main_sse_event",
-      "community": 34,
+      "community": 1,
       "norm_label": "sse_event()"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L51",
+      "source_location": "L54",
       "id": "src_api_main_py_str",
       "community": 34,
       "norm_label": "str"
@@ -1006,7 +1042,7 @@
       "label": "generate_social_story_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L57",
+      "source_location": "L60",
       "id": "api_main_generate_social_story_stream",
       "community": 34,
       "norm_label": "generate_social_story_stream()"
@@ -1015,7 +1051,7 @@
       "label": "Request",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L57",
+      "source_location": "L60",
       "id": "request",
       "community": 34,
       "norm_label": "request"
@@ -1024,7 +1060,7 @@
       "label": "LearnerProfile",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L57",
+      "source_location": "L60",
       "id": "src_api_main_py_learnerprofile",
       "community": 34,
       "norm_label": "learnerprofile"
@@ -1033,7 +1069,7 @@
       "label": "bool",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L57",
+      "source_location": "L60",
       "id": "src_api_main_py_bool",
       "community": 34,
       "norm_label": "bool"
@@ -1042,7 +1078,7 @@
       "label": "regenerate_sentence_stream()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L217",
+      "source_location": "L220",
       "id": "api_main_regenerate_sentence_stream",
       "community": 34,
       "norm_label": "regenerate_sentence_stream()"
@@ -1051,7 +1087,7 @@
       "label": "SocialStorySchema",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L217",
+      "source_location": "L220",
       "id": "src_api_main_py_socialstoryschema",
       "community": 34,
       "norm_label": "socialstoryschema"
@@ -1060,7 +1096,7 @@
       "label": "int",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L217",
+      "source_location": "L220",
       "id": "src_api_main_py_int",
       "community": 34,
       "norm_label": "int"
@@ -1069,7 +1105,7 @@
       "label": "tier_evaluate_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L266",
+      "source_location": "L269",
       "id": "api_main_tier_evaluate_social_story_handler",
       "community": 34,
       "norm_label": "tier_evaluate_social_story_handler()"
@@ -1078,36 +1114,45 @@
       "label": "evaluate_social_story_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L285",
+      "source_location": "L288",
       "id": "api_main_evaluate_social_story_handler",
       "community": 34,
       "norm_label": "evaluate_social_story_handler()"
     },
     {
-      "label": "generate_image()",
+      "label": "generate_image_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L297",
-      "id": "api_main_generate_image",
+      "source_location": "L300",
+      "id": "api_main_generate_image_handler",
       "community": 34,
-      "norm_label": "generate_image()"
+      "norm_label": "generate_image_handler()"
     },
     {
-      "label": "generate_story_image()",
+      "label": "upload_image_handler()",
       "file_type": "code",
       "source_file": "src/api/main.py",
-      "source_location": "L462",
-      "id": "api_main_generate_story_image",
+      "source_location": "L471",
+      "id": "api_main_upload_image_handler",
       "community": 34,
-      "norm_label": "generate_story_image()"
+      "norm_label": "upload_image_handler()"
+    },
+    {
+      "label": "UploadFile",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L471",
+      "id": "uploadfile",
+      "community": 34,
+      "norm_label": "uploadfile"
     },
     {
       "label": "Helper to format SSE events consistently.",
       "file_type": "rationale",
       "source_file": "src/api/main.py",
-      "source_location": "L52",
-      "id": "api_main_rationale_52",
-      "community": 34,
+      "source_location": "L55",
+      "id": "api_main_rationale_55",
+      "community": 1,
       "norm_label": "helper to format sse events consistently."
     },
     {
@@ -1921,6 +1966,42 @@
       "norm_label": "@opencode-ai/plugin"
     },
     {
+      "label": "generate_story_image()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L466",
+      "community": 34,
+      "norm_label": "generate_story_image()",
+      "id": "api_main_generate_story_image"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "main()",
+      "id": "image_gen_main_main"
+    },
+    {
+      "label": "generate_image()",
+      "file_type": "code",
+      "source_file": "src/api/main.py",
+      "source_location": "L297",
+      "community": 34,
+      "norm_label": "generate_image()",
+      "id": "api_main_generate_image"
+    },
+    {
+      "label": "Helper to format SSE events consistently.",
+      "file_type": "rationale",
+      "source_file": "src/api/main.py",
+      "source_location": "L52",
+      "community": 1,
+      "norm_label": "helper to format sse events consistently.",
+      "id": "api_main_rationale_52"
+    },
+    {
       "label": "_queue_prompt()",
       "file_type": "code",
       "source_file": "src/wrappers/image_gen/comfyui.py",
@@ -2015,7 +2096,7 @@
       "file_type": "rationale",
       "source_file": "src/api/main.py",
       "source_location": "L48",
-      "community": 34,
+      "community": 1,
       "norm_label": "helper to format sse events consistently.",
       "id": "api_main_rationale_48"
     },
@@ -2060,7 +2141,7 @@
       "file_type": "rationale",
       "source_file": "src/api/main.py",
       "source_location": "L34",
-      "community": 34,
+      "community": 1,
       "norm_label": "helper to format sse events consistently.",
       "id": "api_main_rationale_34"
     },
@@ -2078,7 +2159,7 @@
       "file_type": "rationale",
       "source_file": "src/api/main.py",
       "source_location": "L35",
-      "community": 34,
+      "community": 1,
       "norm_label": "helper to format sse events consistently.",
       "id": "api_main_rationale_35"
     },
@@ -3004,6 +3085,17 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "image_gen_main_generate_image",
+      "target": "image_gen_fanar_generate_fanar_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/social_story/main.py",
       "source_location": "L292",
       "weight": 1.0,
@@ -3141,9 +3233,9 @@
       "source_file": "src/wrappers/image_gen/comfyui.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "image_gen_comfyui_rationale_19",
-      "target": "image_gen_comfyui_get_image",
-      "confidence_score": 1.0
+      "target": "image_gen_comfyui_get_image"
     },
     {
       "relation": "rationale_for",
@@ -3216,9 +3308,9 @@
       "source_file": "src/wrappers/image_gen/comfyui.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "image_gen_comfyui_rationale_30",
-      "target": "image_gen_comfyui_get_output_image_bytes",
-      "confidence_score": 1.0
+      "target": "image_gen_comfyui_get_output_image_bytes"
     },
     {
       "relation": "rationale_for",
@@ -3258,9 +3350,9 @@
       "source_file": "src/wrappers/image_gen/comfyui.py",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "image_gen_comfyui_rationale_57",
-      "target": "image_gen_comfyui_generate_comfyui_image",
-      "confidence_score": 1.0
+      "target": "image_gen_comfyui_generate_comfyui_image"
     },
     {
       "relation": "rationale_for",
@@ -3270,6 +3362,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "image_gen_comfyui_rationale_78",
+      "target": "image_gen_comfyui_generate_comfyui_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "image_gen_main_generate_image",
       "target": "image_gen_comfyui_generate_comfyui_image"
     },
     {
@@ -3360,12 +3463,65 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/gemini.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_wrappers_image_gen_gemini_py",
+      "target": "image_gen_gemini_generate_gemini_image"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/gemini.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "image_gen_gemini_generate_gemini_image",
+      "target": "src_wrappers_image_gen_gemini_py_str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "image_gen_main_generate_image",
+      "target": "image_gen_gemini_generate_gemini_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_wrappers_image_gen_main_py",
+      "target": "image_gen_main_generate_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/wrappers/image_gen/main.py",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_wrappers_image_gen_main_py",
       "target": "image_gen_main_main"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/wrappers/image_gen/main.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "image_gen_main_generate_image",
+      "target": "src_wrappers_image_gen_main_py_str"
     },
     {
       "relation": "contains",
@@ -3828,6 +3984,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_generate_image_handler"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
       "source_location": "L146",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -3935,6 +4101,16 @@
       "target": "api_main_track_workflow_progress"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L563",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_api_main_py",
+      "target": "api_main_upload_image_handler"
+    },
+    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
@@ -3986,6 +4162,16 @@
       "target": "api_main_sse_event"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_rationale_55",
+      "target": "api_main_sse_event"
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -4005,6 +4191,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "api_main_generate_image",
+      "target": "src_api_main_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image_handler",
       "target": "src_api_main_py_str"
     },
     {
@@ -4161,9 +4358,20 @@
       "source_file": "src/api/main.py",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_generate_image",
-      "target": "request",
-      "confidence_score": 1.0
+      "target": "request"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image_handler",
+      "target": "request"
     },
     {
       "relation": "references",
@@ -4409,48 +4617,35 @@
       "target": "social_story_model_socialstoryschema"
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "references",
+      "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/api/main.py",
-      "source_location": "L358",
+      "source_location": "L471",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_main_generate_image",
-      "target": "api_main_get_history"
+      "source": "api_main_upload_image_handler",
+      "target": "uploadfile",
+      "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
+      "relation": "uses",
+      "confidence": "INFERRED",
       "source_file": "src/api/main.py",
-      "source_location": "L366",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_main_generate_image",
-      "target": "api_main_get_image"
+      "source_location": "L17",
+      "weight": 0.8,
+      "source": "uploadfile",
+      "target": "entities_learner_learnerprofile",
+      "confidence_score": 0.5
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
+      "relation": "uses",
+      "confidence": "INFERRED",
       "source_file": "src/api/main.py",
-      "source_location": "L350",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_main_generate_image",
-      "target": "api_main_queue_prompt"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/api/main.py",
-      "source_location": "L354",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_main_generate_image",
-      "target": "api_main_track_workflow_progress"
+      "source_location": "L15",
+      "weight": 0.8,
+      "source": "uploadfile",
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "contains",
@@ -7062,6 +7257,50 @@
       "target": "opencode_package_dependencies_opencode_ai_plugin"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L358",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_get_history"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L366",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_get_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L350",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_queue_prompt"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/api/main.py",
+      "source_location": "L354",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_main_generate_image",
+      "target": "api_main_track_workflow_progress"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/wrappers/image_gen/comfyui.py",
@@ -7134,5 +7373,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "07c1f81eade3c225531eaf2a35ca0a5fb75083ff"
+  "built_at_commit": "945bb29db9ff7793e17f14871a8447dbe2ecfce0"
 }

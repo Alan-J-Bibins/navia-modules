@@ -37,7 +37,7 @@ def call_gemini(prompt: str, response_schema: type[T] | None = None) -> T | str 
     for attempt in range(attempts):
         try:
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-flash-latest",
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",

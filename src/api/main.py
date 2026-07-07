@@ -2,11 +2,12 @@ import asyncio
 import base64
 import json
 import os
-from fastapi import Body, Depends, FastAPI, Query, Request
+from fastapi import Body, Depends, FastAPI, File, Query, Request, UploadFile
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import StreamingResponse
+from activities.social_story import model
 from activities.social_story.evaluation.main import (
     evaluate_social_story_as_dict,
     evaluate_social_story_as_metrics,
@@ -26,6 +27,8 @@ import json
 import uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
+
+from wrappers.image_gen.main import generate_image
 
 OUTPUTS_DIR = Path(__file__).resolve().parent.parent.parent / "outputs"
 OUTPUTS_DIR.mkdir(exist_ok=True)
@@ -294,26 +297,28 @@ async def evaluate_social_story_handler(
 
 
 @app.post("/generate-image")
-async def generate_image(
+async def generate_image_handler(
     request: Request,
     prompt: str = Body(..., embed=True),
 ):
     async def event_stream():
         try:
             progress_queue = asyncio.Queue()
-            loop = asyncio.get_running_loop()  # ← Use get_running_loop() instead of get_event_loop()
+            loop = (
+                asyncio.get_running_loop()
+            )  # ← Use get_running_loop() instead of get_event_loop()
 
             def on_progress(event):
                 """Sync callback from ComfyUI worker thread → async queue."""
                 try:
-                    asyncio.run_coroutine_threadsafe(
-                        progress_queue.put(event), loop
-                    )
+                    asyncio.run_coroutine_threadsafe(progress_queue.put(event), loop)
                 except Exception as e:
                     # Log but don't crash the worker thread
                     print(f"[on_progress] Failed to queue event: {e}")
 
-            yield sse_event({"type": "status", "message": "Queuing image generation..."})
+            yield sse_event(
+                {"type": "status", "message": "Queuing image generation..."}
+            )
 
             image_filename = f"generated_{uuid.uuid4().hex[:8]}.png"
             output_path = str(OUTPUTS_DIR / image_filename)
@@ -336,7 +341,8 @@ async def generate_image(
                 # Run generation in background thread with progress callback
                 gen_task = asyncio.create_task(
                     asyncio.to_thread(
-                        generate_comfyui_image,
+                        generate_image,
+                        model="gemini",
                         prompt=prompt,
                         output_path=output_path,
                         on_progress=on_progress,
@@ -366,7 +372,9 @@ async def generate_image(
                             message = node_messages.get(
                                 node_id, f"Executing node {node_id}..."
                             )
-                            yield sse_event({"type": "progress", "stage": stage, "message": message})
+                            yield sse_event(
+                                {"type": "progress", "stage": stage, "message": message}
+                            )
 
                         elif stage == "sampling":
                             value = event.get("value", 0)
@@ -400,7 +408,7 @@ async def generate_image(
                 try:
                     result_path = await gen_task
                     print(f"[generate_image] Task completed, result: {result_path}")
-                    
+
                     if not os.path.exists(output_path):
                         raise FileNotFoundError(
                             "Image generation completed but file was not created."
@@ -458,99 +466,21 @@ async def generate_image(
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
 
-@app.post("/activity/social_story/generate_image")
-async def generate_story_image(
-    request: Request,
-    story: SocialStorySchema = Body(..., embed=True),
-):
-    async def event_stream():
-        try:
-            total_pages = len(story.pages)
-            yield sse_event(
-                {
-                    "type": "status",
-                    "message": f"Generating {total_pages} illustrations...",
-                }
-            )
 
-            for page in story.pages:
-                if await request.is_disconnected():
-                    print("Client disconnected. Aborting image generation.")
-                    return
+@app.post("/upload-image")
+async def upload_image_handler(file: UploadFile = File(...)):
+    import shutil
 
-                yield sse_event(
-                    {
-                        "type": "status",
-                        "message": f"Generating image {page.page_number}/{total_pages}...",
-                    }
-                )
+    # Generate unique filename with "uploaded" prefix
+    ext = Path(file.filename).suffix if file.filename else ".png"
+    image_filename = f"uploaded_{uuid.uuid4().hex[:8]}{ext}"
+    output_path = OUTPUTS_DIR / image_filename
 
-                image_filename = f"story_{uuid.uuid4().hex[:8]}_p{page.page_number}.png"
-                output_path = str(OUTPUTS_DIR / image_filename)
-                full_prompt = f"{page.visual_prompt}"
+    # Save the uploaded file
+    with open(output_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
 
-                max_retries = 3
-                success = False
-
-                for attempt in range(max_retries):
-                    if await request.is_disconnected():
-                        return
-                    try:
-                        await asyncio.to_thread(
-                            generate_comfyui_image,
-                            prompt=full_prompt,
-                            output_path=output_path,
-                        )
-                        if not os.path.exists(output_path):
-                            raise FileNotFoundError(
-                                "Image generation completed but file was not created."
-                            )
-                        success = True
-                        break
-                    except Exception as e:
-                        error_msg = str(e).lower()
-                        is_rate_limit = (
-                            "429" in error_msg
-                            or "rate" in error_msg
-                            or "limit" in error_msg
-                        )
-                        if is_rate_limit and attempt < max_retries - 1:
-                            wait_time = 2**attempt
-                            yield sse_event(
-                                {
-                                    "type": "status",
-                                    "message": f"Rate limited. Retrying page {page.page_number} in {wait_time}s...",
-                                }
-                            )
-                            await asyncio.sleep(wait_time)
-                        else:
-                            yield sse_event(
-                                {
-                                    "type": "image_error",
-                                    "page": page.page_number,
-                                    "message": f"Failed after {attempt + 1} attempts: {str(e)}",
-                                }
-                            )
-                            break
-
-                if success:
-                    yield sse_event(
-                        {
-                            "type": "image",
-                            "page": page.page_number,
-                            "url": f"/outputs/{image_filename}",
-                            "filename": image_filename,
-                        }
-                    )
-
-            yield sse_event({"type": "complete"})
-        except Exception as e:
-            yield sse_event(
-                {
-                    "type": "error",
-                    "stage": "stream",
-                    "message": f"Unexpected stream failure: {str(e)}",
-                }
-            )
-
-    return StreamingResponse(event_stream(), media_type="text/event-stream")
+    return {
+        "url": f"/outputs/{image_filename}",
+        "filename": image_filename,
+    }
