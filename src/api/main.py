@@ -292,6 +292,7 @@ async def evaluate_social_story_handler(
         evaluate_social_story_as_metrics,
         story=story,
         target_age=story.target_age,
+        comprehensive_report=True
     )
     return result
 

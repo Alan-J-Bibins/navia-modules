@@ -33,6 +33,10 @@ class DeterministicAnalysisReport(BaseModel):
     )
     story_rating: float
     tier1_passed: bool
+    annotated_sentences: list[SentenceEntry] | None = Field(
+        default=None,
+        description="Per-sentence classifications (populated for comprehensive reports)",
+    )
 
 
 def annotate_sentences(story: str) -> SentenceListResponse | None:
@@ -77,6 +81,7 @@ def deterministic_analysis(
     obeys_sentence_ratio = False
     obeys_sentence_type = False
     story_rating = -1.0
+    annotated_sentences: list | None = None
 
     annotate_sentences_response = annotate_sentences(story_text)
 
@@ -119,4 +124,5 @@ def deterministic_analysis(
         sentence_type_criteria=obeys_sentence_type,
         story_rating=story_rating,
         tier1_passed=has_passed_tier1,
+        annotated_sentences=annotated_sentences,
     )

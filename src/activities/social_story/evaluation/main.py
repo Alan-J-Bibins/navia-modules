@@ -13,6 +13,7 @@ from activities.social_story.evaluation.readability_analysis import (
 )
 from activities.social_story.evaluation.probabilistic_analysis import (
     probabilistic_analysis,
+    ProbabilisticAnalysisReport,
     QualitativeMatrix,
 )
 
@@ -54,6 +55,23 @@ class EvaluationReportResponse(BaseModel):
     overall_passed: bool = Field(
         description="True if all *evaluated* tiers passed. Disabled tiers are excluded."
     )
+
+
+# ── Comprehensive Report Models ─────────────────────────────────────────
+
+
+class FactorDetail(BaseModel):
+    passed: bool
+    score: Any = None
+    threshold: Any = None
+    explanation: str = ""
+
+
+class ComprehensiveReport(BaseModel):
+    tier1_factors: dict[str, FactorDetail] = {}
+    tier2_factors: dict[str, FactorDetail] = {}
+    tier3_factors: dict[str, FactorDetail] = {}
+    annotated_sentences: list[dict] | None = None
 
 
 # ── Shared Helpers ──────────────────────────────────────────────────────
@@ -143,6 +161,171 @@ def _compute_tier2_reasons(
             f"Pronoun-to-Noun ratio too high ({report.pronoun_noun_ratio} > {thresholds['max_pronouns']})"
         )
     return reasons
+
+
+def _build_tier1_factors(det_report: DeterministicAnalysisReport) -> dict[str, FactorDetail]:
+    """Builds per-factor explanations for Tier 1 deterministic checks."""
+    factors: dict[str, FactorDetail] = {}
+
+    # second_person_pronouns
+    factors["second_person_pronouns"] = FactorDetail(
+        passed=not det_report.second_person_pronouns,
+        score=det_report.second_person_pronouns,
+        explanation=(
+            "FAIL: Story contains second-person pronouns (you/your/yours). "
+            "10.4 Criterion 5 requires zero second-person references."
+            if det_report.second_person_pronouns
+            else "PASS: No second-person pronouns detected."
+        ),
+    )
+
+    # absolute_constraints
+    factors["absolute_constraints"] = FactorDetail(
+        passed=not det_report.absolute_constraints,
+        score=det_report.absolute_constraints,
+        explanation=(
+            "FAIL: Story uses absolute constraints (must/should/always/never). "
+            "10.4 Criterion 5 forbids authoritarian commands."
+            if det_report.absolute_constraints
+            else "PASS: No absolute constraints detected."
+        ),
+    )
+
+    # sentence_ratio_criteria
+    rating_str = (
+        "inf"
+        if det_report.story_rating == float("inf")
+        else f"{det_report.story_rating:.2f}"
+    )
+    coaching_sentences = [
+        s for s in (det_report.annotated_sentences or []) if s.type == "Coaching"
+    ]
+    factors["sentence_ratio_criteria"] = FactorDetail(
+        passed=det_report.sentence_ratio_criteria,
+        score=rating_str,
+        threshold="ratio >= 4.0 AND coaching_count <= 1",
+        explanation=(
+            f"PASS: Descriptive/Coaching ratio is {rating_str} "
+            f"with {len(coaching_sentences)} Coaching sentence(s)."
+            if det_report.sentence_ratio_criteria
+            else f"FAIL: Ratio is {rating_str} (need >= 4.0) "
+            f"with {len(coaching_sentences)} Coaching sentence(s) (max 1 allowed). "
+            f"Coaching sentences: {[s.text for s in coaching_sentences]}"
+        ),
+    )
+
+    # sentence_type_criteria
+    invalid_sentences = [
+        s for s in (det_report.annotated_sentences or []) if s.type == "INVALID"
+    ]
+    factors["sentence_type_criteria"] = FactorDetail(
+        passed=det_report.sentence_type_criteria,
+        score=f"{len(invalid_sentences)} INVALID",
+        explanation=(
+            "PASS: All sentences classified as Descriptive or Coaching."
+            if det_report.sentence_type_criteria
+            else f"FAIL: {len(invalid_sentences)} sentence(s) classified as INVALID: "
+            f"{[s.text for s in invalid_sentences]}"
+        ),
+    )
+
+    return factors
+
+
+def _build_tier2_factors(
+    report: ReadabilityAnalysisReport, thresholds: dict
+) -> dict[str, FactorDetail]:
+    """Builds per-factor explanations for Tier 2 readability guardrails."""
+    checks = [
+        (
+            "flesch_kincaid_grade",
+            report.flesch_kincaid_grade,
+            thresholds["max_grade"],
+            "<=",
+            "Grade level too high for target age",
+        ),
+        (
+            "first_readability_index",
+            report.first_readability_index,
+            thresholds["min_first"],
+            ">=",
+            "FIRST index too low — text is structurally complex for the reader",
+        ),
+        (
+            "max_sentence_length",
+            report.max_sentence_length,
+            thresholds["max_len"],
+            "<=",
+            "Longest sentence exceeds age-appropriate word limit",
+        ),
+        (
+            "negation_density",
+            report.negation_density,
+            thresholds["max_neg"],
+            "<=",
+            "Too many negations per 100 words — increases cognitive load",
+        ),
+        (
+            "passive_voice_count",
+            report.passive_voice_count,
+            thresholds["max_passives"],
+            "<=",
+            "Too many passive structures — reduces directness",
+        ),
+        (
+            "pronoun_noun_ratio",
+            report.pronoun_noun_ratio,
+            thresholds["max_pronouns"],
+            "<=",
+            "Pronoun-to-noun ratio too high — causes referential ambiguity",
+        ),
+    ]
+
+    factors: dict[str, FactorDetail] = {}
+    for name, value, threshold, op, fail_msg in checks:
+        passed = value <= threshold if op == "<=" else value >= threshold
+        factors[name] = FactorDetail(
+            passed=passed,
+            score=value,
+            threshold=f"{op} {threshold}",
+            explanation=(
+                f"PASS: {name} = {value} (threshold: {op} {threshold})"
+                if passed
+                else f"FAIL: {fail_msg}. {name} = {value} (threshold: {op} {threshold})"
+            ),
+        )
+    return factors
+
+
+def _build_tier3_factors(
+    prob_report: ProbabilisticAnalysisReport,
+) -> dict[str, FactorDetail]:
+    """Builds per-factor explanations for Tier 3 qualitative review."""
+    q = prob_report.qualitative_reviews
+    feedback = prob_report.constructive_feedback
+
+    metric_meta = {
+        "goal_alignment": (q.goal_alignment, "Criterion 1 (Social Humility)"),
+        "structural_cohesion": (q.structural_cohesion, "Criterion 3 (Chronological Arc)"),
+        "celebratory_framing": (q.celebratory_framing, "Criterion 7 (Strengths-Based)"),
+        "contextual_rationale": (q.contextual_rationale, "Criterion 6 (WH-Questions & Why)"),
+    }
+
+    factors: dict[str, FactorDetail] = {}
+    for name, (score, criterion) in metric_meta.items():
+        passed = score >= 4
+        factors[name] = FactorDetail(
+            passed=passed,
+            score=f"{score}/5",
+            threshold=">= 4/5",
+            explanation=(
+                f"PASS: {criterion} scored {score}/5."
+                if passed
+                else f"FAIL: {criterion} scored {score}/5 (needs >= 4). "
+                f"Feedback: {'; '.join(feedback) if feedback else 'No specific feedback provided.'}"
+            ),
+        )
+    return factors
 
 
 # ── Existing string report (unchanged behavior, all tiers always run) ──
@@ -356,6 +539,7 @@ def evaluate_social_story_as_dict(
 def evaluate_social_story_as_metrics(
     story: str | SocialStorySchema,
     target_age: int = 8,
+    comprehensive_report: bool = False,
 ) -> dict:
     """
     Runs all three analysis tiers and returns a flat dict of metric values
@@ -363,12 +547,20 @@ def evaluate_social_story_as_metrics(
 
     Deterministic metrics return booleans, readability returns a boolean,
     and probabilistic metrics return integer scores (0-5).
+
+    Args:
+        story: The social story text or schema.
+        target_age: Target age for algorithmic metrics.
+        comprehensive_report: If True, includes a "comprehensive_report" key
+            with per-factor explanations detailing why each metric passed or
+            failed, along with the raw annotated sentences from Tier 1.
     """
     story_text = (
         extract_story_text(story) if isinstance(story, SocialStorySchema) else story
     )
     raw_age = story.target_age if isinstance(story, SocialStorySchema) else target_age
     age = max(3, raw_age)
+    scaling_age = min(18, age)
 
     det_report = deterministic_analysis(story)
     readability_report = readability_analysis(story_text, target_age=age)
@@ -395,5 +587,20 @@ def evaluate_social_story_as_metrics(
         metrics["structural_cohesion"] = None
         metrics["celebratory_framing"] = None
         metrics["contextual_rationale"] = None
+
+    # Optional comprehensive report with per-factor explanations
+    if comprehensive_report:
+        thresholds = _get_age_thresholds(scaling_age)
+        comprehensive = ComprehensiveReport(
+            tier1_factors=_build_tier1_factors(det_report),
+            tier2_factors=_build_tier2_factors(readability_report, thresholds),
+            tier3_factors=_build_tier3_factors(prob_report) if prob_report else {},
+            annotated_sentences=(
+                [s.model_dump() for s in det_report.annotated_sentences]
+                if det_report.annotated_sentences
+                else None
+            ),
+        )
+        metrics["comprehensive_report"] = comprehensive.model_dump()
 
     return metrics
