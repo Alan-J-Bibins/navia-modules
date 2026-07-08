@@ -3,10 +3,10 @@ from google import genai
 from google.genai import types
 from config import settings
 
-STYLE_PREIX = (
-    "children's picture books,crayon paintings,blush,"
-    "white background,simple background,simple geometry"
+STYLE_PREFIX = (
+    "heartwarming, minimalist illustration.The style is cozy slice-of-life, featuring simple cute character designs with dot eyes and rosy blush cheeks. Soft pastel color palette with muted blues, warm creams, and gentle peachy tones. Delicate, clean line art. Warm, nostalgic atmosphere, smooth gradients, subtle shading and texture, clean digital art."
 )
+
 
 def generate_gemini_image(
     prompt: str = "A serene sunset over a mountain lake",
@@ -15,13 +15,24 @@ def generate_gemini_image(
     client = genai.Client(api_key=settings.google_gemini_api_key)
 
     response = client.models.generate_images(
-        model="imagen-4.0-fast-generate-001",
-        prompt=f"{STYLE_PREIX}\n{prompt}",
+        model="gemini-3.1-flash-image",
+        prompt=f"{STYLE_PREFIX}\n{prompt}",
         config=types.GenerateImagesConfig(
             number_of_images=1,
             output_mime_type="image/png",
+            aspect_ratio="16:9"
         ),
     )
+
+    if hasattr(response, "prompt_feedback"):
+        print(f"[gemini] Prompt feedback: {response.prompt_feedback}")
+    if hasattr(response, "generated_images") and not response.generated_images:
+        print(f"[gemini] Full response: {response}")
+
+    if not response.generated_images:
+        raise RuntimeError(
+            "No images were generated — prompt may have been blocked by safety filters"
+        )
 
     if not response.generated_images:
         raise RuntimeError("No images were generated")

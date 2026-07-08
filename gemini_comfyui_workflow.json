@@ -1,0 +1,44 @@
+{
+  "1": {
+    "inputs": {
+      "prompt": "A heartwarming minimalist anime illustration of a young mother and her little son on the deck of a wooden ship during sunset. \nThe style is cozy slice-of-life, featuring simple cute character designs with dot eyes and rosy blush cheeks. Soft pastel color palette with muted blues, warm creams, and gentle peachy tones. Delicate, clean line art. The scene is illuminated by a soft, diffused golden hour glow, creating a gentle rim light on the characters. Warm, nostalgic atmosphere, smooth gradients, subtle shading, clean digital art.",
+      "model": "gemini-3.1-flash-lite-image",
+      "aspect_ratio": "16:9",
+      "image_size": "1K",
+      "file_prefix": "gemini_image",
+      "enable_google_search": false,
+      "seed": 701898811,
+      "number_of_images": 1,
+      "negative_prompt": ""
+    },
+    "class_type": "GeminiImageGenerator",
+    "_meta": {
+      "title": "Gemini Image Generator"
+    }
+  },
+  "4": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "5": {
+    "inputs": {
+      "source": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "PreviewAny",
+    "_meta": {
+      "title": "Preview as Text"
+    }
+  }
+}

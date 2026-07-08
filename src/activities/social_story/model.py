@@ -17,7 +17,7 @@ class SentenceItem(BaseModel):
 class StoryPage(BaseModel):
     page_number: int
     sentences: list[SentenceItem]
-    visual_prompt: str = Field(description="Simple image prompt which describes the scene for passing to stable diffusion xl. Keep wordings simple, only describe the scene and do not describe the artstyle or lighting")
+    visual_prompt: str = Field(description="Image prompt for the corresponding page formatted for nano banana. Avoid any style descriptions. Describe only the scene, the characters in it and the environment they are in.")
 
 
 class SocialStorySchema(BaseModel):

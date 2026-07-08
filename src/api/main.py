@@ -15,7 +15,6 @@ from activities.social_story.evaluation.main import (
 from activities.social_story.model import SocialStorySchema
 from api.utils import create_mock_profile
 from entities.learner import LearnerProfile
-from wrappers.image_gen.comfyui import generate_comfyui_image
 from wrappers.image_gen.fanar import generate_fanar_image
 from activities.social_story.main import (
     create_social_story_schema,
@@ -304,16 +303,13 @@ async def generate_image_handler(
     async def event_stream():
         try:
             progress_queue = asyncio.Queue()
-            loop = (
-                asyncio.get_running_loop()
-            )  # ← Use get_running_loop() instead of get_event_loop()
+            loop = asyncio.get_running_loop()
 
             def on_progress(event):
                 """Sync callback from ComfyUI worker thread → async queue."""
                 try:
                     asyncio.run_coroutine_threadsafe(progress_queue.put(event), loop)
                 except Exception as e:
-                    # Log but don't crash the worker thread
                     print(f"[on_progress] Failed to queue event: {e}")
 
             yield sse_event(
@@ -338,73 +334,87 @@ async def generate_image_handler(
                     }
                 )
 
-                # Run generation in background thread with progress callback
+                # Run generation wrapper in background thread
                 gen_task = asyncio.create_task(
                     asyncio.to_thread(
                         generate_image,
-                        model="gemini",
+                        model="comfyui_gemini",
                         prompt=prompt,
                         output_path=output_path,
                         on_progress=on_progress,
                     )
                 )
 
-                # Forward progress events while generation runs
-                while not gen_task.done():
-                    try:
-                        event = await asyncio.wait_for(
-                            progress_queue.get(), timeout=0.5
-                        )
-
-                        stage = event.get("stage")
-
-                        if stage == "executing":
-                            node_id = event.get("node", "unknown")
-                            node_messages = {
-                                "4": "Loading checkpoint...",
-                                "5": "Encoding prompt...",
-                                "6": "Loading VAE...",
-                                "7": "Preparing latent space...",
-                                "8": "Running sampler...",
-                                "10": "Decoding image...",
-                                "11": "Saving output...",
-                            }
-                            message = node_messages.get(
-                                node_id, f"Executing node {node_id}..."
-                            )
-                            yield sse_event(
-                                {"type": "progress", "stage": stage, "message": message}
+                if model in ["gemini", "fanar"]:
+                    while not gen_task.done():
+                        if await request.is_disconnected():
+                            print("Client disconnected. Aborting API generation.")
+                            gen_task.cancel()
+                            return
+                        await asyncio.sleep(0.2)
+                else:
+                    while not gen_task.done():
+                        if await request.is_disconnected():
+                            print("Client disconnected. Aborting ComfyUI generation.")
+                            return
+                        try:
+                            event = await asyncio.wait_for(
+                                progress_queue.get(), timeout=0.5
                             )
 
-                        elif stage == "sampling":
-                            value = event.get("value", 0)
-                            max_val = event.get("max", 0)
-                            percent = int((value / max_val) * 100) if max_val > 0 else 0
-                            yield sse_event(
-                                {
-                                    "type": "progress",
-                                    "stage": stage,
-                                    "message": f"Sampling step {value}/{max_val} ({percent}%)",
-                                    "value": value,
-                                    "max": max_val,
-                                    "percent": percent,
+                            stage = event.get("stage")
+                            if stage == "executing":
+                                node_id = event.get("node", "unknown")
+                                node_messages = {
+                                    "4": "Loading checkpoint...",
+                                    "5": "Encoding prompt...",
+                                    "6": "Loading VAE...",
+                                    "7": "Preparing latent space...",
+                                    "8": "Running sampler...",
+                                    "10": "Decoding image...",
+                                    "11": "Saving output...",
                                 }
-                            )
+                                message = node_messages.get(
+                                    node_id, f"Executing node {node_id}..."
+                                )
+                                yield sse_event(
+                                    {
+                                        "type": "progress",
+                                        "stage": stage,
+                                        "message": message,
+                                    }
+                                )
 
-                        elif stage == "error":
-                            error_msg = event.get("message", "Unknown error")
-                            yield sse_event(
-                                {
-                                    "type": "progress",
-                                    "stage": stage,
-                                    "message": f"ComfyUI error: {error_msg}",
-                                }
-                            )
+                            elif stage == "sampling":
+                                value = event.get("value", 0)
+                                max_val = event.get("max", 0)
+                                percent = (
+                                    int((value / max_val) * 100) if max_val > 0 else 0
+                                )
+                                yield sse_event(
+                                    {
+                                        "type": "progress",
+                                        "stage": stage,
+                                        "message": f"Sampling step {value}/{max_val} ({percent}%)",
+                                        "value": value,
+                                        "max": max_val,
+                                        "percent": percent,
+                                    }
+                                )
 
-                    except asyncio.TimeoutError:
-                        continue
+                            elif stage == "error":
+                                error_msg = event.get("message", "Unknown error")
+                                yield sse_event(
+                                    {
+                                        "type": "progress",
+                                        "stage": stage,
+                                        "message": f"ComfyUI error: {error_msg}",
+                                    }
+                                )
 
-                # Check generation result
+                        except asyncio.TimeoutError:
+                            continue
+
                 try:
                     result_path = await gen_task
                     print(f"[generate_image] Task completed, result: {result_path}")
@@ -416,13 +426,14 @@ async def generate_image_handler(
                     success = True
                     break
                 except Exception as e:
-                    print(f"[generate_image] Task failed: {e}")
+                    print(f"[generate_image] Task failed on attempt {attempt + 1}: {e}")
                     error_msg = str(e).lower()
                     is_rate_limit = (
                         "429" in error_msg
                         or "rate" in error_msg
                         or "limit" in error_msg
                     )
+
                     if is_rate_limit and attempt < max_retries - 1:
                         wait_time = 2**attempt
                         yield sse_event(
@@ -464,7 +475,6 @@ async def generate_image_handler(
             )
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
-
 
 
 @app.post("/upload-image")

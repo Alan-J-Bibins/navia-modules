@@ -1,20 +1,27 @@
 from typing import Literal
-from wrappers.image_gen.gemini import generate_gemini_image
-from wrappers.image_gen.comfyui import generate_comfyui_image
+from wrappers.image_gen.comfyui.gemini import comfyui_generate_gemini_image
+from wrappers.image_gen.comfyui.sdxl import comfyui_generate_sdxl_image
+from wrappers.image_gen.gemini import (
+    generate_gemini_image,
+)
 from wrappers.image_gen.fanar import generate_fanar_image
 
 
 def generate_image(
     prompt: str,
-    model: Literal["gemini", "comfyui", "fanar"],
+    model: Literal["gemini", "comfyui_sdxl", "comfyui_gemini", "fanar"],
     output_path: str = "generated.png",
     on_progress=None,
 ) -> str:
     match model:
         case "gemini":
             generate_gemini_image(prompt=prompt, output_path=output_path)
-        case "comfyui":
-            generate_comfyui_image(
+        case "comfyui_sdxl":
+            comfyui_generate_sdxl_image(
+                prompt=prompt, output_path=output_path, on_progress=on_progress
+            )
+        case "comfyui_gemini":
+            comfyui_generate_gemini_image(
                 prompt=prompt, output_path=output_path, on_progress=on_progress
             )
         case "fanar":
