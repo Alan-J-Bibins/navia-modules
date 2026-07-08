@@ -77,6 +77,7 @@ async def generate_social_story_stream(
                     target_age=profile.age,
                     reading_level=reading_level,
                     functional_word_range=functional_word_range,
+                    target_gender=profile.gender,
                 )
             except Exception as e:
                 yield sse_event(

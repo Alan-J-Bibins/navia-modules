@@ -56,6 +56,7 @@ def create_social_story_schema(
     reading_level: str,
     target_age: int,
     functional_word_range: str,
+    target_gender: str,
 ) -> SocialStorySchema | None:
     print("Running social story generation")
     print(f"-> Situation: {situation}")
@@ -63,6 +64,7 @@ def create_social_story_schema(
     print(f"-> Reading Level: {reading_level}")
     print(f"-> Functional Word Range: {functional_word_range}")
     print(f"-> Target age: {target_age}")
+    print(f"-> Target gender: {target_gender}")
 
     age = max(3, target_age)
     scaling_age = min(18, age)
@@ -106,6 +108,7 @@ def create_social_story_schema(
     - Target Reading Level: {reading_level}
     - Functional Word Range of the child: {functional_word_range}
     - Child's age: {target_age}
+    - Child's gender: {target_gender}
 
     ### THE CAROL GRAY 10.4 FRAMEWORK CRITERIA
         1. **One Philosophy, Definition, and Goal (Criterion 1):** Grounded entirely in *Social Humility*. Acknowledge that your mind is fallible and cast assumptions aside. The goal is ensuring the intended message remains intact, patient, and supportive from Author to Audience. It must never force compliance or support a faulty rationale.
@@ -150,6 +153,7 @@ def create_social_story_schema(
     - **Learner Profile Anchors (Criterion 4):** Personalize the background details using the child's known baseline strengths, safe interests, or comfort objects to maximize engagement and support their attention span. 
       For example: If the child loves trains, you may use a train reference as a supportive anchor (e.g., "The library has books about steam trains on the shelf").
     - **Descriptive Personalization Only:** When tailoring the text to the learner profile, only personalize objective actions, stable environment facts, or tangible support items. NEVER assume or dictate their internal mood or emotional reactions to these anchors (e.g., write "I can look at my favorite green toy block," NOT "Looking at my favorite green toy block makes me feel completely calm and happy").
+    - **Main character descriptions:** When describing the visual_prompt for each page, make sure to describe each character in length, if the child's gender is given make use of that.
 
     ### WHAT TO AVOID:
     - **NO LITERAL INACCURACY:** Words must mean exactly what they say. Absolutely NO idioms, metaphors, figures of speech, or sarcasm (e.g., do NOT use phrases like "take a seat", "hold your horses", "it's raining cats and dogs", or "in a split second").
@@ -209,14 +213,20 @@ def generate_story_visual_plan(
 
 
 def create_social_story(
-        situation: str, trigger: str, reading_level: str, target_age: int, functional_word_range: str
+    situation: str,
+    trigger: str,
+    reading_level: str,
+    target_age: int,
+    functional_word_range: str,
+    target_gender: str,
 ):
     story_schema = create_social_story_schema(
         situation=situation,
         trigger=trigger,
         reading_level=reading_level,
         target_age=target_age,
-        functional_word_range=functional_word_range
+        functional_word_range=functional_word_range,
+        target_gender=target_gender
     )
 
     if not isinstance(story_schema, SocialStorySchema):
@@ -250,18 +260,20 @@ def main():
         if len(sys.argv) > 3
         else "Early elementary, highly literal, 2-3 sentences per page"
     )
-    functional_word_range = (
-        sys.argv[4]
-        if len(sys.argv) > 4
-        else "1-20 words"
+    functional_word_range = sys.argv[4] if len(sys.argv) > 4 else "1-20 words"
+    age = int(sys.argv[5]) if len(sys.argv) > 5 else 7
+    gender = (
+        sys.argv[6]
+        if len(sys.argv) > 6
+        else "male"
     )
-    age = int(sys.argv[4]) if len(sys.argv) > 4 else 7
     result = create_social_story_schema(
         situation=situation,
         trigger=trigger,
         reading_level=reading_level,
         target_age=age,
-        functional_word_range=functional_word_range
+        functional_word_range=functional_word_range,
+        target_gender=gender,
     )
     if isinstance(result, SocialStorySchema):
         print(extract_story_text(result))
