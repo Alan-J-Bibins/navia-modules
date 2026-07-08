@@ -67,7 +67,7 @@ def comfyui_generate_gemini_image(
     print(
         f"[generate_comfyui_image] Injecting prompt into node {positive_prompt_node_id}"
     )
-    workflow[positive_prompt_node_id]["inputs"]["prompt"] = f"{prompt}\n{STYLE_SUFFIX}"
+    workflow[positive_prompt_node_id]["inputs"]["prompt"] = f"{prompt}"
     seed = random.sample(range(1000000, 9000000), 1)[0]
     print(
         f"[generate_comfyui_image] Injecting new seed into node {positive_prompt_node_id}: {seed}"

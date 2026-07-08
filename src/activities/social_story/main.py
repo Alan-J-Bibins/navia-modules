@@ -143,6 +143,14 @@ def create_social_story_schema(
     - **Negation Density:** Keep logical negations under {max_neg}. Frame instructions positively.
     - **Referential Clarity & Pronoun Density:** {pronoun_target}. Prevent tracking ambiguity.
 
+    ### PERSONALIZATION RULES
+    - **Conditional Trigger Relevance:** Evaluate the specific sensory/anxiety `{trigger}` against the given `{situation}`. Only mention the trigger if it is highly probable or directly present in that environment. 
+      For example: If the trigger is olfactory (e.g., cooking odors) but the situation is "Reading a book at the school library," DO NOT mention smells. 
+      Never manufacture artificial distress or introduce irrelevant triggers where they do not naturally occur.
+    - **Learner Profile Anchors (Criterion 4):** Personalize the background details using the child's known baseline strengths, safe interests, or comfort objects to maximize engagement and support their attention span. 
+      For example: If the child loves trains, you may use a train reference as a supportive anchor (e.g., "The library has books about steam trains on the shelf").
+    - **Descriptive Personalization Only:** When tailoring the text to the learner profile, only personalize objective actions, stable environment facts, or tangible support items. NEVER assume or dictate their internal mood or emotional reactions to these anchors (e.g., write "I can look at my favorite green toy block," NOT "Looking at my favorite green toy block makes me feel completely calm and happy").
+
     ### WHAT TO AVOID:
     - **NO LITERAL INACCURACY:** Words must mean exactly what they say. Absolutely NO idioms, metaphors, figures of speech, or sarcasm (e.g., do NOT use phrases like "take a seat", "hold your horses", "it's raining cats and dogs", or "in a split second").
     - DO NOT assume or dictate the child's internal emotional state (e.g., do not write "I will think this is fun").
