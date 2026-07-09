@@ -846,7 +846,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L1",
       "id": "src_wrappers_image_gen_fanar_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "fanar.py"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L9",
       "id": "image_gen_fanar_generate_fanar_image",
-      "community": 0,
+      "community": 9,
       "norm_label": "generate_fanar_image()"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "src/wrappers/image_gen/fanar.py",
       "source_location": "L9",
       "id": "src_wrappers_image_gen_fanar_py_str",
-      "community": 0,
+      "community": 9,
       "norm_label": "str"
     },
     {
@@ -972,7 +972,7 @@
       "source_file": "src/wrappers/image_gen/gemini.py",
       "source_location": "L1",
       "id": "src_wrappers_image_gen_gemini_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "gemini.py"
     },
     {
@@ -981,7 +981,7 @@
       "source_file": "src/wrappers/image_gen/gemini.py",
       "source_location": "L11",
       "id": "image_gen_gemini_generate_gemini_image",
-      "community": 0,
+      "community": 9,
       "norm_label": "generate_gemini_image()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "src/wrappers/image_gen/gemini.py",
       "source_location": "L11",
       "id": "src_wrappers_image_gen_gemini_py_str",
-      "community": 0,
+      "community": 9,
       "norm_label": "str"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "src/wrappers/image_gen/main.py",
       "source_location": "L1",
       "id": "src_wrappers_image_gen_main_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "main.py"
     },
     {
@@ -1008,7 +1008,7 @@
       "source_file": "src/wrappers/image_gen/main.py",
       "source_location": "L10",
       "id": "image_gen_main_generate_image",
-      "community": 0,
+      "community": 9,
       "norm_label": "generate_image()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "src/wrappers/image_gen/main.py",
       "source_location": "L10",
       "id": "src_wrappers_image_gen_main_py_str",
-      "community": 0,
+      "community": 9,
       "norm_label": "str"
     },
     {
@@ -1789,7 +1789,7 @@
       "label": "generate_story_visual_plan()",
       "file_type": "code",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L186",
+      "source_location": "L187",
       "id": "social_story_main_generate_story_visual_plan",
       "community": 22,
       "norm_label": "generate_story_visual_plan()"
@@ -1798,7 +1798,7 @@
       "label": "StoryVisualSchema",
       "file_type": "code",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L186",
+      "source_location": "L187",
       "id": "storyvisualschema",
       "community": 22,
       "norm_label": "storyvisualschema"
@@ -1807,7 +1807,7 @@
       "label": "create_social_story()",
       "file_type": "code",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L212",
+      "source_location": "L213",
       "id": "social_story_main_create_social_story",
       "community": 22,
       "norm_label": "create_social_story()"
@@ -1816,7 +1816,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L246",
+      "source_location": "L247",
       "id": "social_story_main_main",
       "community": 22,
       "norm_label": "main()"
@@ -2360,6 +2360,24 @@
       "id": "opencode_package_dependencies_opencode_ai_plugin",
       "community": 7,
       "norm_label": "@opencode-ai/plugin"
+    },
+    {
+      "label": "SocialStorySchema",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L13",
+      "community": 22,
+      "norm_label": "socialstoryschema",
+      "id": "socialstoryschema"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L13",
+      "community": 22,
+      "norm_label": "int",
+      "id": "int"
     },
     {
       "label": "LearnerProfile",
@@ -4733,9 +4751,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_generate_social_story_stream",
-      "target": "src_api_main_py_learnerprofile",
-      "confidence_score": 1.0
+      "target": "src_api_main_py_learnerprofile"
     },
     {
       "relation": "references",
@@ -4786,9 +4804,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L269",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_main_tier_evaluate_social_story_handler",
-      "target": "src_api_main_py_learnerprofile",
-      "confidence_score": 1.0
+      "target": "src_api_main_py_learnerprofile"
     },
     {
       "relation": "uses",
@@ -4796,9 +4814,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L17",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "src_api_main_py_learnerprofile",
-      "target": "entities_learner_learnerprofile",
-      "confidence_score": 0.5
+      "target": "entities_learner_learnerprofile"
     },
     {
       "relation": "uses",
@@ -4806,9 +4824,9 @@
       "source_file": "src/api/main.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "src_api_main_py_learnerprofile",
-      "target": "social_story_model_socialstoryschema",
-      "confidence_score": 0.5
+      "target": "social_story_model_socialstoryschema"
     },
     {
       "relation": "references",
@@ -5087,6 +5105,28 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "social_story_main_create_social_story",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_create_social_story_schema",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_regenerate_sentence_item",
       "target": "str"
     },
     {
@@ -5505,9 +5545,9 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_int",
-      "target": "social_story_model_sentenceitem"
+      "target": "social_story_model_sentenceitem",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -5515,19 +5555,19 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_socialstoryschema",
-      "target": "social_story_model_sentenceitem"
+      "target": "social_story_model_sentenceitem",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_str",
-      "target": "social_story_model_sentenceitem"
+      "target": "social_story_model_sentenceitem",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -5805,9 +5845,9 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_int",
-      "target": "social_story_model_socialstoryschema"
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -5815,19 +5855,19 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_socialstoryschema",
-      "target": "social_story_model_socialstoryschema"
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_str",
-      "target": "social_story_model_socialstoryschema"
+      "target": "social_story_model_socialstoryschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -5935,9 +5975,9 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_int",
-      "target": "social_story_model_storyvisualschema"
+      "target": "social_story_model_storyvisualschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -5945,19 +5985,19 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_socialstoryschema",
-      "target": "social_story_model_storyvisualschema"
+      "target": "social_story_model_storyvisualschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 0.8,
-      "confidence_score": 0.5,
       "source": "src_activities_social_story_main_py_str",
-      "target": "social_story_model_storyvisualschema"
+      "target": "social_story_model_storyvisualschema",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -6184,6 +6224,17 @@
     },
     {
       "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_regenerate_sentence_item",
+      "target": "int"
+    },
+    {
+      "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
@@ -6202,7 +6253,7 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "social_story_main_regenerate_sentence_item",
-      "target": "src_activities_social_story_main_py_int"
+      "target": "socialstoryschema"
     },
     {
       "relation": "references",
@@ -6211,20 +6262,31 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_regenerate_sentence_item",
-      "target": "src_activities_social_story_main_py_socialstoryschema"
+      "target": "src_activities_social_story_main_py_int",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_regenerate_sentence_item",
-      "target": "src_activities_social_story_main_py_str"
+      "target": "src_activities_social_story_main_py_socialstoryschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "social_story_main_regenerate_sentence_item",
+      "target": "src_activities_social_story_main_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -6233,31 +6295,31 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_create_social_story_schema",
-      "target": "src_activities_social_story_main_py_socialstoryschema"
+      "target": "src_activities_social_story_main_py_socialstoryschema",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L189",
+      "source_location": "L187",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_generate_story_visual_plan",
-      "target": "src_activities_social_story_main_py_socialstoryschema"
+      "target": "src_activities_social_story_main_py_socialstoryschema",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L215",
+      "source_location": "L213",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_create_social_story",
-      "target": "src_activities_social_story_main_py_int"
+      "target": "src_activities_social_story_main_py_int",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -6266,31 +6328,31 @@
       "source_file": "src/activities/social_story/main.py",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_create_social_story_schema",
-      "target": "src_activities_social_story_main_py_int"
+      "target": "src_activities_social_story_main_py_int",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L143",
+      "source_location": "L213",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_create_social_story",
-      "target": "src_activities_social_story_main_py_str"
+      "target": "src_activities_social_story_main_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/activities/social_story/main.py",
-      "source_location": "L11",
+      "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "social_story_main_create_social_story_schema",
-      "target": "src_activities_social_story_main_py_str"
+      "target": "src_activities_social_story_main_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -6302,6 +6364,28 @@
       "confidence_score": 1.0,
       "source": "social_story_main_create_social_story",
       "target": "social_story_main_create_social_story_schema"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_create_social_story_schema",
+      "target": "int"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_create_social_story_schema",
+      "target": "socialstoryschema"
     },
     {
       "relation": "calls",
@@ -6327,6 +6411,17 @@
     },
     {
       "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L186",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_generate_story_visual_plan",
+      "target": "socialstoryschema"
+    },
+    {
+      "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "src/social_story/main.py",
@@ -6335,6 +6430,17 @@
       "confidence_score": 1.0,
       "source": "social_story_main_generate_story_visual_plan",
       "target": "storyvisualschema"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/activities/social_story/main.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "social_story_main_create_social_story",
+      "target": "int"
     },
     {
       "relation": "calls",
@@ -7943,5 +8049,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "65291ae77cd40c2c77dcff14ad87ffd0e80e3864"
+  "built_at_commit": "042c83666cf3cc608ebbbde47578b09f9936f505"
 }

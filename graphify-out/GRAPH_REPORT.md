@@ -1,16 +1,16 @@
 # Graph Report - navia-modules  (2026-07-09)
 
 ## Corpus Check
-- 35 files · ~14,535 words
+- 35 files · ~14,559 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 275 nodes · 529 edges · 37 communities (32 shown, 5 thin omitted)
-- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 163 edges (avg confidence: 0.55)
+- 277 nodes · 537 edges · 37 communities (32 shown, 5 thin omitted)
+- Extraction: 70% EXTRACTED · 30% INFERRED · 0% AMBIGUOUS · INFERRED: 163 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `65291ae7`
+- Built from commit: `042c8366`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,8 +48,8 @@
 ## Surprising Connections (you probably didn't know these)
 - `create_social_story()` --calls--> `generate_fanar_image()`  [INFERRED]
   src/activities/social_story/main.py → src/wrappers/image_gen/fanar.py
-- `generate_image()` --calls--> `comfyui_generate_gemini_image()`  [INFERRED]
-  src/wrappers/image_gen/main.py → src/wrappers/image_gen/comfyui/gemini.py
+- `generate_image()` --calls--> `comfyui_generate_sdxl_image()`  [INFERRED]
+  src/wrappers/image_gen/main.py → src/wrappers/image_gen/comfyui/sdxl.py
 - `annotate_sentences()` --calls--> `call_llm()`  [INFERRED]
   src/activities/social_story/evaluation/deterministic_analysis.py → src/wrappers/text_gen/llm.py
 - `probabilistic_analysis()` --calls--> `call_llm()`  [INFERRED]
@@ -63,8 +63,8 @@
 ## Communities (37 total, 5 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.14
-Nodes (14): comfyui_generate_sdxl_image(), _get_image(), _get_output_image_bytes(), Fetches the generated image bytes from the ComfyUI server., Retrieves the first generated image from ComfyUI history., Generate an image via ComfyUI and save it to disk., generate_fanar_image(), generate_gemini_image() (+6 more)
+Cohesion: 0.36
+Nodes (8): comfyui_generate_sdxl_image(), _get_image(), _get_output_image_bytes(), Fetches the generated image bytes from the ComfyUI server., Retrieves the first generated image from ComfyUI history., Generate an image via ComfyUI and save it to disk., bytes, str
 
 ### Community 1 - "Community 1"
 Cohesion: 0.08
@@ -79,16 +79,16 @@ Cohesion: 0.15
 Nodes (43): BaseModel, DeterministicAnalysisReport, Therapist, DeterministicAnalysisReport, _build_tier1_factors(), _build_tier2_factors(), _build_tier3_factors(), ComprehensiveReport (+35 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.33
-Nodes (9): bytes, comfyui_generate_gemini_image(), _get_image(), _get_output_image_bytes(), Fetches the generated image bytes from the ComfyUI server., Retrieves the first generated image from ComfyUI history., Generate an image via Gemini ComfyUI node and save it to disk., bytes (+1 more)
+Cohesion: 0.14
+Nodes (15): bytes, comfyui_generate_gemini_image(), _get_image(), _get_output_image_bytes(), Fetches the generated image bytes from the ComfyUI server., Retrieves the first generated image from ComfyUI history., Generate an image via Gemini ComfyUI node and save it to disk., generate_fanar_image() (+7 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.06
 Nodes (42): 1, class_type, inputs, _meta, 2, class_type, _meta, 3 (+34 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.24
-Nodes (15): SentenceItem, create_social_story(), create_social_story_schema(), generate_story_visual_plan(), main(), regenerate_sentence_item(), PageVisualPrompt, SentenceItem (+7 more)
+Cohesion: 0.22
+Nodes (17): int, SentenceItem, create_social_story(), create_social_story_schema(), generate_story_visual_plan(), main(), regenerate_sentence_item(), PageVisualPrompt (+9 more)
 
 ### Community 30 - "Community 30"
 Cohesion: 0.64
@@ -120,9 +120,9 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `SocialStorySchema` connect `Community 3` to `Community 32`, `Community 34`, `Community 35`, `Community 22`?**
   _High betweenness centrality (0.114) - this node is a cross-community bridge._
-- **Why does `create_social_story()` connect `Community 22` to `Community 0`, `Community 34`, `Community 30`?**
-  _High betweenness centrality (0.095) - this node is a cross-community bridge._
-- **Why does `generate_fanar_image()` connect `Community 0` to `Community 22`?**
+- **Why does `create_social_story()` connect `Community 22` to `Community 9`, `Community 34`, `Community 30`?**
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **Why does `generate_fanar_image()` connect `Community 9` to `Community 22`?**
   _High betweenness centrality (0.087) - this node is a cross-community bridge._
 - **Are the 40 inferred relationships involving `SocialStorySchema` (e.g. with `DeterministicAnalysisReport` and `DeterministicAnalysisReport`) actually correct?**
   _`SocialStorySchema` has 40 INFERRED edges - model-reasoned connections that need verification._

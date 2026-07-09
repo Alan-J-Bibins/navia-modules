@@ -130,7 +130,8 @@ def create_social_story_schema(
     - **Coaching Sentences:** Gently guide via descriptions of effective Team responses, structured Audience responses, or self-coaching. (e.g., "I can ask to take a walk if I need a break.") *Reminder: Max 1 audience-coaching sentence allowed in the entire text.*
 
     ### STORY PRODUCING STRUCTURE:
-    - Produce upto 12 pages/sections.
+    - Produce upto 12 pages/sections. Each story should have atleast 5 or 6 pages.
+    - Each page should have a maximum of 5 sentences and a minimum of 2.
     - Page 1: Introduction (sets the scene, states the situation factually).
     - Pages 2 to N-1: Body (walks through the sequence of events step by step, in chronological order).
     - Last page: Conclusion (affirms the experience, reinforces calm closure, no new information).
